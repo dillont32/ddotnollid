@@ -8,7 +8,7 @@
 <meta property="og:title" content="Ddot Nollid">
 <meta property="og:description" content="Listen on your favorite streaming service and shop merch from the album art.">
 <meta property="og:url" content="https://dillont32.github.io/ddotnollid/">
-<meta property="og:image" content="https://dillont32.github.io/ddotnollid/img/cyborg.jpg">
+<meta property="og:image" content="https://dillont32.github.io/ddotnollid/./cyborg.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="description" content="Ddot Nollid: listen on your favorite streaming service and shop merch from the album art.">
 <title>Ddot Nollid</title>
@@ -251,7 +251,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px}
 
 <header class="top">
   <div class="wrap">
-    <a class="brand" href="#top" aria-label="Ddot Nollid home"><img src="img/cyborg.webp" alt=""><span class="chrome-type">Ddot Nollid</span></a>
+    <a class="brand" href="#top" aria-label="Ddot Nollid home"><img src="./cyborg.webp" alt=""><span class="chrome-type">Ddot Nollid</span></a>
     <nav class="nav" aria-label="Sections">
       <a href="#listen">Listen</a><a href="#releases">Releases</a><a href="#follow">Follow</a><a href="#merch">Merch</a><a href="#story">Story</a>
     </nav>
@@ -265,13 +265,13 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px}
 
 <main id="top">
   <section class="hero" aria-label="Ddot Nollid">
-    <img class="hero-art" src="img/hero.webp" alt="Ddot Nollid's chrome cyborg persona with glowing blue eyes, a fur-lined hood and braids, framed by a night skyline.">
+    <img class="hero-art" src="./hero.webp" alt="Ddot Nollid's chrome cyborg persona with glowing blue eyes, a fur-lined hood and braids, framed by a night skyline.">
     <div class="pulse" aria-hidden="true"></div>
   </section>
 
   <div class="wrap drop">
     <div class="drop-card">
-      <img src="img/undaunted.webp" alt="Undaunted album cover">
+      <img src="./undaunted.webp" alt="Undaunted album cover">
       <div class="drop-meta">
         <span class="badge">New album</span>
         <h1 class="chrome-type">Undaunted</h1>
@@ -296,7 +296,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px}
       </div>
       <div class="listen-grid">
         <aside class="now" aria-live="polite">
-          <img id="nowArt" src="img/undaunted.webp" alt="">
+          <img id="nowArt" src="./undaunted.webp" alt="">
           <div>
             <h3 id="nowTitle">They Don’t Understand</h3>
             <p id="nowNote">From the album Undaunted</p>
@@ -340,7 +340,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px}
 
   <section class="section" id="story">
     <div class="wrap story">
-      <img src="img/throne.webp" alt="The Ddot Nollid cyborg seated with hands steepled, flanked by speakers and crowned D and N monograms.">
+      <img src="./throne.webp" alt="The Ddot Nollid cyborg seated with hands steepled, flanked by speakers and crowned D and N monograms.">
       <div>
         <h2 class="chrome-type">The story</h2>
         <p>Read the name backwards and you’ll find the man behind the chrome. Ddot Nollid is the persona: a smiling cyborg in a fur-lined hood with headphones on, built to carry real stories a long way from home.</p>
@@ -365,7 +365,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px}
 <div class="dock" id="dock" role="region" aria-label="Music player">
   <div class="wrap">
     <div class="d-track">
-      <img id="dArt" src="img/undaunted.webp" alt="">
+      <img id="dArt" src="./undaunted.webp" alt="">
       <div><span class="d-title" id="dTitle">They Don’t Understand</span><span class="d-artist">Ddot Nollid</span></div>
     </div>
     <div class="d-ctrls">
@@ -395,7 +395,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px}
   </div>
 </aside>
 <aside class="sheet" id="sheet" hidden role="dialog" aria-modal="true" aria-labelledby="sTitle">
-  <div class="sheet-head"><img id="sArt" src="img/undaunted.webp" alt=""><div style="min-width:0"><span class="d-artist">Ddot Nollid</span><h3 id="sTitle" class="s-title chrome-type">They Don’t Understand</h3></div><button class="ib" id="closeSheet" aria-label="Close"><svg viewBox="0 0 24 24"><path d="M18.3 5.7 12 12l6.3 6.3-1.4 1.4L10.6 13.4 4.3 19.7l-1.4-1.4L9.2 12 2.9 5.7l1.4-1.4 6.3 6.3 6.3-6.3z"/></svg></button></div>
+  <div class="sheet-head"><img id="sArt" src="./undaunted.webp" alt=""><div style="min-width:0"><span class="d-artist">Ddot Nollid</span><h3 id="sTitle" class="s-title chrome-type">They Don’t Understand</h3></div><button class="ib" id="closeSheet" aria-label="Close"><svg viewBox="0 0 24 24"><path d="M18.3 5.7 12 12l6.3 6.3-1.4 1.4L10.6 13.4 4.3 19.7l-1.4-1.4L9.2 12 2.9 5.7l1.4-1.4 6.3 6.3 6.3-6.3z"/></svg></button></div>
   <p class="s-hint">Choose where to listen. Your pick is remembered for next time.</p>
   <div class="sheet-list" id="sList"></div>
   <div class="sheet-foot"><button class="btn" id="copyLink">Copy song link</button></div>
@@ -449,7 +449,7 @@ const PRODUCTS = [
 
 /* ---------- helpers ---------- */
 const $ = s => document.querySelector(s);
-const img = k => `img/${k}.webp`;
+const img = k => `./${k}.webp`;
 const money = n => "$" + n.toFixed(2);
 const store = {
   get(k,d){try{const v=localStorage.getItem(k);return v?JSON.parse(v):d}catch(e){return d}},

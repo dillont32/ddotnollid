@@ -15,9 +15,9 @@ Sources (no accounts needed unless noted):
                               Amazon Music, Deezer, Tidal, Pandora, YouTube and more
 
 Usage:
-  python scripts/find_links.py                 # normal weekly run
-  python scripts/find_links.py --refresh-all   # re-check every song on every platform
-  python scripts/find_links.py --dry-run       # print results, don't write links.json
+  python find_links.py                 # normal weekly run
+  python find_links.py --refresh-all   # re-check every song on every platform
+  python find_links.py --dry-run       # print results, don't write links.json
 
 Standard library only. Python 3.9+.
 """
@@ -33,7 +33,9 @@ import urllib.parse
 import urllib.request
 from datetime import datetime, timezone
 
-ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+HERE = os.path.dirname(os.path.abspath(__file__))
+# Works whether this file sits next to links.config.json or in a scripts/ folder.
+ROOT = HERE if os.path.exists(os.path.join(HERE, "links.config.json")) else os.path.dirname(HERE)
 CONFIG_PATH = os.path.join(ROOT, "links.config.json")
 OUT_PATH = os.path.join(ROOT, "links.json")
 UA = "DdotNollidLinkFinder/1.0"
