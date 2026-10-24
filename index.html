@@ -8,7 +8,7 @@
 <meta property="og:title" content="Ddot Nollid">
 <meta property="og:description" content="Listen on your favorite streaming service and shop merch from the album art.">
 <meta property="og:url" content="https://dillont32.github.io/ddotnollid/">
-<meta property="og:image" content="https://dillont32.github.io/ddotnollid/./cyborg.jpg">
+<meta property="og:image" content="https://dillont32.github.io/ddotnollid/cyborg.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="description" content="Ddot Nollid: listen on your favorite streaming service and shop merch from the album art.">
 <title>Ddot Nollid</title>
@@ -521,12 +521,15 @@ TRACKS.forEach((t,i)=>{
   li.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();load(i,true)}});
   list.appendChild(li);
 });
-TRACKS.forEach((t,i)=>{
+const rkey=s=>(s||"").normalize("NFKD").replace(/[̀-ͯ]/g,"").toLowerCase().replace(/[^a-z0-9]+/g," ").trim();
+const releases=new Map();
+TRACKS.forEach((t,i)=>{const name=t.cover||t.release||t.title;const k=rkey(name);if(!releases.has(k))releases.set(k,{name,t,i})});
+[...releases.values()].forEach(({name,t,i},n)=>{
   const b=document.createElement("button");
-  b.className="cover"+(i===0?" feature":"");
-  b.setAttribute("aria-label",`Open ${t.cover||t.title}`);
-  b.innerHTML=`<figure style="margin:0"><img src="${artOf(t)}" alt="${(t.cover||t.title)} cover art" loading="lazy">
-    <figcaption><strong>${t.cover||t.title}</strong><small>${t.kind||(t.cover?"Album":"Single")}</small></figcaption></figure>`;
+  b.className="cover"+(n===0?" feature":"");
+  b.setAttribute("aria-label",`Open ${name}`);
+  b.innerHTML=`<figure style="margin:0"><img src="${artOf(t)}" alt="${name} cover art" loading="lazy">
+    <figcaption><strong>${name}</strong><small>${t.kind||(t.cover?"Album":"Single")}</small></figcaption></figure>`;
   b.addEventListener("click",()=>{load(i,true);document.getElementById("listen").scrollIntoView()});
   covers.appendChild(b);
 });
@@ -584,15 +587,23 @@ async function loadLinks(){
   try{const r=await fetch("links.json",{cache:"no-store"});if(!r.ok)return;data=await r.json()}catch(e){return}
   Object.entries(data.artist_links||{}).forEach(([id,u])=>{const p=PLATFORMS.find(x=>x.id===id);if(p&&u)p.artist=u});
   const added=[];
+  const claimed=new Set(), key=s=>[...words(s)].join(" ");
   (data.tracks||[]).forEach(lt=>{
-    let t=TRACKS.find(x=>sameSong(x.title,lt.title));
-    if(!t){t={id:"r-"+[...words(lt.title)].join("-"),title:lt.title,note:lt.release&&!sameSong(lt.release,lt.title)?`From ${lt.release}`:"New release",art:null,artUrl:lt.art,kind:lt.type==="album"?"Album":"Single",audio:null};added.push(t)}
+    const free=TRACKS.filter(x=>!claimed.has(x));
+    let t=free.find(x=>key(x.title)===key(lt.title))||free.find(x=>sameSong(x.title,lt.title));
+    if(t){claimed.add(t);t.date=lt.date;if(lt.art&&!t.art)t.artUrl=lt.art}
+    else{const kind={album:"Album",ep:"EP"}[lt.type]||"Single";t={id:"r-"+key(lt.title).replace(/ /g,"-")+"-"+(lt.date||""),title:lt.title,release:lt.release,note:lt.release&&!sameSong(lt.release,lt.title)?`From ${lt.release}`:kind,art:null,artUrl:lt.art,kind,audio:null};added.push(t)}
     t.links=Object.assign({},lt.links||{},t.links||{});
     if(lt.songlink&&!t.hyperfollow)t.hyperfollow=lt.songlink;
   });
-  if(added.length){
-    const curId=TRACKS[cur].id;TRACKS.unshift(...added);renderLists();
+  added.forEach((t,i)=>{t.date=t.date||(data.tracks.find(lt=>lt.title===t.title)||{}).date});
+  if(data.tracks&&data.tracks.length){
+    // links.json is the real catalog: keep matched songs plus new ones, newest first.
+    const curId=TRACKS[cur].id;
+    const keep=TRACKS.filter(t=>claimed.has(t)).concat(added).sort((a,b)=>(b.date||"").localeCompare(a.date||""));
+    TRACKS.splice(0,TRACKS.length,...keep);renderLists();
     cur=Math.max(0,TRACKS.findIndex(t=>t.id===curId));
+    if(audio.paused)load(cur,false);
     document.querySelectorAll(".track").forEach(el=>el.setAttribute("aria-current",el.dataset.id===curId?"true":"false"));
   }
   renderFollow();

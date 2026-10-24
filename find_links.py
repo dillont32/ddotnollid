@@ -11,8 +11,8 @@ Sources (no accounts needed unless noted):
   - Apple / iTunes Search  -> catalog + Apple Music artist page
   - Spotify Web API        -> optional; needs SPOTIFY_CLIENT_ID / SPOTIFY_CLIENT_SECRET
                               and the app owner must have Spotify Premium (Feb 2026 rule)
-  - Songlink / Odesli API  -> per-song links on Spotify, Apple Music, YouTube Music,
-                              Amazon Music, Deezer, Tidal, Pandora, YouTube and more
+  - Songlink / Odesli API  -> optional; needs ODESLI_API_KEY (the free tier was retired
+                              on 2026-07-31). Adds YouTube Music, Amazon, Tidal, Pandora links.
 
 Usage:
   python find_links.py                 # normal weekly run
@@ -124,6 +124,7 @@ def from_deezer(cfg):
                     "date": album.get("release_date"),
                     "art": album.get("cover_xl") or album.get("cover_big"),
                     "seed": t.get("link"),
+                    "platform": "deezer",
                 })
         url = page.get("next")
     log(f"Deezer: {len(tracks)} songs")
@@ -146,7 +147,8 @@ def from_apple(cfg):
             "type": "single" if (r.get("trackCount") or 0) <= 3 else "album",
             "date": (r.get("releaseDate") or "")[:10],
             "art": (r.get("artworkUrl100") or "").replace("100x100bb", "1000x1000bb"),
-            "seed": r.get("trackViewUrl"),
+            "seed": re.sub(r"[?&]uo=\d+", "", r.get("trackViewUrl") or "") or None,
+            "platform": "apple",
         })
     log(f"Apple Music: {len(tracks)} songs")
     return artist_url, tracks
@@ -157,7 +159,7 @@ def from_spotify(cfg):
     secret = os.environ.get("SPOTIFY_CLIENT_SECRET")
     artist_id = cfg.get("spotify_artist_id")
     if not (cid and secret and artist_id):
-        log("Spotify: skipped (no API keys set; Songlink still finds Spotify links)")
+        log("Spotify: skipped (no API keys set). Spotify buttons on the site will open a Spotify search for each song.")
         return []
     auth = base64.b64encode(f"{cid}:{secret}".encode()).decode()
     token = http_json("https://accounts.spotify.com/api/token",
@@ -189,6 +191,7 @@ def from_spotify(cfg):
                         "date": album.get("release_date"),
                         "art": imgs[0].get("url"),
                         "seed": (t.get("external_urls") or {}).get("spotify"),
+                        "platform": "spotify",
                     })
                 turl = tl.get("next")
         url = page.get("next")
@@ -234,25 +237,31 @@ def main():
             continue
         key = norm(t["title"])
         if key not in found:
-            found[key] = dict(t, seeds=[t["seed"]])
+            found[key] = dict(t, seeds=[t["seed"]], direct={t["platform"]: t["seed"]})
         else:
             found[key]["seeds"].append(t["seed"])
+            found[key]["direct"].setdefault(t["platform"], t["seed"])
             for field in ("release", "type", "date", "art"):
                 found[key][field] = found[key].get(field) or t.get(field)
 
     # Keep songs from earlier runs even if a store temporarily hides them.
     for key, old in cache.items():
         if key not in found:
-            found[key] = dict(old, seeds=[])
+            found[key] = dict(old, seeds=[], direct={})
 
     min_platforms = int(cfg.get("min_platforms", 6))
+    # Songlink retired its free API on 2026-07-31; it now needs a key from Linktree.
+    use_songlink = bool(os.environ.get("ODESLI_API_KEY"))
+    if not use_songlink:
+        log("Songlink: skipped (no ODESLI_API_KEY). Using direct Spotify, Apple Music and Deezer links.")
     overrides = {norm(k): v for k, v in (cfg.get("track_links") or {}).items()}
     tracks, new_titles = [], []
     for key, t in found.items():
         old = cache.get(key) or {}
         links = dict(old.get("links") or {})
+        links.update(t.get("direct") or {})  # exact links straight from Spotify, Deezer and Apple
         page = old.get("songlink")
-        if refresh_all or not old or len(links) < min_platforms:
+        if use_songlink and (refresh_all or not old or len(links) < min_platforms):
             for seed in t["seeds"]:
                 log(f"Songlink: {t['title']}")
                 page_new, links_new = songlink(seed, cfg)
