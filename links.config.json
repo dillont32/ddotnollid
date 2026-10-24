@@ -1,0 +1,18 @@
+{
+  "artist_name": "Ddot Nollid",
+  "country": "US",
+  "spotify_artist_id": "4IEe9SCNNFpft05fJ7VWQG",
+  "deezer_artist_id": null,
+  "min_platforms": 6,
+  "artist_links": {
+    "spotify": "https://open.spotify.com/artist/4IEe9SCNNFpft05fJ7VWQG",
+    "youtube": "https://www.youtube.com/channel/UCjUHyRj5Eze6VPge7ex6nvQ",
+    "apple": "",
+    "ytmusic": "",
+    "amazon": "",
+    "deezer": "",
+    "tidal": "",
+    "pandora": ""
+  },
+  "track_links": {}
+}
