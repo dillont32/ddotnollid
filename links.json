@@ -1,6 +1,6 @@
 {
   "artist": "Ddot Nollid",
-  "updated": "2026-10-24T22:07:42Z",
+  "updated": "2026-10-24T22:50:01Z",
   "artist_links": {
     "apple": "https://music.apple.com/us/artist/ddot-nollid/1888639392",
     "deezer": "https://www.deezer.com/artist/382087981",
@@ -15,7 +15,9 @@
       "date": "2026-10-16",
       "art": "https://cdn-images.dzcdn.net/images/cover/37052006e8aa2a37c04016e273e71a38/1000x1000-000000-80-0-0.jpg",
       "songlink": null,
-      "links": {}
+      "links": {
+        "deezer": "https://www.deezer.com/track/4339990302"
+      }
     },
     {
       "title": "Conspiracy Theory II: Common Ground",
@@ -24,7 +26,9 @@
       "date": "2026-10-16",
       "art": "https://cdn-images.dzcdn.net/images/cover/37052006e8aa2a37c04016e273e71a38/1000x1000-000000-80-0-0.jpg",
       "songlink": null,
-      "links": {}
+      "links": {
+        "deezer": "https://www.deezer.com/track/4339990292"
+      }
     },
     {
       "title": "Conspiracy Theory I: Divide the Room",
@@ -33,7 +37,9 @@
       "date": "2026-10-16",
       "art": "https://cdn-images.dzcdn.net/images/cover/37052006e8aa2a37c04016e273e71a38/1000x1000-000000-80-0-0.jpg",
       "songlink": null,
-      "links": {}
+      "links": {
+        "deezer": "https://www.deezer.com/track/4339990282"
+      }
     },
     {
       "title": "One In A Billion (feat. Tony Hernandez)",
@@ -42,7 +48,10 @@
       "date": "2026-10-05",
       "art": "https://cdn-images.dzcdn.net/images/cover/e7f140be18b6a9db5989fad8f682a56f/1000x1000-000000-80-0-0.jpg",
       "songlink": null,
-      "links": {}
+      "links": {
+        "apple": "https://music.apple.com/us/album/one-in-a-billion-feat-tony-hernandez/6818037435?i=6818037436",
+        "deezer": "https://www.deezer.com/track/4321405312"
+      }
     },
     {
       "title": "The Word Was Neighbor (Ruff Cut)",
@@ -51,7 +60,10 @@
       "date": "2026-10-02",
       "art": "https://cdn-images.dzcdn.net/images/cover/1e6495ab5c8798188fc3d9a687fc83fb/1000x1000-000000-80-0-0.jpg",
       "songlink": null,
-      "links": {}
+      "links": {
+        "apple": "https://music.apple.com/us/album/the-word-was-neighbor-ruff-cut/6816419635?i=6816419636",
+        "deezer": "https://www.deezer.com/track/4312274692"
+      }
     },
     {
       "title": "The Word Was Neighbor (Cabaret Cut)",
@@ -60,7 +72,10 @@
       "date": "2026-09-30",
       "art": "https://cdn-images.dzcdn.net/images/cover/87738e97b5b43f20b6a1be65ee115994/1000x1000-000000-80-0-0.jpg",
       "songlink": null,
-      "links": {}
+      "links": {
+        "apple": "https://music.apple.com/us/album/the-word-was-neighbor-cabaret-cut/6816422598?i=6816422599",
+        "deezer": "https://www.deezer.com/track/4312283072"
+      }
     },
     {
       "title": "No Cerveza No Trabajo",
@@ -69,7 +84,10 @@
       "date": "2026-09-30",
       "art": "https://cdn-images.dzcdn.net/images/cover/3e4f1b65b49d5185ac77045dc581b802/1000x1000-000000-80-0-0.jpg",
       "songlink": null,
-      "links": {}
+      "links": {
+        "apple": "https://music.apple.com/us/album/no-cerveza-no-trabajo/6816865140?i=6816865142",
+        "deezer": "https://www.deezer.com/track/4314281922"
+      }
     },
     {
       "title": "Motor City Kitties...No More!",
@@ -78,7 +96,10 @@
       "date": "2026-09-07",
       "art": "https://cdn-images.dzcdn.net/images/cover/f20d75512439a53d1347ccbb550b7fc6/1000x1000-000000-80-0-0.jpg",
       "songlink": null,
-      "links": {}
+      "links": {
+        "apple": "https://music.apple.com/us/album/motor-city-kitties-no-more/6809306814?i=6809306815",
+        "deezer": "https://www.deezer.com/track/4270136742"
+      }
     },
     {
       "title": "Kylexa",
@@ -87,7 +108,10 @@
       "date": "2026-09-06",
       "art": "https://cdn-images.dzcdn.net/images/cover/5ee9485e3bbe358107ac87ec581ef35c/1000x1000-000000-80-0-0.jpg",
       "songlink": null,
-      "links": {}
+      "links": {
+        "apple": "https://music.apple.com/us/album/kylexa/6808830727?i=6808830728",
+        "deezer": "https://www.deezer.com/track/4267126172"
+      }
     },
     {
       "title": "Fighter",
@@ -96,7 +120,10 @@
       "date": "2026-09-06",
       "art": "https://cdn-images.dzcdn.net/images/cover/b7244510bd6fa587fc98e140aba48b3e/1000x1000-000000-80-0-0.jpg",
       "songlink": null,
-      "links": {}
+      "links": {
+        "apple": "https://music.apple.com/us/album/fighter/6806917352?i=6806917353",
+        "deezer": "https://www.deezer.com/track/4255549451"
+      }
     },
     {
       "title": "It Be Like That...Sometimes",
@@ -105,7 +132,10 @@
       "date": "2026-09-05",
       "art": "https://cdn-images.dzcdn.net/images/cover/b995b1dcfba4a9ad43880a6652a378ea/1000x1000-000000-80-0-0.jpg",
       "songlink": null,
-      "links": {}
+      "links": {
+        "apple": "https://music.apple.com/us/album/it-be-like-that-sometimes/6806702237?i=6806702238",
+        "deezer": "https://www.deezer.com/track/4254304581"
+      }
     },
     {
       "title": "I Gambled on an Ace",
@@ -114,7 +144,10 @@
       "date": "2026-08-30",
       "art": "https://cdn-images.dzcdn.net/images/cover/8b63f18f5a4fab24be8cc5ffa65307e8/1000x1000-000000-80-0-0.jpg",
       "songlink": null,
-      "links": {}
+      "links": {
+        "apple": "https://music.apple.com/us/album/i-gambled-on-an-ace/6804370022?i=6804370023",
+        "deezer": "https://www.deezer.com/track/4240543462"
+      }
     },
     {
       "title": "Contra Legem",
@@ -123,7 +156,10 @@
       "date": "2026-08-29",
       "art": "https://cdn-images.dzcdn.net/images/cover/4bd7a8417e3e2629572098c9301ddd62/1000x1000-000000-80-0-0.jpg",
       "songlink": null,
-      "links": {}
+      "links": {
+        "apple": "https://music.apple.com/us/album/contra-legem/6804361335?i=6804361336",
+        "deezer": "https://www.deezer.com/track/4240493112"
+      }
     },
     {
       "title": "Undaunted (feat. Tony Hernandez)",
@@ -132,7 +168,10 @@
       "date": "2026-08-20",
       "art": "https://cdn-images.dzcdn.net/images/cover/c1b42a3b5794a451537aee979dc644ec/1000x1000-000000-80-0-0.jpg",
       "songlink": null,
-      "links": {}
+      "links": {
+        "apple": "https://music.apple.com/us/album/undaunted-feat-tony-hernandez/6801972123?i=6801972457",
+        "deezer": "https://www.deezer.com/track/4226594692"
+      }
     },
     {
       "title": "Thick or Thin (feat. Tony Hernandez)",
@@ -141,7 +180,10 @@
       "date": "2026-08-20",
       "art": "https://cdn-images.dzcdn.net/images/cover/c1b42a3b5794a451537aee979dc644ec/1000x1000-000000-80-0-0.jpg",
       "songlink": null,
-      "links": {}
+      "links": {
+        "apple": "https://music.apple.com/us/album/thick-or-thin-feat-tony-hernandez/6801972123?i=6801972464",
+        "deezer": "https://www.deezer.com/track/4226594762"
+      }
     },
     {
       "title": "They Don't Understand (feat. Tony Hernandez)",
@@ -150,7 +192,10 @@
       "date": "2026-08-20",
       "art": "https://cdn-images.dzcdn.net/images/cover/c1b42a3b5794a451537aee979dc644ec/1000x1000-000000-80-0-0.jpg",
       "songlink": null,
-      "links": {}
+      "links": {
+        "apple": "https://music.apple.com/us/album/they-dont-understand-feat-tony-hernandez/6801972123?i=6801972463",
+        "deezer": "https://www.deezer.com/track/4226594752"
+      }
     },
     {
       "title": "The Hardest Thing",
@@ -159,7 +204,9 @@
       "date": "2026-08-20",
       "art": "https://cdn-images.dzcdn.net/images/cover/c1b42a3b5794a451537aee979dc644ec/1000x1000-000000-80-0-0.jpg",
       "songlink": null,
-      "links": {}
+      "links": {
+        "deezer": "https://www.deezer.com/track/4226594682"
+      }
     },
     {
       "title": "Take Me Home (feat. Tony Hernandez)",
@@ -168,7 +215,10 @@
       "date": "2026-08-20",
       "art": "https://cdn-images.dzcdn.net/images/cover/c1b42a3b5794a451537aee979dc644ec/1000x1000-000000-80-0-0.jpg",
       "songlink": null,
-      "links": {}
+      "links": {
+        "apple": "https://music.apple.com/us/album/take-me-home-feat-tony-hernandez/6801972123?i=6801972462",
+        "deezer": "https://www.deezer.com/track/4226594742"
+      }
     },
     {
       "title": "Seen (feat. Tony Hernandez)",
@@ -177,7 +227,10 @@
       "date": "2026-08-20",
       "art": "https://cdn-images.dzcdn.net/images/cover/c1b42a3b5794a451537aee979dc644ec/1000x1000-000000-80-0-0.jpg",
       "songlink": null,
-      "links": {}
+      "links": {
+        "apple": "https://music.apple.com/us/album/seen-feat-tony-hernandez/6801972123?i=6801972459",
+        "deezer": "https://www.deezer.com/track/4226594712"
+      }
     },
     {
       "title": "Pure Defiance (feat. Tony Hernandez)",
@@ -186,7 +239,10 @@
       "date": "2026-08-20",
       "art": "https://cdn-images.dzcdn.net/images/cover/c1b42a3b5794a451537aee979dc644ec/1000x1000-000000-80-0-0.jpg",
       "songlink": null,
-      "links": {}
+      "links": {
+        "apple": "https://music.apple.com/us/album/pure-defiance-feat-tony-hernandez/6801972123?i=6801972465",
+        "deezer": "https://www.deezer.com/track/4226594772"
+      }
     },
     {
       "title": "Lord Can You Feel Me (feat. Tony Hernandez)",
@@ -195,7 +251,10 @@
       "date": "2026-08-20",
       "art": "https://cdn-images.dzcdn.net/images/cover/c1b42a3b5794a451537aee979dc644ec/1000x1000-000000-80-0-0.jpg",
       "songlink": null,
-      "links": {}
+      "links": {
+        "apple": "https://music.apple.com/us/album/lord-can-you-feel-me-feat-tony-hernandez/6801972123?i=6801972125",
+        "deezer": "https://www.deezer.com/track/4226594672"
+      }
     },
     {
       "title": "If Tomorrow Never Comes (feat. Tony Hernandez)",
@@ -204,7 +263,10 @@
       "date": "2026-08-20",
       "art": "https://cdn-images.dzcdn.net/images/cover/c1b42a3b5794a451537aee979dc644ec/1000x1000-000000-80-0-0.jpg",
       "songlink": null,
-      "links": {}
+      "links": {
+        "apple": "https://music.apple.com/us/album/if-tomorrow-never-comes-feat-tony-hernandez/6801972123?i=6801972461",
+        "deezer": "https://www.deezer.com/track/4226594732"
+      }
     },
     {
       "title": "I Gave My Real (feat. Tony Hernandez)",
@@ -213,7 +275,10 @@
       "date": "2026-08-20",
       "art": "https://cdn-images.dzcdn.net/images/cover/c1b42a3b5794a451537aee979dc644ec/1000x1000-000000-80-0-0.jpg",
       "songlink": null,
-      "links": {}
+      "links": {
+        "apple": "https://music.apple.com/us/album/i-gave-my-real-feat-tony-hernandez/6801972123?i=6801972458",
+        "deezer": "https://www.deezer.com/track/4226594702"
+      }
     },
     {
       "title": "I Gave My All (feat. Tony Hernandez)",
@@ -222,7 +287,10 @@
       "date": "2026-08-20",
       "art": "https://cdn-images.dzcdn.net/images/cover/c1b42a3b5794a451537aee979dc644ec/1000x1000-000000-80-0-0.jpg",
       "songlink": null,
-      "links": {}
+      "links": {
+        "apple": "https://music.apple.com/us/album/i-gave-my-all-feat-tony-hernandez/6801972123?i=6801972124",
+        "deezer": "https://www.deezer.com/track/4226594662"
+      }
     },
     {
       "title": "Going Home (feat. Tony Hernandez)",
@@ -231,7 +299,10 @@
       "date": "2026-08-20",
       "art": "https://cdn-images.dzcdn.net/images/cover/c1b42a3b5794a451537aee979dc644ec/1000x1000-000000-80-0-0.jpg",
       "songlink": null,
-      "links": {}
+      "links": {
+        "apple": "https://music.apple.com/us/album/going-home-feat-tony-hernandez/6801972123?i=6801972466",
+        "deezer": "https://www.deezer.com/track/4226594782"
+      }
     },
     {
       "title": "Barefoot On Broken Glass (feat. Tony Hernandez)",
@@ -240,7 +311,10 @@
       "date": "2026-08-20",
       "art": "https://cdn-images.dzcdn.net/images/cover/c1b42a3b5794a451537aee979dc644ec/1000x1000-000000-80-0-0.jpg",
       "songlink": null,
-      "links": {}
+      "links": {
+        "apple": "https://music.apple.com/us/album/barefoot-on-broken-glass-feat-tony-hernandez/6801972123?i=6801972460",
+        "deezer": "https://www.deezer.com/track/4226594722"
+      }
     },
     {
       "title": "God is Good, All the Time",
@@ -249,7 +323,10 @@
       "date": "2026-08-18",
       "art": "https://cdn-images.dzcdn.net/images/cover/34397ba55c2f6b6f308b7558ed5a74a2/1000x1000-000000-80-0-0.jpg",
       "songlink": null,
-      "links": {}
+      "links": {
+        "apple": "https://music.apple.com/us/album/god-is-good-all-the-time/6802995700?i=6802995710",
+        "deezer": "https://www.deezer.com/track/4232335902"
+      }
     },
     {
       "title": "Palm Tree Dreams",
@@ -258,7 +335,10 @@
       "date": "2026-08-07",
       "art": "https://cdn-images.dzcdn.net/images/cover/a04311fb45877d9b0ba421448472b7f2/1000x1000-000000-80-0-0.jpg",
       "songlink": null,
-      "links": {}
+      "links": {
+        "apple": "https://music.apple.com/us/album/palm-tree-dreams/6799022880?i=6799022881",
+        "deezer": "https://www.deezer.com/track/4208868932"
+      }
     },
     {
       "title": "The Tawas Tortoise",
@@ -267,7 +347,10 @@
       "date": "2026-07-26",
       "art": "https://cdn-images.dzcdn.net/images/cover/3ebf7fafd51966c18fb64bf6e3bda478/1000x1000-000000-80-0-0.jpg",
       "songlink": null,
-      "links": {}
+      "links": {
+        "apple": "https://music.apple.com/us/album/the-tawas-tortoise/6794988230?i=6794988231",
+        "deezer": "https://www.deezer.com/track/4178805702"
+      }
     },
     {
       "title": "I Gave My All (Debut Edit) (feat. Tony Hernandez)",
@@ -276,7 +359,10 @@
       "date": "2026-06-30",
       "art": "https://cdn-images.dzcdn.net/images/cover/d9b91bfa3d0c8746247a345a7623677e/1000x1000-000000-80-0-0.jpg",
       "songlink": null,
-      "links": {}
+      "links": {
+        "apple": "https://music.apple.com/us/album/i-gave-my-all-debut-edit-feat-tony-hernandez/6786213560?i=6786213561",
+        "deezer": "https://www.deezer.com/track/4123596951"
+      }
     },
     {
       "title": "What Would You Do?",
@@ -285,7 +371,10 @@
       "date": "2026-06-10",
       "art": "https://cdn-images.dzcdn.net/images/cover/0fcbc69fce9a66d6e231f2427083a835/1000x1000-000000-80-0-0.jpg",
       "songlink": null,
-      "links": {}
+      "links": {
+        "apple": "https://music.apple.com/us/album/what-would-you-do/6774056337?i=6774056342",
+        "deezer": "https://www.deezer.com/track/4049142991"
+      }
     },
     {
       "title": "Say It So I Can Hear You",
@@ -294,7 +383,10 @@
       "date": "2026-06-10",
       "art": "https://cdn-images.dzcdn.net/images/cover/0fcbc69fce9a66d6e231f2427083a835/1000x1000-000000-80-0-0.jpg",
       "songlink": null,
-      "links": {}
+      "links": {
+        "apple": "https://music.apple.com/us/album/say-it-so-i-can-hear-you/6774056337?i=6774056345",
+        "deezer": "https://www.deezer.com/track/4049143021"
+      }
     },
     {
       "title": "No More Hiding",
@@ -303,7 +395,10 @@
       "date": "2026-06-10",
       "art": "https://cdn-images.dzcdn.net/images/cover/0fcbc69fce9a66d6e231f2427083a835/1000x1000-000000-80-0-0.jpg",
       "songlink": null,
-      "links": {}
+      "links": {
+        "apple": "https://music.apple.com/us/album/no-more-hiding/6774056337?i=6774056338",
+        "deezer": "https://www.deezer.com/track/4049142951"
+      }
     },
     {
       "title": "Let 'Em (Remix)",
@@ -312,7 +407,10 @@
       "date": "2026-06-10",
       "art": "https://cdn-images.dzcdn.net/images/cover/0fcbc69fce9a66d6e231f2427083a835/1000x1000-000000-80-0-0.jpg",
       "songlink": null,
-      "links": {}
+      "links": {
+        "apple": "https://music.apple.com/us/album/let-em-remix/6774056337?i=6774056649",
+        "deezer": "https://www.deezer.com/track/4049143061"
+      }
     },
     {
       "title": "Let 'Em",
@@ -321,7 +419,10 @@
       "date": "2026-06-10",
       "art": "https://cdn-images.dzcdn.net/images/cover/0fcbc69fce9a66d6e231f2427083a835/1000x1000-000000-80-0-0.jpg",
       "songlink": null,
-      "links": {}
+      "links": {
+        "apple": "https://music.apple.com/us/album/let-em/6774056337?i=6774056343",
+        "deezer": "https://www.deezer.com/track/4049143001"
+      }
     },
     {
       "title": "Learning To See",
@@ -330,7 +431,10 @@
       "date": "2026-06-10",
       "art": "https://cdn-images.dzcdn.net/images/cover/0fcbc69fce9a66d6e231f2427083a835/1000x1000-000000-80-0-0.jpg",
       "songlink": null,
-      "links": {}
+      "links": {
+        "apple": "https://music.apple.com/us/album/learning-to-see/6774056337?i=6774056346",
+        "deezer": "https://www.deezer.com/track/4049143031"
+      }
     },
     {
       "title": "Know How to Fall",
@@ -339,7 +443,10 @@
       "date": "2026-06-10",
       "art": "https://cdn-images.dzcdn.net/images/cover/0fcbc69fce9a66d6e231f2427083a835/1000x1000-000000-80-0-0.jpg",
       "songlink": null,
-      "links": {}
+      "links": {
+        "apple": "https://music.apple.com/us/album/know-how-to-fall/6774056337?i=6774056340",
+        "deezer": "https://www.deezer.com/track/4049142971"
+      }
     },
     {
       "title": "Is It You or Is It Me",
@@ -348,7 +455,10 @@
       "date": "2026-06-10",
       "art": "https://cdn-images.dzcdn.net/images/cover/0fcbc69fce9a66d6e231f2427083a835/1000x1000-000000-80-0-0.jpg",
       "songlink": null,
-      "links": {}
+      "links": {
+        "apple": "https://music.apple.com/us/album/is-it-you-or-is-it-me/6774056337?i=6774056347",
+        "deezer": "https://www.deezer.com/track/4049143041"
+      }
     },
     {
       "title": "If I Can't Hear You, I'll Never Be Heard",
@@ -357,7 +467,10 @@
       "date": "2026-06-10",
       "art": "https://cdn-images.dzcdn.net/images/cover/0fcbc69fce9a66d6e231f2427083a835/1000x1000-000000-80-0-0.jpg",
       "songlink": null,
-      "links": {}
+      "links": {
+        "apple": "https://music.apple.com/us/album/if-i-cant-hear-you-ill-never-be-heard/6774056337?i=6774056344",
+        "deezer": "https://www.deezer.com/track/4049143011"
+      }
     },
     {
       "title": "Get 'Em (Parody)",
@@ -366,7 +479,9 @@
       "date": "2026-06-10",
       "art": "https://cdn-images.dzcdn.net/images/cover/0fcbc69fce9a66d6e231f2427083a835/1000x1000-000000-80-0-0.jpg",
       "songlink": null,
-      "links": {}
+      "links": {
+        "deezer": "https://www.deezer.com/track/4049143051"
+      }
     },
     {
       "title": "Change It Up",
@@ -375,7 +490,10 @@
       "date": "2026-06-10",
       "art": "https://cdn-images.dzcdn.net/images/cover/0fcbc69fce9a66d6e231f2427083a835/1000x1000-000000-80-0-0.jpg",
       "songlink": null,
-      "links": {}
+      "links": {
+        "apple": "https://music.apple.com/us/album/change-it-up/6774056337?i=6774056341",
+        "deezer": "https://www.deezer.com/track/4049142981"
+      }
     },
     {
       "title": "Break Free From the Cage",
@@ -384,7 +502,10 @@
       "date": "2026-06-10",
       "art": "https://cdn-images.dzcdn.net/images/cover/0fcbc69fce9a66d6e231f2427083a835/1000x1000-000000-80-0-0.jpg",
       "songlink": null,
-      "links": {}
+      "links": {
+        "apple": "https://music.apple.com/us/album/break-free-from-the-cage/6774056337?i=6774056339",
+        "deezer": "https://www.deezer.com/track/4049142961"
+      }
     },
     {
       "title": "Charmane",
@@ -393,7 +514,10 @@
       "date": "2026-06-04",
       "art": "https://cdn-images.dzcdn.net/images/cover/0026f7f5d82346bc0ace61eb084b51f5/1000x1000-000000-80-0-0.jpg",
       "songlink": null,
-      "links": {}
+      "links": {
+        "apple": "https://music.apple.com/us/album/charmane/6776327745?i=6776327746",
+        "deezer": "https://www.deezer.com/track/4061958951"
+      }
     },
     {
       "title": "Wasgonnaville (Rock Version)",
@@ -402,7 +526,10 @@
       "date": "2026-03-28",
       "art": "https://cdn-images.dzcdn.net/images/cover/115987aafa54d82a52732c9bb1045cdd/1000x1000-000000-80-0-0.jpg",
       "songlink": null,
-      "links": {}
+      "links": {
+        "apple": "https://music.apple.com/us/album/wasgonnaville-rock-version/1888919061?i=1888919066",
+        "deezer": "https://www.deezer.com/track/3926649191"
+      }
     },
     {
       "title": "Wasgonnaville (Country Version)",
@@ -411,7 +538,10 @@
       "date": "2026-03-28",
       "art": "https://cdn-images.dzcdn.net/images/cover/115987aafa54d82a52732c9bb1045cdd/1000x1000-000000-80-0-0.jpg",
       "songlink": null,
-      "links": {}
+      "links": {
+        "apple": "https://music.apple.com/us/album/wasgonnaville-country-version/1888919061?i=1888919063",
+        "deezer": "https://www.deezer.com/track/3926649181"
+      }
     },
     {
       "title": "Thank you, Lord",
@@ -420,7 +550,10 @@
       "date": "2026-03-28",
       "art": "https://cdn-images.dzcdn.net/images/cover/115987aafa54d82a52732c9bb1045cdd/1000x1000-000000-80-0-0.jpg",
       "songlink": null,
-      "links": {}
+      "links": {
+        "apple": "https://music.apple.com/us/album/thank-you-lord/1888919061?i=1888919068",
+        "deezer": "https://www.deezer.com/track/3926649201"
+      }
     },
     {
       "title": "It's all about you (Mary)",
@@ -429,7 +562,10 @@
       "date": "2026-03-28",
       "art": "https://cdn-images.dzcdn.net/images/cover/115987aafa54d82a52732c9bb1045cdd/1000x1000-000000-80-0-0.jpg",
       "songlink": null,
-      "links": {}
+      "links": {
+        "apple": "https://music.apple.com/us/album/its-all-about-you-mary/1888919061?i=1888919162",
+        "deezer": "https://www.deezer.com/track/3926649221"
+      }
     },
     {
       "title": "As long as it's today",
@@ -438,7 +574,10 @@
       "date": "2026-03-28",
       "art": "https://cdn-images.dzcdn.net/images/cover/115987aafa54d82a52732c9bb1045cdd/1000x1000-000000-80-0-0.jpg",
       "songlink": null,
-      "links": {}
+      "links": {
+        "apple": "https://music.apple.com/us/album/as-long-as-its-today/1888919061?i=1888919160",
+        "deezer": "https://www.deezer.com/track/3926649211"
+      }
     },
     {
       "title": "As long as it's today (Funkified Version)",
@@ -447,7 +586,10 @@
       "date": "2026-03-27",
       "art": "https://cdn-images.dzcdn.net/images/cover/115987aafa54d82a52732c9bb1045cdd/1000x1000-000000-80-0-0.jpg",
       "songlink": null,
-      "links": {}
+      "links": {
+        "apple": "https://music.apple.com/us/album/as-long-as-its-today-funkified-version/1888789105?i=1888789106",
+        "deezer": "https://www.deezer.com/track/3926651011"
+      }
     }
   ]
 }
