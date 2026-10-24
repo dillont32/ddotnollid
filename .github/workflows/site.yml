@@ -36,7 +36,7 @@ jobs:
           SPOTIFY_CLIENT_ID: ${{ secrets.SPOTIFY_CLIENT_ID }}
           SPOTIFY_CLIENT_SECRET: ${{ secrets.SPOTIFY_CLIENT_SECRET }}
           ODESLI_API_KEY: ${{ secrets.ODESLI_API_KEY }}
-        run: python scripts/find_links.py ${{ inputs.refresh_all && '--refresh-all' || '' }}
+        run: python find_links.py ${{ inputs.refresh_all && '--refresh-all' || '' }}
       - name: Save links.json
         run: |
           if git diff --quiet -- links.json && git ls-files --error-unmatch links.json >/dev/null 2>&1; then
