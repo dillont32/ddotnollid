@@ -73,7 +73,18 @@ def http_json(url, headers=None, data=None, tries=4):
         )
         try:
             with urllib.request.urlopen(req, timeout=30) as resp:
-                return json.load(resp)
+                data = json.load(resp)
+            # Deezer reports errors (including its rate limit) inside a normal-looking answer.
+            if isinstance(data, dict) and isinstance(data.get("error"), dict):
+                err = data["error"]
+                log(f"  {host} error: {err.get('message')} (code {err.get('code')})")
+                if err.get("code") in (4, 700):  # 4 = quota exceeded, 700 = service busy
+                    time.sleep(6 * (attempt + 1))
+                    continue
+                return None
+            if "deezer.com" in host:
+                time.sleep(0.15)  # stay well under Deezer's 50 requests / 5 seconds
+            return data
         except urllib.error.HTTPError as e:
             if e.code == 429 or e.code >= 500:
                 wait = int(e.headers.get("Retry-After") or 0) or 15 * (attempt + 1)
@@ -229,6 +240,9 @@ def main():
     spotify_tracks = from_spotify(cfg)
     deezer_artist, deezer_tracks = from_deezer(cfg)
     apple_artist, apple_tracks = from_apple(cfg)
+    source_line = (f"Found this run: Spotify {len(spotify_tracks)}, Deezer {len(deezer_tracks)}, "
+                   f"Apple Music {len(apple_tracks)} songs.")
+    log(source_line)
 
     # Merge by title. Earlier sources win the "seed" link used for the Songlink lookup.
     found = {}
@@ -301,6 +315,7 @@ def main():
     # Report
     lines = [f"## {cfg['artist_name']} streaming links", "",
              f"{len(tracks)} songs found. New this run: {', '.join(new_titles) or 'none'}.", "",
+             source_line, "",
              "| Song | " + " | ".join(CORE_PLATFORMS) + " |",
              "|---|" + "---|" * len(CORE_PLATFORMS)]
     for t in tracks:
