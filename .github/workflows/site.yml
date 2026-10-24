@@ -1,0 +1,68 @@
+name: Refresh links and publish site
+
+on:
+  schedule:
+    - cron: "17 15 * * 1"   # Mondays around 8:17am Pacific
+  workflow_dispatch:
+    inputs:
+      refresh_all:
+        description: "Re-check every song on every platform"
+        type: boolean
+        default: false
+  push:
+    branches: [main]
+    paths-ignore: ["links.json"]
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: site
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    if: github.event_name != 'push'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Find streaming links
+        env:
+          SPOTIFY_CLIENT_ID: ${{ secrets.SPOTIFY_CLIENT_ID }}
+          SPOTIFY_CLIENT_SECRET: ${{ secrets.SPOTIFY_CLIENT_SECRET }}
+          ODESLI_API_KEY: ${{ secrets.ODESLI_API_KEY }}
+        run: python scripts/find_links.py ${{ inputs.refresh_all && '--refresh-all' || '' }}
+      - name: Save links.json
+        run: |
+          if git diff --quiet -- links.json && git ls-files --error-unmatch links.json >/dev/null 2>&1; then
+            echo "No link changes."
+            exit 0
+          fi
+          git config user.name "ddot-link-finder"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add links.json
+          git commit -m "Update streaming links"
+          git push
+
+  deploy:
+    needs: refresh
+    if: always() && needs.refresh.result != 'failure'
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.pages.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: .
+      - id: pages
+        uses: actions/deploy-pages@v4
