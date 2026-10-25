@@ -319,6 +319,12 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px}
 .mini-bar span{flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:var(--chrome);font-weight:600}
 .mini-bar a{color:var(--volt-hot);white-space:nowrap}
 @media (max-width:560px){.mini{left:max(16px,env(safe-area-inset-left,0px));right:max(16px,env(safe-area-inset-right,0px));width:auto}}
+.stage-art{display:grid;place-items:center;width:100%;height:100%}
+.side-tg{position:absolute;top:10px;left:10px;display:flex;gap:2px;padding:3px;background:rgba(4,6,12,.72);border:1px solid var(--wire);border-radius:999px}
+.side-tg button{border:0;background:none;color:var(--steel);font-size:12px;font-weight:700;padding:5px 11px;border-radius:999px}
+.side-tg button[aria-pressed="true"]{background:var(--chrome);color:var(--void)}
+.stage svg.flip{animation:flip .32s ease}
+@keyframes flip{from{transform:perspective(700px) rotateY(75deg);opacity:.35}}
 .toast{position:fixed;left:50%;bottom:calc(var(--dock-h) + 16px + env(safe-area-inset-bottom,0px));translate:-50% 0;z-index:60;background:var(--chrome);color:var(--void);
   font-weight:700;padding:10px 18px;border-radius:999px;font-size:14px;box-shadow:0 10px 30px rgba(0,0,0,.5);max-width:calc(100% - 32px)}
 </style>
@@ -564,9 +570,10 @@ const DESIGNS = [
 ];
 const SIZES=["S","M","L","XL","2XL","3XL"];
 const PRODUCTS = [
-  {id:"tee-black", type:"Tees", name:"Cover Tee, Black", price:34, art:"undaunted", design:true, mock:"tee", color:"#0d0f14", desc:"Your pick of cover art, front print on heavyweight black cotton.", sizes:SIZES},
-  {id:"tee-white", type:"Tees", name:"Cover Tee, White", price:34, art:"motivations", design:true, mock:"tee", color:"#e8e6e1", desc:"Your pick of cover art on a bone-white tee.", sizes:SIZES},
-  {id:"hoodie", type:"Hoodies", name:"Cover Hoodie", price:64, art:"contra-legem", design:true, mock:"hoodie", color:"#141a26", desc:"Midweight fleece pullover with the cover across the chest.", sizes:SIZES},
+  {id:"tee-black", type:"Tees", name:"Cover Tee, Black", price:34, art:"undaunted", design:true, sides:true, mock:"tee", color:"#0d0f14", desc:"Ddot Nollid logo on the chest. Your pick of album cover across the back. Heavyweight black cotton.", sizes:SIZES},
+  {id:"tee-white", type:"Tees", name:"Cover Tee, White", price:34, art:"motivations", design:true, sides:true, mock:"tee", color:"#e8e6e1", desc:"Ddot Nollid logo on the chest. Your pick of album cover across the back. Bone-white cotton.", sizes:SIZES},
+  {id:"hoodie", type:"Hoodies", name:"Cover Hoodie", price:64, art:"contra-legem", design:true, sides:true, mock:"hoodie", color:"#141a26", desc:"Logo on the chest, your pick of album cover across the back. Midweight fleece pullover.", sizes:SIZES},
+  {id:"jacket", type:"Jackets", name:"Coach Jacket", price:78, art:"gambled-ace", design:true, sides:true, mock:"jacket", color:"#10131b", desc:"Snap-front coach jacket. Logo on the chest, your pick of album cover across the back.", sizes:SIZES},
   {id:"print", type:"Prints", name:"Album Art Print, 18 × 18 in", price:28, art:"palm-tree", design:true, mock:"print", desc:"Archival matte print of any cover, ready to frame.", sizes:null},
   {id:"mug", type:"Mugs", name:"Cover Mug, 11 oz", price:18, art:"be-like-that", design:true, mock:"mug", desc:"Glossy ceramic mug, cover art wrapped on the front. Dishwasher safe.", sizes:null},
   {id:"sticker", type:"Accessories", name:"Cover Sticker, 4 in", price:5, art:"cyborg", design:true, mock:"sticker", desc:"Weatherproof die-cut vinyl for laptops, cases and bumpers.", sizes:null},
@@ -966,7 +973,36 @@ renderVideos([]);
 loadLinks();
 
 /* ---------- merch mockups ---------- */
-function mock(p,art){
+/* Garments: the Ddot Nollid cyborg logo as a chest emblem on the front (wearer's left chest,
+   like a polo insignia), the chosen album cover across the whole back. */
+function garment(p,art,side){
+  const u=img(art), id="c"+p.id+side, logo=img("cyborg");
+  const st='stroke="rgba(255,255,255,.08)"', seam='fill="none" stroke="rgba(127,140,165,.35)" stroke-width="3"';
+  const L=(x,y,w)=>`<defs><clipPath id="${id}L"><rect x="${x}" y="${y}" width="${w}" height="${w}" rx="${w*.14}"/></clipPath></defs><rect x="${x-1.5}" y="${y-1.5}" width="${w+3}" height="${w+3}" rx="${w*.16}" fill="rgba(200,210,230,.55)"/><image href="${logo}" x="${x}" y="${y}" width="${w}" height="${w}" clip-path="url(#${id}L)" preserveAspectRatio="xMidYMid slice"/>`;
+  const C=(x,y,s)=>`<defs><clipPath id="${id}"><rect x="${x}" y="${y}" width="${s}" height="${s}" rx="3"/></clipPath></defs><image href="${u}" x="${x}" y="${y}" width="${s}" height="${s}" clip-path="url(#${id})" preserveAspectRatio="xMidYMid slice"/>`;
+  const wrap=b=>`<svg viewBox="0 0 300 310" role="img" aria-label="${p.name}, ${side} view">${b}</svg>`;
+  if(p.mock==="tee"){
+    if(side==="back")return wrap(`<path d="M96 18 58 32 8 76l34 46 28-18v190h160V104l28 18 34-46-50-44-38-14c-8 6-28 10-54 10s-46-4-54-10Z" fill="${p.color}" ${st}/>
+      <path d="M96 18c8 6 28 10 54 10s46-4 54-10" ${seam}/>${C(82,50,136)}`);
+    return wrap(`<path d="M96 18 58 32 8 76l34 46 28-18v190h160V104l28 18 34-46-50-44-38-14c-8 22-28 34-54 34s-46-12-54-34Z" fill="${p.color}" ${st}/>
+      <path d="M96 18c8 22 28 34 54 34s46-12 54-34" ${seam}/>${L(160,70,52)}`);
+  }
+  if(p.mock==="hoodie"){
+    const body=`<path d="M106 34c4-30 84-30 88 0l52 16 46 120-6 128h-32l-12-140v146H58V158L46 298H14l-6-128L54 50Z" fill="${p.color}" ${st}/>`;
+    if(side==="back")return wrap(`${body}<path d="M106 34c-6 36 12 66 44 72c32-6 50-36 44-72c-10 24-78 24-88 0Z" fill="${p.color}" stroke="rgba(127,140,165,.3)" stroke-width="2"/>${C(84,116,132)}`);
+    return wrap(`${body}<path d="M106 34c10 26 78 26 88 0" fill="none" stroke="rgba(127,140,165,.3)" stroke-width="3"/>
+      <path d="M140 52v34M160 52v34" stroke="rgba(200,210,230,.5)" stroke-width="2"/>
+      <rect x="92" y="216" width="116" height="52" rx="10" fill="none" stroke="rgba(127,140,165,.25)" stroke-width="2"/>${L(170,92,50)}`);
+  }
+  // coach jacket
+  const body=`<path d="M100 30 54 50 8 170l6 128h32l12-140v146h184V158l12 140h32l6-128-46-120-46-20c-12 16-30 24-50 24s-38-8-50-24Z" fill="${p.color}" ${st}/><path d="M58 290h184" stroke="rgba(127,140,165,.25)" stroke-width="2"/>`;
+  if(side==="back")return wrap(`${body}<path d="M100 30c12 10 30 14 50 14s38-4 50-14" ${seam}/>${C(78,62,144)}`);
+  return wrap(`${body}<path d="M100 30l22 34 28-10 28 10 22-34" fill="none" stroke="rgba(127,140,165,.45)" stroke-width="3"/>
+    <path d="M150 56v234" stroke="rgba(127,140,165,.4)" stroke-width="2"/>
+    ${[96,140,184,228,272].map(y=>`<circle cx="155" cy="${y}" r="2.8" fill="rgba(200,210,230,.65)"/>`).join("")}${L(170,82,50)}`);
+}
+function mock(p,art,side){
+  if(p.sides)return garment(p,art,side||"front");
   const u=img(art), id="c"+p.id;
   if(p.mock==="tee") return `<svg viewBox="0 0 300 310" role="img" aria-label="${p.name}">
     <defs><clipPath id="${id}"><rect x="102" y="88" width="96" height="96" rx="4"/></clipPath></defs>
@@ -1009,14 +1045,14 @@ const types=["All",...new Set(PRODUCTS.map(p=>p.type))];
 const fwrap=$("#filters");
 types.forEach(t=>{const b=document.createElement("button");b.className="chip";b.textContent=t;b.setAttribute("aria-pressed",t===filter);
   b.addEventListener("click",()=>{filter=t;fwrap.querySelectorAll(".chip").forEach(c=>c.setAttribute("aria-pressed",c.textContent===t));renderProducts()});fwrap.appendChild(b)});
-const choice={};let stripDesign=null;
+const choice={},view={};let stripDesign=null;
 const designName=k=>(DESIGNS.find(d=>d[0]===k)||[k,k])[1];
 function renderDesignStrip(){
   $("#designs").innerHTML=DESIGNS.map(([k,n])=>`<button class="dz" data-dz="${k}" aria-pressed="${k===stripDesign}"><img src="${img(k)}" alt="" loading="lazy"><span>${n}</span></button>`).join("");
 }
 $("#designs").addEventListener("click",e=>{
   const b=e.target.closest("[data-dz]");if(!b)return;
-  stripDesign=b.dataset.dz;PRODUCTS.forEach(p=>{if(p.design)choice[p.id]=stripDesign});
+  stripDesign=b.dataset.dz;PRODUCTS.forEach(p=>{if(p.design)choice[p.id]=stripDesign;if(p.sides)view[p.id]="back"});
   renderDesignStrip();renderProducts();toast(`Showing ${designName(stripDesign)} on every product`);
 });
 function renderProducts(){
@@ -1026,16 +1062,25 @@ function renderProducts(){
     const el=document.createElement("article");el.className="product";
     const dsel=p.design?`<select id="dz-${p.id}" aria-label="Cover for ${p.name}">${DESIGNS.map(([k,n])=>`<option value="${k}"${k===art?" selected":""}>${n}</option>`).join("")}</select>`:"";
     const ssel=p.sizes?`<select id="opt-${p.id}" aria-label="Size for ${p.name}"><option value="">Size</option>${p.sizes.map(s=>`<option>${s}</option>`).join("")}</select>`:"";
-    el.innerHTML=`<div class="stage">${mock(p,art)}</div>
+    const side=p.sides?(view[p.id]||"front"):null;
+    const tg=p.sides?`<div class="side-tg" role="group" aria-label="View side"><button data-side="front" aria-pressed="${side==="front"}">Front</button><button data-side="back" aria-pressed="${side==="back"}">Back</button></div>`:"";
+    el.innerHTML=`<div class="stage"><div class="stage-art">${mock(p,art,side)}</div>${tg}</div>
       <div class="p-body"><div class="p-top"><h3 class="p-name">${p.name}</h3><span class="p-price">${money(p.price)}</span></div>
       <p class="p-desc">${p.desc}</p>
       <div class="p-opts">${dsel?`<div class="p-row">${dsel}</div>`:""}<div class="p-row">${ssel}<button class="add">Add to cart</button></div></div></div>`;
     const ds=el.querySelector(`#dz-${p.id}`), ss=el.querySelector(`#opt-${p.id}`);
-    if(ds)ds.addEventListener("change",()=>{choice[p.id]=ds.value;el.querySelector(".stage").innerHTML=mock(p,ds.value)});
+    const draw=flip=>{
+      const s=p.sides?(view[p.id]||"front"):null, box=el.querySelector(".stage-art");
+      box.innerHTML=mock(p,ds?ds.value:p.art,s);
+      if(flip)box.firstElementChild.classList.add("flip");
+      el.querySelectorAll(".side-tg button").forEach(b=>b.setAttribute("aria-pressed",b.dataset.side===s));
+    };
+    el.querySelectorAll(".side-tg button").forEach(b=>b.addEventListener("click",()=>{if(view[p.id]===b.dataset.side||(!view[p.id]&&b.dataset.side==="front"))return;view[p.id]=b.dataset.side;draw(true)}));
+    if(ds)ds.addEventListener("change",()=>{choice[p.id]=ds.value;const turn=p.sides&&view[p.id]!=="back";if(p.sides)view[p.id]="back";draw(turn)});
     el.querySelector(".add").addEventListener("click",e=>{
       if(ss&&!ss.value){ss.focus();toast("Choose a size first");return}
       const art=ds?ds.value:p.art;
-      const variant=[ds?designName(art):"",ss?ss.value:""].filter(Boolean).join(" · ");
+      const variant=[ds?(p.sides?`${designName(art)} on back`:designName(art)):"",ss?ss.value:""].filter(Boolean).join(" · ");
       addToCart(p,variant,art);
       const b=e.currentTarget;b.textContent="Added";b.classList.add("done");setTimeout(()=>{b.textContent="Add to cart";b.classList.remove("done")},1400);
     });
