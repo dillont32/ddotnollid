@@ -23,6 +23,7 @@ Usage:
 Standard library only. Python 3.9+.
 """
 import base64
+import html
 import json
 import os
 import re
@@ -277,13 +278,54 @@ def youtube_api(playlist_id, kind, key):
                 continue
             items.append({
                 "id": cd.get("videoId"),
-                "title": sn.get("title") or "",
+                "title": html.unescape(sn.get("title") or ""),
                 "published": (cd.get("videoPublishedAt") or sn.get("publishedAt") or "")[:10],
                 "kind": kind,
             })
         token = page.get("nextPageToken")
         if not token:
             return items
+
+
+def yt_api(path, params, key):
+    return http_json("https://www.googleapis.com/youtube/v3/" + path + "?" + urllib.parse.urlencode(dict(params, key=key)))
+
+
+def youtube_full_songs(cfg, tracks, cache, previous, key):
+    """Find each song's full-length YouTube Music track (DistroKid delivers these to the
+    artist's auto-generated "Topic" channel). Plays of these count as YouTube Music streams."""
+    artist = cfg["artist_name"]
+    topic = cfg.get("youtube_topic_channel_id") or previous.get("youtube_topic_channel")
+    if not topic:  # search: 100 quota units, done once and remembered
+        res = yt_api("search", {"part": "snippet", "type": "channel", "q": f"{artist} - Topic", "maxResults": 5}, key) or {}
+        for it in res.get("items", []):
+            if norm(html.unescape(it["snippet"].get("title", ""))) == norm(f"{artist} - Topic"):
+                topic = it["snippet"]["channelId"]
+                break
+    by_title = {}
+    if topic:  # the Topic channel's uploads: 1 quota unit per 50 songs
+        for v in youtube_api("UU" + topic[2:], "music", key) or []:
+            by_title.setdefault(norm(html.unescape(v["title"])), v["id"])
+    searches, limit = 0, int(cfg.get("youtube_search_limit", 25))
+    for t in tracks:
+        k = norm(t["title"])
+        vid = by_title.get(k) or (cache.get(k) or {}).get("youtube")
+        if not vid and searches < limit:  # per-song search: 100 units each, capped per run
+            searches += 1
+            params = {"part": "snippet", "type": "video", "q": f"{artist} {t['title']}", "maxResults": 5}
+            if topic:
+                params["channelId"] = topic
+            res = yt_api("search", params, key) or {}
+            for it in res.get("items", []):
+                sn = it.get("snippet") or {}
+                if norm(html.unescape(sn.get("title", ""))) == k and (topic or sn.get("channelTitle", "").endswith("- Topic")):
+                    vid = (it.get("id") or {}).get("videoId")
+                    break
+        if vid:
+            t["youtube"] = vid
+    log(f"YouTube Music: Topic channel {topic or 'not found'}; full songs for "
+        f"{sum(1 for t in tracks if t.get('youtube'))} of {len(tracks)} ({searches} searches)")
+    return topic
 
 
 def from_youtube(cfg, previous):
@@ -432,6 +474,15 @@ def main():
     log(f"Covers saved this run: {saved_covers}")
 
     videos = from_youtube(cfg, previous.get("videos") or [])
+    yt_key = os.environ.get("YOUTUBE_API_KEY")
+    topic = previous.get("youtube_topic_channel")
+    if yt_key:
+        topic = youtube_full_songs(cfg, tracks, cache, previous, yt_key)
+    else:  # keep what earlier runs found
+        for t in tracks:
+            old_vid = (cache.get(norm(t["title"])) or {}).get("youtube")
+            if old_vid:
+                t["youtube"] = old_vid
 
     artist_links = {"spotify": f"https://open.spotify.com/artist/{cfg['spotify_artist_id']}"} \
         if cfg.get("spotify_artist_id") else {}
@@ -447,6 +498,7 @@ def main():
         "artist_links": dict(sorted(artist_links.items())),
         "tracks": tracks,
         "videos": videos,
+        "youtube_topic_channel": topic,
     }
 
     # Report
@@ -454,7 +506,8 @@ def main():
              f"{len(tracks)} songs found. New this run: {', '.join(new_titles) or 'none'}.", "",
              source_line, f"New cover images saved: {saved_covers}.",
              f"Songs with a preview: {sum(1 for t in tracks if t.get('preview'))} of {len(tracks)}.",
-             f"YouTube: {sum(v['kind'] == 'video' for v in videos)} videos, {sum(v['kind'] == 'short' for v in videos)} Shorts.", "",
+             f"YouTube: {sum(v['kind'] == 'video' for v in videos)} videos, {sum(v['kind'] == 'short' for v in videos)} Shorts.",
+             f"Full songs on YouTube Music: {sum(1 for t in tracks if t.get('youtube'))} of {len(tracks)}.", "",
              "| Song | " + " | ".join(CORE_PLATFORMS) + " |",
              "|---|" + "---|" * len(CORE_PLATFORMS)]
     for t in tracks:
