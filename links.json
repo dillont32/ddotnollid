@@ -1,11 +1,12 @@
 {
   "artist": "Ddot Nollid",
-  "updated": "2026-10-25T21:31:35Z",
+  "updated": "2026-10-25T22:36:01Z",
   "artist_links": {
     "apple": "https://music.apple.com/us/artist/ddot-nollid/1888639392",
     "deezer": "https://www.deezer.com/artist/382087981",
     "spotify": "https://open.spotify.com/artist/4IEe9SCNNFpft05fJ7VWQG",
-    "youtube": "https://www.youtube.com/channel/UCjUHyRj5Eze6VPge7ex6nvQ"
+    "youtube": "https://www.youtube.com/channel/UCjUHyRj5Eze6VPge7ex6nvQ",
+    "ytmusic": "https://music.youtube.com/@DdotNollid"
   },
   "tracks": [
     {
@@ -18,7 +19,8 @@
       "preview": null,
       "links": {
         "deezer": "https://www.deezer.com/track/4339990302"
-      }
+      },
+      "youtube": "b5FzcsDyUCY"
     },
     {
       "title": "Conspiracy Theory II: Common Ground",
@@ -30,7 +32,8 @@
       "preview": null,
       "links": {
         "deezer": "https://www.deezer.com/track/4339990292"
-      }
+      },
+      "youtube": "wY3J_zTcgAM"
     },
     {
       "title": "Conspiracy Theory I: Divide the Room",
@@ -42,7 +45,8 @@
       "preview": null,
       "links": {
         "deezer": "https://www.deezer.com/track/4339990282"
-      }
+      },
+      "youtube": "Sbk9R0ITKjw"
     },
     {
       "title": "One In A Billion (feat. Tony Hernandez)",
@@ -55,7 +59,8 @@
       "links": {
         "apple": "https://music.apple.com/us/album/one-in-a-billion-feat-tony-hernandez/6818037435?i=6818037436",
         "deezer": "https://www.deezer.com/track/4321405312"
-      }
+      },
+      "youtube": "5CgCfhZLX7U"
     },
     {
       "title": "The Word Was Neighbor (Ruff Cut)",
@@ -68,7 +73,8 @@
       "links": {
         "apple": "https://music.apple.com/us/album/the-word-was-neighbor-ruff-cut/6816419635?i=6816419636",
         "deezer": "https://www.deezer.com/track/4312274692"
-      }
+      },
+      "youtube": "rSuowDM-BOs"
     },
     {
       "title": "The Word Was Neighbor (Cabaret Cut)",
@@ -81,7 +87,8 @@
       "links": {
         "apple": "https://music.apple.com/us/album/the-word-was-neighbor-cabaret-cut/6816422598?i=6816422599",
         "deezer": "https://www.deezer.com/track/4312283072"
-      }
+      },
+      "youtube": "owPaiMuL2dk"
     },
     {
       "title": "No Cerveza No Trabajo",
@@ -94,7 +101,8 @@
       "links": {
         "apple": "https://music.apple.com/us/album/no-cerveza-no-trabajo/6816865140?i=6816865142",
         "deezer": "https://www.deezer.com/track/4314281922"
-      }
+      },
+      "youtube": "GyqMeuCWl6Y"
     },
     {
       "title": "Motor City Kitties...No More!",
@@ -107,7 +115,8 @@
       "links": {
         "apple": "https://music.apple.com/us/album/motor-city-kitties-no-more/6809306814?i=6809306815",
         "deezer": "https://www.deezer.com/track/4270136742"
-      }
+      },
+      "youtube": "MX4hdCo1tUw"
     },
     {
       "title": "Kylexa",
@@ -120,7 +129,8 @@
       "links": {
         "apple": "https://music.apple.com/us/album/kylexa/6808830727?i=6808830728",
         "deezer": "https://www.deezer.com/track/4267126172"
-      }
+      },
+      "youtube": "dfWE2k5USiU"
     },
     {
       "title": "Fighter",
@@ -133,7 +143,8 @@
       "links": {
         "apple": "https://music.apple.com/us/album/fighter/6806917352?i=6806917353",
         "deezer": "https://www.deezer.com/track/4255549451"
-      }
+      },
+      "youtube": "rn6U5aHx4cI"
     },
     {
       "title": "It Be Like That...Sometimes",
@@ -146,7 +157,8 @@
       "links": {
         "apple": "https://music.apple.com/us/album/it-be-like-that-sometimes/6806702237?i=6806702238",
         "deezer": "https://www.deezer.com/track/4254304581"
-      }
+      },
+      "youtube": "KrAtqXK-hYU"
     },
     {
       "title": "I Gambled on an Ace",
@@ -159,7 +171,8 @@
       "links": {
         "apple": "https://music.apple.com/us/album/i-gambled-on-an-ace/6804370022?i=6804370023",
         "deezer": "https://www.deezer.com/track/4240543462"
-      }
+      },
+      "youtube": "HWD33nLaDPQ"
     },
     {
       "title": "Contra Legem",
@@ -172,7 +185,8 @@
       "links": {
         "apple": "https://music.apple.com/us/album/contra-legem/6804361335?i=6804361336",
         "deezer": "https://www.deezer.com/track/4240493112"
-      }
+      },
+      "youtube": "9C8MWLnDFQQ"
     },
     {
       "title": "Undaunted (feat. Tony Hernandez)",
@@ -185,7 +199,8 @@
       "links": {
         "apple": "https://music.apple.com/us/album/undaunted-feat-tony-hernandez/6801972123?i=6801972457",
         "deezer": "https://www.deezer.com/track/4226594692"
-      }
+      },
+      "youtube": "w2HSvKhlobI"
     },
     {
       "title": "Thick or Thin (feat. Tony Hernandez)",
@@ -198,7 +213,8 @@
       "links": {
         "apple": "https://music.apple.com/us/album/thick-or-thin-feat-tony-hernandez/6801972123?i=6801972464",
         "deezer": "https://www.deezer.com/track/4226594762"
-      }
+      },
+      "youtube": "j2IcexMfX-Y"
     },
     {
       "title": "They Don't Understand (feat. Tony Hernandez)",
@@ -211,7 +227,8 @@
       "links": {
         "apple": "https://music.apple.com/us/album/they-dont-understand-feat-tony-hernandez/6801972123?i=6801972463",
         "deezer": "https://www.deezer.com/track/4226594752"
-      }
+      },
+      "youtube": "kwsSqutjSrM"
     },
     {
       "title": "The Hardest Thing",
@@ -223,7 +240,8 @@
       "preview": null,
       "links": {
         "deezer": "https://www.deezer.com/track/4226594682"
-      }
+      },
+      "youtube": "xB-mXhi46_I"
     },
     {
       "title": "Take Me Home (feat. Tony Hernandez)",
@@ -236,7 +254,8 @@
       "links": {
         "apple": "https://music.apple.com/us/album/take-me-home-feat-tony-hernandez/6801972123?i=6801972462",
         "deezer": "https://www.deezer.com/track/4226594742"
-      }
+      },
+      "youtube": "eNAX44VDQNw"
     },
     {
       "title": "Seen (feat. Tony Hernandez)",
@@ -249,7 +268,8 @@
       "links": {
         "apple": "https://music.apple.com/us/album/seen-feat-tony-hernandez/6801972123?i=6801972459",
         "deezer": "https://www.deezer.com/track/4226594712"
-      }
+      },
+      "youtube": "1FCYGKLqNaM"
     },
     {
       "title": "Pure Defiance (feat. Tony Hernandez)",
@@ -262,7 +282,8 @@
       "links": {
         "apple": "https://music.apple.com/us/album/pure-defiance-feat-tony-hernandez/6801972123?i=6801972465",
         "deezer": "https://www.deezer.com/track/4226594772"
-      }
+      },
+      "youtube": "3qfiL08nGws"
     },
     {
       "title": "Lord Can You Feel Me (feat. Tony Hernandez)",
@@ -275,7 +296,8 @@
       "links": {
         "apple": "https://music.apple.com/us/album/lord-can-you-feel-me-feat-tony-hernandez/6801972123?i=6801972125",
         "deezer": "https://www.deezer.com/track/4226594672"
-      }
+      },
+      "youtube": "V0EXJUN1ia0"
     },
     {
       "title": "If Tomorrow Never Comes (feat. Tony Hernandez)",
@@ -288,7 +310,8 @@
       "links": {
         "apple": "https://music.apple.com/us/album/if-tomorrow-never-comes-feat-tony-hernandez/6801972123?i=6801972461",
         "deezer": "https://www.deezer.com/track/4226594732"
-      }
+      },
+      "youtube": "7g0rxwFXXOM"
     },
     {
       "title": "I Gave My Real (feat. Tony Hernandez)",
@@ -301,7 +324,8 @@
       "links": {
         "apple": "https://music.apple.com/us/album/i-gave-my-real-feat-tony-hernandez/6801972123?i=6801972458",
         "deezer": "https://www.deezer.com/track/4226594702"
-      }
+      },
+      "youtube": "VSgr3IM71Io"
     },
     {
       "title": "I Gave My All (feat. Tony Hernandez)",
@@ -314,7 +338,8 @@
       "links": {
         "apple": "https://music.apple.com/us/album/i-gave-my-all-feat-tony-hernandez/6801972123?i=6801972124",
         "deezer": "https://www.deezer.com/track/4226594662"
-      }
+      },
+      "youtube": "RHkrtI1kHGs"
     },
     {
       "title": "Going Home (feat. Tony Hernandez)",
@@ -327,7 +352,8 @@
       "links": {
         "apple": "https://music.apple.com/us/album/going-home-feat-tony-hernandez/6801972123?i=6801972466",
         "deezer": "https://www.deezer.com/track/4226594782"
-      }
+      },
+      "youtube": "V_QuF87muFo"
     },
     {
       "title": "Barefoot On Broken Glass (feat. Tony Hernandez)",
@@ -340,7 +366,8 @@
       "links": {
         "apple": "https://music.apple.com/us/album/barefoot-on-broken-glass-feat-tony-hernandez/6801972123?i=6801972460",
         "deezer": "https://www.deezer.com/track/4226594722"
-      }
+      },
+      "youtube": "i9GkeE61Q6Q"
     },
     {
       "title": "God is Good, All the Time",
@@ -353,7 +380,8 @@
       "links": {
         "apple": "https://music.apple.com/us/album/god-is-good-all-the-time/6802995700?i=6802995710",
         "deezer": "https://www.deezer.com/track/4232335902"
-      }
+      },
+      "youtube": "0bERGLr66RU"
     },
     {
       "title": "Palm Tree Dreams",
@@ -366,7 +394,8 @@
       "links": {
         "apple": "https://music.apple.com/us/album/palm-tree-dreams/6799022880?i=6799022881",
         "deezer": "https://www.deezer.com/track/4208868932"
-      }
+      },
+      "youtube": "gdBz-WLMPRE"
     },
     {
       "title": "The Tawas Tortoise",
@@ -379,7 +408,8 @@
       "links": {
         "apple": "https://music.apple.com/us/album/the-tawas-tortoise/6794988230?i=6794988231",
         "deezer": "https://www.deezer.com/track/4178805702"
-      }
+      },
+      "youtube": "REhVAKirxWw"
     },
     {
       "title": "I Gave My All (Debut Edit) (feat. Tony Hernandez)",
@@ -392,7 +422,8 @@
       "links": {
         "apple": "https://music.apple.com/us/album/i-gave-my-all-debut-edit-feat-tony-hernandez/6786213560?i=6786213561",
         "deezer": "https://www.deezer.com/track/4123596951"
-      }
+      },
+      "youtube": "0XwRb1U-D_w"
     },
     {
       "title": "What Would You Do?",
@@ -405,7 +436,8 @@
       "links": {
         "apple": "https://music.apple.com/us/album/what-would-you-do/6774056337?i=6774056342",
         "deezer": "https://www.deezer.com/track/4049142991"
-      }
+      },
+      "youtube": "sjF-RgscNwc"
     },
     {
       "title": "Say It So I Can Hear You",
@@ -418,7 +450,8 @@
       "links": {
         "apple": "https://music.apple.com/us/album/say-it-so-i-can-hear-you/6774056337?i=6774056345",
         "deezer": "https://www.deezer.com/track/4049143021"
-      }
+      },
+      "youtube": "0I3N5_WSP6U"
     },
     {
       "title": "No More Hiding",
@@ -431,7 +464,8 @@
       "links": {
         "apple": "https://music.apple.com/us/album/no-more-hiding/6774056337?i=6774056338",
         "deezer": "https://www.deezer.com/track/4049142951"
-      }
+      },
+      "youtube": "nDqfNM-iBC4"
     },
     {
       "title": "Let 'Em (Remix)",
@@ -444,7 +478,8 @@
       "links": {
         "apple": "https://music.apple.com/us/album/let-em-remix/6774056337?i=6774056649",
         "deezer": "https://www.deezer.com/track/4049143061"
-      }
+      },
+      "youtube": "4u_kogBOXKs"
     },
     {
       "title": "Let 'Em",
@@ -457,7 +492,8 @@
       "links": {
         "apple": "https://music.apple.com/us/album/let-em/6774056337?i=6774056343",
         "deezer": "https://www.deezer.com/track/4049143001"
-      }
+      },
+      "youtube": "UHkujB1Eo5g"
     },
     {
       "title": "Learning To See",
@@ -470,7 +506,8 @@
       "links": {
         "apple": "https://music.apple.com/us/album/learning-to-see/6774056337?i=6774056346",
         "deezer": "https://www.deezer.com/track/4049143031"
-      }
+      },
+      "youtube": "bfqjmhxeGJY"
     },
     {
       "title": "Know How to Fall",
@@ -483,7 +520,8 @@
       "links": {
         "apple": "https://music.apple.com/us/album/know-how-to-fall/6774056337?i=6774056340",
         "deezer": "https://www.deezer.com/track/4049142971"
-      }
+      },
+      "youtube": "lxMsDMVWIps"
     },
     {
       "title": "Is It You or Is It Me",
@@ -496,7 +534,8 @@
       "links": {
         "apple": "https://music.apple.com/us/album/is-it-you-or-is-it-me/6774056337?i=6774056347",
         "deezer": "https://www.deezer.com/track/4049143041"
-      }
+      },
+      "youtube": "-GYIW6mv-tg"
     },
     {
       "title": "If I Can't Hear You, I'll Never Be Heard",
@@ -509,7 +548,8 @@
       "links": {
         "apple": "https://music.apple.com/us/album/if-i-cant-hear-you-ill-never-be-heard/6774056337?i=6774056344",
         "deezer": "https://www.deezer.com/track/4049143011"
-      }
+      },
+      "youtube": "b-S_-G84IWM"
     },
     {
       "title": "Get 'Em (Parody)",
@@ -521,7 +561,8 @@
       "preview": null,
       "links": {
         "deezer": "https://www.deezer.com/track/4049143051"
-      }
+      },
+      "youtube": "LJrCr3Z6OfA"
     },
     {
       "title": "Change It Up",
@@ -534,7 +575,8 @@
       "links": {
         "apple": "https://music.apple.com/us/album/change-it-up/6774056337?i=6774056341",
         "deezer": "https://www.deezer.com/track/4049142981"
-      }
+      },
+      "youtube": "UoRlqrjv1VI"
     },
     {
       "title": "Break Free From the Cage",
@@ -547,7 +589,8 @@
       "links": {
         "apple": "https://music.apple.com/us/album/break-free-from-the-cage/6774056337?i=6774056339",
         "deezer": "https://www.deezer.com/track/4049142961"
-      }
+      },
+      "youtube": "8bQQ7NNGRtw"
     },
     {
       "title": "Charmane",
@@ -560,7 +603,8 @@
       "links": {
         "apple": "https://music.apple.com/us/album/charmane/6776327745?i=6776327746",
         "deezer": "https://www.deezer.com/track/4061958951"
-      }
+      },
+      "youtube": "k7rFt3kr9J0"
     },
     {
       "title": "Wasgonnaville (Rock Version)",
@@ -573,7 +617,8 @@
       "links": {
         "apple": "https://music.apple.com/us/album/wasgonnaville-rock-version/1888919061?i=1888919066",
         "deezer": "https://www.deezer.com/track/3926649191"
-      }
+      },
+      "youtube": "PAl9gdYDcSA"
     },
     {
       "title": "Wasgonnaville (Country Version)",
@@ -586,7 +631,8 @@
       "links": {
         "apple": "https://music.apple.com/us/album/wasgonnaville-country-version/1888919061?i=1888919063",
         "deezer": "https://www.deezer.com/track/3926649181"
-      }
+      },
+      "youtube": "u2wE9sEsgGc"
     },
     {
       "title": "Thank you, Lord",
@@ -599,7 +645,8 @@
       "links": {
         "apple": "https://music.apple.com/us/album/thank-you-lord/1888919061?i=1888919068",
         "deezer": "https://www.deezer.com/track/3926649201"
-      }
+      },
+      "youtube": "SChtindfRLY"
     },
     {
       "title": "It's all about you (Mary)",
@@ -612,7 +659,8 @@
       "links": {
         "apple": "https://music.apple.com/us/album/its-all-about-you-mary/1888919061?i=1888919162",
         "deezer": "https://www.deezer.com/track/3926649221"
-      }
+      },
+      "youtube": "JqJPoV0DdhE"
     },
     {
       "title": "As long as it's today",
@@ -625,7 +673,8 @@
       "links": {
         "apple": "https://music.apple.com/us/album/as-long-as-its-today/1888919061?i=1888919160",
         "deezer": "https://www.deezer.com/track/3926649211"
-      }
+      },
+      "youtube": "wdlJ_chkJiQ"
     },
     {
       "title": "As long as it's today (Funkified Version)",
@@ -638,7 +687,8 @@
       "links": {
         "apple": "https://music.apple.com/us/album/as-long-as-its-today-funkified-version/1888789105?i=1888789106",
         "deezer": "https://www.deezer.com/track/3926651011"
-      }
+      },
+      "youtube": "Sr5ArVjhfRo"
     }
   ],
   "videos": [
@@ -696,5 +746,6 @@
       "published": "2026-05-11",
       "kind": "short"
     }
-  ]
+  ],
+  "youtube_topic_channel": "UCu9RzNzuj5bBPhXWMAOohVQ"
 }
