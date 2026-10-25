@@ -1,6 +1,6 @@
 {
   "artist": "Ddot Nollid",
-  "updated": "2026-10-24T22:50:01Z",
+  "updated": "2026-10-25T06:23:16Z",
   "artist_links": {
     "apple": "https://music.apple.com/us/artist/ddot-nollid/1888639392",
     "deezer": "https://www.deezer.com/artist/382087981",
@@ -13,7 +13,7 @@
       "release": "Conspiracy Theory I-III: The Apocalypse",
       "type": "single",
       "date": "2026-10-16",
-      "art": "https://cdn-images.dzcdn.net/images/cover/37052006e8aa2a37c04016e273e71a38/1000x1000-000000-80-0-0.jpg",
+      "art": "covers/conspiracy-theory-i-iii-the-apocalypse.jpg",
       "songlink": null,
       "links": {
         "deezer": "https://www.deezer.com/track/4339990302"
@@ -24,7 +24,7 @@
       "release": "Conspiracy Theory I-III: The Apocalypse",
       "type": "single",
       "date": "2026-10-16",
-      "art": "https://cdn-images.dzcdn.net/images/cover/37052006e8aa2a37c04016e273e71a38/1000x1000-000000-80-0-0.jpg",
+      "art": "covers/conspiracy-theory-i-iii-the-apocalypse.jpg",
       "songlink": null,
       "links": {
         "deezer": "https://www.deezer.com/track/4339990292"
@@ -35,7 +35,7 @@
       "release": "Conspiracy Theory I-III: The Apocalypse",
       "type": "single",
       "date": "2026-10-16",
-      "art": "https://cdn-images.dzcdn.net/images/cover/37052006e8aa2a37c04016e273e71a38/1000x1000-000000-80-0-0.jpg",
+      "art": "covers/conspiracy-theory-i-iii-the-apocalypse.jpg",
       "songlink": null,
       "links": {
         "deezer": "https://www.deezer.com/track/4339990282"
@@ -46,7 +46,7 @@
       "release": "One In A Billion (feat. Tony Hernandez)",
       "type": "single",
       "date": "2026-10-05",
-      "art": "https://cdn-images.dzcdn.net/images/cover/e7f140be18b6a9db5989fad8f682a56f/1000x1000-000000-80-0-0.jpg",
+      "art": "covers/one-in-a-billion.jpg",
       "songlink": null,
       "links": {
         "apple": "https://music.apple.com/us/album/one-in-a-billion-feat-tony-hernandez/6818037435?i=6818037436",
@@ -58,7 +58,7 @@
       "release": "The Word Was Neighbor (Ruff Cut)",
       "type": "single",
       "date": "2026-10-02",
-      "art": "https://cdn-images.dzcdn.net/images/cover/1e6495ab5c8798188fc3d9a687fc83fb/1000x1000-000000-80-0-0.jpg",
+      "art": "covers/the-word-was-neighbor-ruff-cut.jpg",
       "songlink": null,
       "links": {
         "apple": "https://music.apple.com/us/album/the-word-was-neighbor-ruff-cut/6816419635?i=6816419636",
@@ -70,7 +70,7 @@
       "release": "The Word Was Neighbor (Cabaret Cut)",
       "type": "single",
       "date": "2026-09-30",
-      "art": "https://cdn-images.dzcdn.net/images/cover/87738e97b5b43f20b6a1be65ee115994/1000x1000-000000-80-0-0.jpg",
+      "art": "covers/the-word-was-neighbor-cabaret-cut.jpg",
       "songlink": null,
       "links": {
         "apple": "https://music.apple.com/us/album/the-word-was-neighbor-cabaret-cut/6816422598?i=6816422599",
@@ -82,7 +82,7 @@
       "release": "No Cerveza No Trabajo",
       "type": "single",
       "date": "2026-09-30",
-      "art": "https://cdn-images.dzcdn.net/images/cover/3e4f1b65b49d5185ac77045dc581b802/1000x1000-000000-80-0-0.jpg",
+      "art": "covers/no-cerveza-no-trabajo.jpg",
       "songlink": null,
       "links": {
         "apple": "https://music.apple.com/us/album/no-cerveza-no-trabajo/6816865140?i=6816865142",
@@ -94,7 +94,7 @@
       "release": "Motor City Kitties...No More!",
       "type": "single",
       "date": "2026-09-07",
-      "art": "https://cdn-images.dzcdn.net/images/cover/f20d75512439a53d1347ccbb550b7fc6/1000x1000-000000-80-0-0.jpg",
+      "art": "covers/motor-city-kitties-no-more.jpg",
       "songlink": null,
       "links": {
         "apple": "https://music.apple.com/us/album/motor-city-kitties-no-more/6809306814?i=6809306815",
@@ -106,7 +106,7 @@
       "release": "Kylexa",
       "type": "single",
       "date": "2026-09-06",
-      "art": "https://cdn-images.dzcdn.net/images/cover/5ee9485e3bbe358107ac87ec581ef35c/1000x1000-000000-80-0-0.jpg",
+      "art": "covers/kylexa.jpg",
       "songlink": null,
       "links": {
         "apple": "https://music.apple.com/us/album/kylexa/6808830727?i=6808830728",
@@ -118,7 +118,7 @@
       "release": "Fighter",
       "type": "single",
       "date": "2026-09-06",
-      "art": "https://cdn-images.dzcdn.net/images/cover/b7244510bd6fa587fc98e140aba48b3e/1000x1000-000000-80-0-0.jpg",
+      "art": "covers/fighter.jpg",
       "songlink": null,
       "links": {
         "apple": "https://music.apple.com/us/album/fighter/6806917352?i=6806917353",
@@ -130,7 +130,7 @@
       "release": "It Be Like That...Sometimes",
       "type": "single",
       "date": "2026-09-05",
-      "art": "https://cdn-images.dzcdn.net/images/cover/b995b1dcfba4a9ad43880a6652a378ea/1000x1000-000000-80-0-0.jpg",
+      "art": "covers/it-be-like-that-sometimes.jpg",
       "songlink": null,
       "links": {
         "apple": "https://music.apple.com/us/album/it-be-like-that-sometimes/6806702237?i=6806702238",
@@ -142,7 +142,7 @@
       "release": "I Gambled on an Ace",
       "type": "single",
       "date": "2026-08-30",
-      "art": "https://cdn-images.dzcdn.net/images/cover/8b63f18f5a4fab24be8cc5ffa65307e8/1000x1000-000000-80-0-0.jpg",
+      "art": "covers/i-gambled-on-an-ace.jpg",
       "songlink": null,
       "links": {
         "apple": "https://music.apple.com/us/album/i-gambled-on-an-ace/6804370022?i=6804370023",
@@ -154,7 +154,7 @@
       "release": "Contra Legem",
       "type": "single",
       "date": "2026-08-29",
-      "art": "https://cdn-images.dzcdn.net/images/cover/4bd7a8417e3e2629572098c9301ddd62/1000x1000-000000-80-0-0.jpg",
+      "art": "covers/contra-legem.jpg",
       "songlink": null,
       "links": {
         "apple": "https://music.apple.com/us/album/contra-legem/6804361335?i=6804361336",
@@ -166,7 +166,7 @@
       "release": "Undaunted",
       "type": "album",
       "date": "2026-08-20",
-      "art": "https://cdn-images.dzcdn.net/images/cover/c1b42a3b5794a451537aee979dc644ec/1000x1000-000000-80-0-0.jpg",
+      "art": "covers/undaunted.jpg",
       "songlink": null,
       "links": {
         "apple": "https://music.apple.com/us/album/undaunted-feat-tony-hernandez/6801972123?i=6801972457",
@@ -178,7 +178,7 @@
       "release": "Undaunted",
       "type": "album",
       "date": "2026-08-20",
-      "art": "https://cdn-images.dzcdn.net/images/cover/c1b42a3b5794a451537aee979dc644ec/1000x1000-000000-80-0-0.jpg",
+      "art": "covers/undaunted.jpg",
       "songlink": null,
       "links": {
         "apple": "https://music.apple.com/us/album/thick-or-thin-feat-tony-hernandez/6801972123?i=6801972464",
@@ -190,7 +190,7 @@
       "release": "Undaunted",
       "type": "album",
       "date": "2026-08-20",
-      "art": "https://cdn-images.dzcdn.net/images/cover/c1b42a3b5794a451537aee979dc644ec/1000x1000-000000-80-0-0.jpg",
+      "art": "covers/undaunted.jpg",
       "songlink": null,
       "links": {
         "apple": "https://music.apple.com/us/album/they-dont-understand-feat-tony-hernandez/6801972123?i=6801972463",
@@ -202,7 +202,7 @@
       "release": "Undaunted",
       "type": "album",
       "date": "2026-08-20",
-      "art": "https://cdn-images.dzcdn.net/images/cover/c1b42a3b5794a451537aee979dc644ec/1000x1000-000000-80-0-0.jpg",
+      "art": "covers/undaunted.jpg",
       "songlink": null,
       "links": {
         "deezer": "https://www.deezer.com/track/4226594682"
@@ -213,7 +213,7 @@
       "release": "Undaunted",
       "type": "album",
       "date": "2026-08-20",
-      "art": "https://cdn-images.dzcdn.net/images/cover/c1b42a3b5794a451537aee979dc644ec/1000x1000-000000-80-0-0.jpg",
+      "art": "covers/undaunted.jpg",
       "songlink": null,
       "links": {
         "apple": "https://music.apple.com/us/album/take-me-home-feat-tony-hernandez/6801972123?i=6801972462",
@@ -225,7 +225,7 @@
       "release": "Undaunted",
       "type": "album",
       "date": "2026-08-20",
-      "art": "https://cdn-images.dzcdn.net/images/cover/c1b42a3b5794a451537aee979dc644ec/1000x1000-000000-80-0-0.jpg",
+      "art": "covers/undaunted.jpg",
       "songlink": null,
       "links": {
         "apple": "https://music.apple.com/us/album/seen-feat-tony-hernandez/6801972123?i=6801972459",
@@ -237,7 +237,7 @@
       "release": "Undaunted",
       "type": "album",
       "date": "2026-08-20",
-      "art": "https://cdn-images.dzcdn.net/images/cover/c1b42a3b5794a451537aee979dc644ec/1000x1000-000000-80-0-0.jpg",
+      "art": "covers/undaunted.jpg",
       "songlink": null,
       "links": {
         "apple": "https://music.apple.com/us/album/pure-defiance-feat-tony-hernandez/6801972123?i=6801972465",
@@ -249,7 +249,7 @@
       "release": "Undaunted",
       "type": "album",
       "date": "2026-08-20",
-      "art": "https://cdn-images.dzcdn.net/images/cover/c1b42a3b5794a451537aee979dc644ec/1000x1000-000000-80-0-0.jpg",
+      "art": "covers/undaunted.jpg",
       "songlink": null,
       "links": {
         "apple": "https://music.apple.com/us/album/lord-can-you-feel-me-feat-tony-hernandez/6801972123?i=6801972125",
@@ -261,7 +261,7 @@
       "release": "Undaunted",
       "type": "album",
       "date": "2026-08-20",
-      "art": "https://cdn-images.dzcdn.net/images/cover/c1b42a3b5794a451537aee979dc644ec/1000x1000-000000-80-0-0.jpg",
+      "art": "covers/undaunted.jpg",
       "songlink": null,
       "links": {
         "apple": "https://music.apple.com/us/album/if-tomorrow-never-comes-feat-tony-hernandez/6801972123?i=6801972461",
@@ -273,7 +273,7 @@
       "release": "Undaunted",
       "type": "album",
       "date": "2026-08-20",
-      "art": "https://cdn-images.dzcdn.net/images/cover/c1b42a3b5794a451537aee979dc644ec/1000x1000-000000-80-0-0.jpg",
+      "art": "covers/undaunted.jpg",
       "songlink": null,
       "links": {
         "apple": "https://music.apple.com/us/album/i-gave-my-real-feat-tony-hernandez/6801972123?i=6801972458",
@@ -285,7 +285,7 @@
       "release": "Undaunted",
       "type": "album",
       "date": "2026-08-20",
-      "art": "https://cdn-images.dzcdn.net/images/cover/c1b42a3b5794a451537aee979dc644ec/1000x1000-000000-80-0-0.jpg",
+      "art": "covers/undaunted.jpg",
       "songlink": null,
       "links": {
         "apple": "https://music.apple.com/us/album/i-gave-my-all-feat-tony-hernandez/6801972123?i=6801972124",
@@ -297,7 +297,7 @@
       "release": "Undaunted",
       "type": "album",
       "date": "2026-08-20",
-      "art": "https://cdn-images.dzcdn.net/images/cover/c1b42a3b5794a451537aee979dc644ec/1000x1000-000000-80-0-0.jpg",
+      "art": "covers/undaunted.jpg",
       "songlink": null,
       "links": {
         "apple": "https://music.apple.com/us/album/going-home-feat-tony-hernandez/6801972123?i=6801972466",
@@ -309,7 +309,7 @@
       "release": "Undaunted",
       "type": "album",
       "date": "2026-08-20",
-      "art": "https://cdn-images.dzcdn.net/images/cover/c1b42a3b5794a451537aee979dc644ec/1000x1000-000000-80-0-0.jpg",
+      "art": "covers/undaunted.jpg",
       "songlink": null,
       "links": {
         "apple": "https://music.apple.com/us/album/barefoot-on-broken-glass-feat-tony-hernandez/6801972123?i=6801972460",
@@ -321,7 +321,7 @@
       "release": "God is Good, All the Time",
       "type": "single",
       "date": "2026-08-18",
-      "art": "https://cdn-images.dzcdn.net/images/cover/34397ba55c2f6b6f308b7558ed5a74a2/1000x1000-000000-80-0-0.jpg",
+      "art": "covers/god-is-good-all-the-time.jpg",
       "songlink": null,
       "links": {
         "apple": "https://music.apple.com/us/album/god-is-good-all-the-time/6802995700?i=6802995710",
@@ -333,7 +333,7 @@
       "release": "Palm Tree Dreams",
       "type": "single",
       "date": "2026-08-07",
-      "art": "https://cdn-images.dzcdn.net/images/cover/a04311fb45877d9b0ba421448472b7f2/1000x1000-000000-80-0-0.jpg",
+      "art": "covers/palm-tree-dreams.jpg",
       "songlink": null,
       "links": {
         "apple": "https://music.apple.com/us/album/palm-tree-dreams/6799022880?i=6799022881",
@@ -345,7 +345,7 @@
       "release": "The Tawas Tortoise",
       "type": "single",
       "date": "2026-07-26",
-      "art": "https://cdn-images.dzcdn.net/images/cover/3ebf7fafd51966c18fb64bf6e3bda478/1000x1000-000000-80-0-0.jpg",
+      "art": "covers/the-tawas-tortoise.jpg",
       "songlink": null,
       "links": {
         "apple": "https://music.apple.com/us/album/the-tawas-tortoise/6794988230?i=6794988231",
@@ -357,7 +357,7 @@
       "release": "I Gave My All (Debut Edit) (feat. Tony Hernandez)",
       "type": "single",
       "date": "2026-06-30",
-      "art": "https://cdn-images.dzcdn.net/images/cover/d9b91bfa3d0c8746247a345a7623677e/1000x1000-000000-80-0-0.jpg",
+      "art": "covers/i-gave-my-all-debut-edit.jpg",
       "songlink": null,
       "links": {
         "apple": "https://music.apple.com/us/album/i-gave-my-all-debut-edit-feat-tony-hernandez/6786213560?i=6786213561",
@@ -369,7 +369,7 @@
       "release": "Motivations",
       "type": "album",
       "date": "2026-06-10",
-      "art": "https://cdn-images.dzcdn.net/images/cover/0fcbc69fce9a66d6e231f2427083a835/1000x1000-000000-80-0-0.jpg",
+      "art": "covers/motivations.jpg",
       "songlink": null,
       "links": {
         "apple": "https://music.apple.com/us/album/what-would-you-do/6774056337?i=6774056342",
@@ -381,7 +381,7 @@
       "release": "Motivations",
       "type": "album",
       "date": "2026-06-10",
-      "art": "https://cdn-images.dzcdn.net/images/cover/0fcbc69fce9a66d6e231f2427083a835/1000x1000-000000-80-0-0.jpg",
+      "art": "covers/motivations.jpg",
       "songlink": null,
       "links": {
         "apple": "https://music.apple.com/us/album/say-it-so-i-can-hear-you/6774056337?i=6774056345",
@@ -393,7 +393,7 @@
       "release": "Motivations",
       "type": "album",
       "date": "2026-06-10",
-      "art": "https://cdn-images.dzcdn.net/images/cover/0fcbc69fce9a66d6e231f2427083a835/1000x1000-000000-80-0-0.jpg",
+      "art": "covers/motivations.jpg",
       "songlink": null,
       "links": {
         "apple": "https://music.apple.com/us/album/no-more-hiding/6774056337?i=6774056338",
@@ -405,7 +405,7 @@
       "release": "Motivations",
       "type": "album",
       "date": "2026-06-10",
-      "art": "https://cdn-images.dzcdn.net/images/cover/0fcbc69fce9a66d6e231f2427083a835/1000x1000-000000-80-0-0.jpg",
+      "art": "covers/motivations.jpg",
       "songlink": null,
       "links": {
         "apple": "https://music.apple.com/us/album/let-em-remix/6774056337?i=6774056649",
@@ -417,7 +417,7 @@
       "release": "Motivations",
       "type": "album",
       "date": "2026-06-10",
-      "art": "https://cdn-images.dzcdn.net/images/cover/0fcbc69fce9a66d6e231f2427083a835/1000x1000-000000-80-0-0.jpg",
+      "art": "covers/motivations.jpg",
       "songlink": null,
       "links": {
         "apple": "https://music.apple.com/us/album/let-em/6774056337?i=6774056343",
@@ -429,7 +429,7 @@
       "release": "Motivations",
       "type": "album",
       "date": "2026-06-10",
-      "art": "https://cdn-images.dzcdn.net/images/cover/0fcbc69fce9a66d6e231f2427083a835/1000x1000-000000-80-0-0.jpg",
+      "art": "covers/motivations.jpg",
       "songlink": null,
       "links": {
         "apple": "https://music.apple.com/us/album/learning-to-see/6774056337?i=6774056346",
@@ -441,7 +441,7 @@
       "release": "Motivations",
       "type": "album",
       "date": "2026-06-10",
-      "art": "https://cdn-images.dzcdn.net/images/cover/0fcbc69fce9a66d6e231f2427083a835/1000x1000-000000-80-0-0.jpg",
+      "art": "covers/motivations.jpg",
       "songlink": null,
       "links": {
         "apple": "https://music.apple.com/us/album/know-how-to-fall/6774056337?i=6774056340",
@@ -453,7 +453,7 @@
       "release": "Motivations",
       "type": "album",
       "date": "2026-06-10",
-      "art": "https://cdn-images.dzcdn.net/images/cover/0fcbc69fce9a66d6e231f2427083a835/1000x1000-000000-80-0-0.jpg",
+      "art": "covers/motivations.jpg",
       "songlink": null,
       "links": {
         "apple": "https://music.apple.com/us/album/is-it-you-or-is-it-me/6774056337?i=6774056347",
@@ -465,7 +465,7 @@
       "release": "Motivations",
       "type": "album",
       "date": "2026-06-10",
-      "art": "https://cdn-images.dzcdn.net/images/cover/0fcbc69fce9a66d6e231f2427083a835/1000x1000-000000-80-0-0.jpg",
+      "art": "covers/motivations.jpg",
       "songlink": null,
       "links": {
         "apple": "https://music.apple.com/us/album/if-i-cant-hear-you-ill-never-be-heard/6774056337?i=6774056344",
@@ -477,7 +477,7 @@
       "release": "Motivations",
       "type": "album",
       "date": "2026-06-10",
-      "art": "https://cdn-images.dzcdn.net/images/cover/0fcbc69fce9a66d6e231f2427083a835/1000x1000-000000-80-0-0.jpg",
+      "art": "covers/motivations.jpg",
       "songlink": null,
       "links": {
         "deezer": "https://www.deezer.com/track/4049143051"
@@ -488,7 +488,7 @@
       "release": "Motivations",
       "type": "album",
       "date": "2026-06-10",
-      "art": "https://cdn-images.dzcdn.net/images/cover/0fcbc69fce9a66d6e231f2427083a835/1000x1000-000000-80-0-0.jpg",
+      "art": "covers/motivations.jpg",
       "songlink": null,
       "links": {
         "apple": "https://music.apple.com/us/album/change-it-up/6774056337?i=6774056341",
@@ -500,7 +500,7 @@
       "release": "Motivations",
       "type": "album",
       "date": "2026-06-10",
-      "art": "https://cdn-images.dzcdn.net/images/cover/0fcbc69fce9a66d6e231f2427083a835/1000x1000-000000-80-0-0.jpg",
+      "art": "covers/motivations.jpg",
       "songlink": null,
       "links": {
         "apple": "https://music.apple.com/us/album/break-free-from-the-cage/6774056337?i=6774056339",
@@ -512,7 +512,7 @@
       "release": "Charmane",
       "type": "single",
       "date": "2026-06-04",
-      "art": "https://cdn-images.dzcdn.net/images/cover/0026f7f5d82346bc0ace61eb084b51f5/1000x1000-000000-80-0-0.jpg",
+      "art": "covers/charmane.jpg",
       "songlink": null,
       "links": {
         "apple": "https://music.apple.com/us/album/charmane/6776327745?i=6776327746",
@@ -524,7 +524,7 @@
       "release": "Waking Up",
       "type": "ep",
       "date": "2026-03-28",
-      "art": "https://cdn-images.dzcdn.net/images/cover/115987aafa54d82a52732c9bb1045cdd/1000x1000-000000-80-0-0.jpg",
+      "art": "covers/waking-up.jpg",
       "songlink": null,
       "links": {
         "apple": "https://music.apple.com/us/album/wasgonnaville-rock-version/1888919061?i=1888919066",
@@ -536,7 +536,7 @@
       "release": "Waking Up",
       "type": "ep",
       "date": "2026-03-28",
-      "art": "https://cdn-images.dzcdn.net/images/cover/115987aafa54d82a52732c9bb1045cdd/1000x1000-000000-80-0-0.jpg",
+      "art": "covers/waking-up.jpg",
       "songlink": null,
       "links": {
         "apple": "https://music.apple.com/us/album/wasgonnaville-country-version/1888919061?i=1888919063",
@@ -548,7 +548,7 @@
       "release": "Waking Up",
       "type": "ep",
       "date": "2026-03-28",
-      "art": "https://cdn-images.dzcdn.net/images/cover/115987aafa54d82a52732c9bb1045cdd/1000x1000-000000-80-0-0.jpg",
+      "art": "covers/waking-up.jpg",
       "songlink": null,
       "links": {
         "apple": "https://music.apple.com/us/album/thank-you-lord/1888919061?i=1888919068",
@@ -560,7 +560,7 @@
       "release": "Waking Up",
       "type": "ep",
       "date": "2026-03-28",
-      "art": "https://cdn-images.dzcdn.net/images/cover/115987aafa54d82a52732c9bb1045cdd/1000x1000-000000-80-0-0.jpg",
+      "art": "covers/waking-up.jpg",
       "songlink": null,
       "links": {
         "apple": "https://music.apple.com/us/album/its-all-about-you-mary/1888919061?i=1888919162",
@@ -572,7 +572,7 @@
       "release": "Waking Up",
       "type": "ep",
       "date": "2026-03-28",
-      "art": "https://cdn-images.dzcdn.net/images/cover/115987aafa54d82a52732c9bb1045cdd/1000x1000-000000-80-0-0.jpg",
+      "art": "covers/waking-up.jpg",
       "songlink": null,
       "links": {
         "apple": "https://music.apple.com/us/album/as-long-as-its-today/1888919061?i=1888919160",
@@ -584,7 +584,7 @@
       "release": "As long as it's today (Funkified Version)",
       "type": "single",
       "date": "2026-03-27",
-      "art": "https://cdn-images.dzcdn.net/images/cover/115987aafa54d82a52732c9bb1045cdd/1000x1000-000000-80-0-0.jpg",
+      "art": "covers/as-long-as-its-today-funkified-version.jpg",
       "songlink": null,
       "links": {
         "apple": "https://music.apple.com/us/album/as-long-as-its-today-funkified-version/1888789105?i=1888789106",
