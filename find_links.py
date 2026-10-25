@@ -210,6 +210,24 @@ def from_spotify(cfg):
     return tracks
 
 
+def download(url, path):
+    """Save an image file. Returns True only for a real JPEG or PNG."""
+    try:
+        req = urllib.request.Request(url, headers={"User-Agent": UA})
+        with urllib.request.urlopen(req, timeout=30) as resp:
+            data = resp.read()
+    except Exception as e:  # network errors, 404s
+        log(f"  cover download failed ({e}): {url}")
+        return False
+    if len(data) < 2000 or not (data[:3] == b"\xff\xd8\xff" or data[:8] == b"\x89PNG\r\n\x1a\n"):
+        log(f"  cover download returned something other than an image: {url}")
+        return False
+    os.makedirs(os.path.dirname(path), exist_ok=True)
+    with open(path, "wb") as f:
+        f.write(data)
+    return True
+
+
 def songlink(url, cfg):
     params = {"url": url, "userCountry": cfg.get("country", "US")}
     key = os.environ.get("ODESLI_API_KEY")
@@ -297,6 +315,29 @@ def main():
         })
     tracks.sort(key=lambda t: (t.get("date") or "", t["title"]), reverse=True)
 
+    # Save each release's cover into covers/ so the site serves its own artwork
+    # instead of depending on Deezer's or Apple's image servers.
+    saved_covers = 0
+    for t in tracks:
+        remote = t.get("art")
+        if not remote or not remote.startswith("http"):
+            continue
+        slug = re.sub(r"[^a-z0-9]+", "-", norm(t.get("release") or t["title"])).strip("-") or "cover"
+        rel_path = f"covers/{slug}.jpg"
+        path = os.path.join(ROOT, rel_path)
+        if not os.path.exists(path):
+            if dry_run:
+                continue
+            if "dzcdn.net" in remote:
+                url = re.sub(r"/\d+x\d+-", "/600x600-", remote)
+            else:
+                url = remote.replace("1000x1000bb", "600x600bb")
+            if not download(url, path):
+                continue
+            saved_covers += 1
+        t["art"] = rel_path
+    log(f"Covers saved this run: {saved_covers}")
+
     artist_links = {"spotify": f"https://open.spotify.com/artist/{cfg['spotify_artist_id']}"} \
         if cfg.get("spotify_artist_id") else {}
     if apple_artist:
@@ -315,7 +356,7 @@ def main():
     # Report
     lines = [f"## {cfg['artist_name']} streaming links", "",
              f"{len(tracks)} songs found. New this run: {', '.join(new_titles) or 'none'}.", "",
-             source_line, "",
+             source_line, f"New cover images saved: {saved_covers}.", "",
              "| Song | " + " | ".join(CORE_PLATFORMS) + " |",
              "|---|" + "---|" * len(CORE_PLATFORMS)]
     for t in tracks:

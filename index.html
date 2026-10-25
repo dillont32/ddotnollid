@@ -256,6 +256,23 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px}
 .p-opts{margin-top:auto;display:grid;gap:8px}
 .p-opts .p-row{margin-top:0}
 .p-row .add:only-child{flex:1}
+.drop-card{transition:opacity .35s ease,transform .35s ease}
+.drop-card.swap{opacity:0;transform:translateY(6px)}
+.drop-card h1.long{font-size:clamp(34px,5vw,62px);line-height:.95}
+.f-date{font-weight:700;color:var(--chrome);margin:10px 0 0;font-size:16px}
+.f-nav{display:flex;gap:10px;margin-top:12px;max-width:760px}
+.f-dot{flex:1;min-width:0;text-align:left;background:var(--deck);border:1px solid var(--wire);border-radius:12px;padding:10px 12px 12px;display:grid;gap:2px;position:relative;overflow:hidden}
+.f-dot:hover{border-color:var(--steel)}
+.f-dot b{font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.f-dot span{font-size:12px;color:var(--steel);font-variant-numeric:tabular-nums}
+.f-dot[aria-current="true"]{border-color:var(--volt);background:var(--deck-2)}
+.f-dot i{position:absolute;left:0;bottom:0;height:3px;width:0;background:var(--volt)}
+.f-dot[aria-current="true"] i{animation:fprog var(--dur) linear forwards}
+.f-nav.paused .f-dot i{animation-play-state:paused}
+@keyframes fprog{to{width:100%}}
+.f-pause{flex:none;width:46px;border-radius:12px;background:var(--deck);border:1px solid var(--wire);display:grid;place-items:center}
+.f-pause svg{width:16px;height:16px;fill:currentColor}
+@media (max-width:560px){.f-dot b{font-size:13px}.f-nav{gap:6px}.f-dot{padding:8px 9px 10px}}
 .toast{position:fixed;left:50%;bottom:calc(var(--dock-h) + 16px + env(safe-area-inset-bottom,0px));translate:-50% 0;z-index:60;background:var(--chrome);color:var(--void);
   font-weight:700;padding:10px 18px;border-radius:999px;font-size:14px;box-shadow:0 10px 30px rgba(0,0,0,.5);max-width:calc(100% - 32px)}
 </style>
@@ -281,18 +298,20 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px}
   </section>
 
   <div class="wrap drop">
-    <div class="drop-card">
-      <img src="./undaunted.webp" alt="Undaunted album cover">
+    <div class="drop-card" id="feature" aria-live="polite">
+      <img id="fArt" src="./cyborg.webp" alt="">
       <div class="drop-meta">
-        <span class="badge">New album</span>
-        <h1 class="chrome-type">Undaunted</h1>
-        <p class="sub">Out now everywhere you stream. Lead single “They Don’t Understand,” inspired by the life and poetry of Tony Hernandez.</p>
+        <span class="badge" id="fBadge">Latest release</span>
+        <h1 class="chrome-type long" id="fTitle">Conspiracy Theory I–III: The Apocalypse</h1>
+        <p class="f-date" id="fDate">Released October 16, 2026</p>
+        <p class="sub" id="fSub">3 songs, out now everywhere you stream.</p>
         <div class="btns">
-          <a class="btn btn-volt" data-listen="they-dont-understand" href="#" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>Listen now</a>
+          <a class="btn btn-volt" id="fListen" data-listen="conspiracy-1" href="#" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>Listen now</a>
           <a class="btn" href="#merch">Shop the merch</a>
         </div>
       </div>
     </div>
+    <div class="f-nav" id="fNav" role="group" aria-label="Latest releases"></div>
     <div class="picker">
       <span class="picker-label" id="pickLabel">Where do you listen?</span>
       <div class="pf-row" id="pfRow" role="group" aria-label="Your streaming service"></div>
@@ -436,13 +455,18 @@ const PLATFORMS = [
   {id:"pandora", name:"Pandora",       c:"#5b8cff", artist:"", search:s=>`https://www.pandora.com/search/${s}/all`},
   {id:"youtube", name:"YouTube",       c:"#ff0033", artist:YT, search:s=>`https://www.youtube.com/results?search_query=${s}`},
 ];
+const DZ="https://cdn-images.dzcdn.net/images/cover/", CT="Conspiracy Theory I-III: The Apocalypse";
 const TRACKS = [
+  {id:"conspiracy-1", title:"Conspiracy Theory I: Divide the Room", release:CT, date:"2026-10-16", kind:"Single", note:`From ${CT}`, art:null, artUrl:DZ+"37052006e8aa2a37c04016e273e71a38/1000x1000-000000-80-0-0.jpg", audio:null},
+  {id:"conspiracy-2", title:"Conspiracy Theory II: Common Ground", release:CT, date:"2026-10-16", kind:"Single", note:`From ${CT}`, art:null, artUrl:DZ+"37052006e8aa2a37c04016e273e71a38/1000x1000-000000-80-0-0.jpg", audio:null},
+  {id:"conspiracy-3", title:"Conspiracy Theory III: The Last Word", release:CT, date:"2026-10-16", kind:"Single", note:`From ${CT}`, art:null, artUrl:DZ+"37052006e8aa2a37c04016e273e71a38/1000x1000-000000-80-0-0.jpg", audio:null},
+  {id:"one-in-a-billion", title:"One In A Billion (feat. Tony Hernandez)", release:"One In A Billion (feat. Tony Hernandez)", date:"2026-10-05", kind:"Single", note:"Single", art:null, artUrl:DZ+"e7f140be18b6a9db5989fad8f682a56f/1000x1000-000000-80-0-0.jpg", audio:null},
   {id:"they-dont-understand", title:"They Don’t Understand", note:"From the album Undaunted", art:"undaunted", cover:"Undaunted", year:"2026", audio:null},
   {id:"motivations",   title:"Motivations", note:"Break out of the glass box", art:"motivations", year:"2026", audio:null},
   {id:"contra-legem",  title:"Contra Legem", note:"Against the law of the city", art:"contra-legem", year:"2026", audio:null},
   {id:"gambled-ace",   title:"I Gambled on an Ace", note:"Every card on the table", art:"gambled-ace", year:"2026", audio:null},
   {id:"be-like-that",  title:"It Be Like That… Sometimes", note:"Sunset, waterfall, no worries", art:"be-like-that", year:"2026", audio:null},
-  {id:"neighbor",      title:"The Word Was Neighbor", note:"Ruff cut", art:"neighbor", year:"2026", audio:null},
+  {id:"neighbor",      title:"The Word Was Neighbor (Ruff Cut)", release:"The Word Was Neighbor (Ruff Cut)", date:"2026-10-02", kind:"Single", note:"Single", art:"neighbor", year:"2026", audio:null},
   {id:"no-cerveza",    title:"No Cerveza, No Trabajo", note:"Cold beer, good people, better days", art:"no-cerveza", year:"2026", audio:null},
   {id:"motor-city",    title:"Motor City Kitties… No More", note:"For Detroit", art:"motor-city", year:"2026", audio:null},
   {id:"palm-tree",     title:"Palm Tree Dreams", note:"Words by T. Craig Goodwin, for Corky Celeski", art:"palm-tree", year:"2026", audio:null},
@@ -619,7 +643,7 @@ async function loadLinks(){
   (data.tracks||[]).forEach(lt=>{
     const free=TRACKS.filter(x=>!claimed.has(x));
     let t=free.find(x=>key(x.title)===key(lt.title))||free.find(x=>sameSong(x.title,lt.title));
-    if(t){claimed.add(t);t.date=lt.date;if(lt.art&&!t.art)t.artUrl=lt.art}
+    if(t){claimed.add(t);t.date=lt.date;t.release=lt.release||t.release;t.kind={album:"Album",ep:"EP"}[lt.type]||"Single";if(lt.art&&!t.art)t.artUrl=lt.art}
     else{const kind={album:"Album",ep:"EP"}[lt.type]||"Single";t={id:"r-"+key(lt.title).replace(/ /g,"-")+"-"+(lt.date||""),title:lt.title,release:lt.release,note:lt.release&&!sameSong(lt.release,lt.title)?`From ${lt.release}`:kind,art:null,artUrl:lt.art,kind,audio:null};added.push(t)}
     t.links=Object.assign({},lt.links||{},t.links||{});
     if(lt.songlink&&!t.hyperfollow)t.hyperfollow=lt.songlink;
@@ -637,7 +661,59 @@ async function loadLinks(){
   renderFollow();
   $("#footLinks").innerHTML=PLATFORMS.map(p=>`<a href="${artistUrl(p)}" target="_blank" rel="noopener">${p.name}</a>`).join("  ·  ");
   updateListenLinks();
+  fItems=buildFeatured();renderFeature(0,false);
 }
+
+/* ---------- featured releases: newest 3, rotating every 2 minutes ---------- */
+const F_DUR=120, fkey=s=>(s||"").toLowerCase().replace(/[^a-z0-9]+/g," ").trim();
+let fItems=[],fIdx=0,fElapsed=0,fPaused=false;
+const fmtDate=(d,opt)=>new Date(d+"T12:00:00").toLocaleDateString("en-US",opt||{month:"long",day:"numeric",year:"numeric"});
+function buildFeatured(){
+  const groups=new Map();
+  TRACKS.forEach(t=>{
+    if(!t.date)return;
+    const name=t.release||t.cover||t.title, k=fkey(name);
+    const g=groups.get(k)||{name,date:t.date,kind:t.kind||"Single",tracks:[]};
+    if(t.date>g.date)g.date=t.date;
+    g.tracks.push(t);groups.set(k,g);
+  });
+  return [...groups.values()].sort((a,b)=>b.date.localeCompare(a.date)).slice(0,3).map(g=>{
+    g.tracks.sort((a,b)=>a.title.localeCompare(b.title));
+    const lead=g.tracks.find(t=>t.art)||g.tracks[0];
+    const feat=[...new Set(g.tracks.map(t=>(t.title.match(/\((?:feat\.?|ft\.?|with) ([^)]+)\)/i)||[])[1]).filter(Boolean))];
+    return Object.assign(g,{first:g.tracks[0],artSrc:artOf(lead),feat});
+  });
+}
+const pauseIco='<svg viewBox="0 0 24 24"><path d="M7 5h4v14H7zm6 0h4v14h-4z"/></svg>';
+function renderFeature(i,animate){
+  if(!fItems.length)return;
+  fIdx=(i+fItems.length)%fItems.length;fElapsed=0;
+  const r=fItems[fIdx], card=$("#feature");
+  const apply=()=>{
+    $("#fArt").src=r.artSrc;$("#fArt").alt=`${r.name} cover art`;
+    $("#fBadge").textContent=fIdx===0?"Latest release":r.kind;
+    const h=$("#fTitle");h.textContent=r.name.replace(/ I-III/," I–III");h.classList.toggle("long",r.name.length>18);
+    $("#fDate").textContent=`Released ${fmtDate(r.date)}`;
+    const parts=[r.tracks.length>1?`${r.tracks.length} songs`:r.kind];
+    if(r.feat.length)parts.push(`featuring ${r.feat.join(" and ")}`);
+    $("#fSub").textContent=parts.join(", ")+", out now everywhere you stream.";
+    $("#fListen").dataset.listen=r.first.id;updateListenLinks();
+    card.classList.remove("swap");
+  };
+  if(animate){card.classList.add("swap");setTimeout(apply,350)}else apply();
+  $("#fNav").innerHTML=fItems.map((x,j)=>`<button class="f-dot" data-f="${j}" aria-current="${j===fIdx}" aria-label="Show ${x.name}, released ${fmtDate(x.date)}"><b>${x.name.replace(/ \(feat\.[^)]*\)/,"").replace(/ I-III/," I–III")}</b><span>${fmtDate(x.date,{month:"short",day:"numeric",year:"numeric"})}</span><i style="--dur:${F_DUR}s"></i></button>`).join("")
+    +`<button class="f-pause" id="fPause" aria-label="${fPaused?"Resume rotation":"Pause rotation"}">${fPaused?playSvg:pauseIco}</button>`;
+  $("#fNav").classList.toggle("paused",fPaused);
+}
+$("#fNav").addEventListener("click",e=>{
+  const d=e.target.closest("[data-f]");
+  if(d){renderFeature(+d.dataset.f,true);return}
+  const p=e.target.closest("#fPause");
+  if(p){fPaused=!fPaused;p.innerHTML=fPaused?playSvg:pauseIco;p.setAttribute("aria-label",fPaused?"Resume rotation":"Pause rotation");$("#fNav").classList.toggle("paused",fPaused)}
+});
+document.addEventListener("visibilitychange",()=>$("#fNav").classList.toggle("paused",fPaused||document.hidden));
+setInterval(()=>{if(fPaused||document.hidden||fItems.length<2)return;if(++fElapsed>=F_DUR)renderFeature(fIdx+1,true)},1000);
+fItems=buildFeatured();renderFeature(0,false);
 loadLinks();
 
 /* ---------- merch mockups ---------- */
