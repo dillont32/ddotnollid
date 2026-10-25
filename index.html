@@ -312,6 +312,13 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px}
 .t-empty{padding:24px 8px;color:var(--steel);display:flex;gap:12px;align-items:center;flex-wrap:wrap;border-bottom:1px solid var(--wire)}
 .track.reveal{animation:rin .28s ease both}
 @keyframes rin{from{opacity:0;transform:translateY(-4px)}}
+.mini{position:fixed;right:max(16px,env(safe-area-inset-right,0px));bottom:calc(var(--dock-h) + 14px + env(safe-area-inset-bottom,0px));z-index:36;width:min(380px,calc(100vw - 32px));background:var(--deck);border:1px solid var(--wire);border-radius:14px;overflow:hidden;box-shadow:0 20px 50px rgba(0,0,0,.6)}
+.mini-frame{aspect-ratio:16/9;min-height:200px;background:#000}
+.mini-frame iframe,.mini-frame>div{width:100%;height:100%;border:0;display:block}
+.mini-bar{display:flex;align-items:center;gap:10px;padding:4px 4px 4px 12px;font-size:13px;color:var(--steel)}
+.mini-bar span{flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:var(--chrome);font-weight:600}
+.mini-bar a{color:var(--volt-hot);white-space:nowrap}
+@media (max-width:560px){.mini{left:max(16px,env(safe-area-inset-left,0px));right:max(16px,env(safe-area-inset-right,0px));width:auto}}
 .toast{position:fixed;left:50%;bottom:calc(var(--dock-h) + 16px + env(safe-area-inset-bottom,0px));translate:-50% 0;z-index:60;background:var(--chrome);color:var(--void);
   font-weight:700;padding:10px 18px;border-radius:999px;font-size:14px;box-shadow:0 10px 30px rgba(0,0,0,.5);max-width:calc(100% - 32px)}
 </style>
@@ -345,7 +352,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px}
         <p class="f-date" id="fDate">Released October 16, 2026</p>
         <p class="sub" id="fSub">3 songs, out now everywhere you stream.</p>
         <div class="btns">
-          <a class="btn btn-volt" id="fListen" data-listen="conspiracy-1" href="#" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>Listen now</a>
+          <button class="btn btn-volt" id="fPlay" data-track="conspiracy-1"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>Play now</button>
           <a class="btn" href="#merch">Shop the merch</a>
         </div>
       </div>
@@ -369,7 +376,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px}
           <div>
             <h3 id="nowTitle">They Don’t Understand</h3>
             <p id="nowNote">From the album Undaunted</p>
-            <div class="btns" style="margin-top:14px"><a class="btn btn-volt" data-listen-current data-text="long" href="#" target="_blank" rel="noopener">Listen</a><button class="btn" id="nowFull" hidden>Play full song</button><button class="btn" id="nowAll">All platforms</button></div>
+            <div class="btns" style="margin-top:14px"><button class="btn btn-volt" id="nowPlay"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>Play</button><a class="btn" data-listen-current data-text="long" href="#" target="_blank" rel="noopener">Open in your app</a><button class="btn" id="nowAll">All platforms</button></div>
           </div>
         </aside>
         <div class="songs">
@@ -446,7 +453,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px}
 
 <footer>
   <div class="wrap">
-    <span>© 2026 Ddot Nollid. A Ddot Nollid Production.</span>
+    <span>© 2026 Ddot Nollid. A Ddot Nollid Production. Site updated Oct 25, 2026 (v3).</span>
     <span id="footLinks"></span>
   </div>
 </footer>
@@ -470,6 +477,10 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px}
       <div class="eq" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
     </div>
   </div>
+</div>
+<div class="mini" id="mini" hidden role="region" aria-label="Now playing">
+  <div class="mini-frame"><div id="ytPlayer"></div></div>
+  <div class="mini-bar"><span id="miniTitle">Now playing</span><a id="miniOpen" href="#" target="_blank" rel="noopener">YouTube Music</a><button class="ib" id="miniClose" aria-label="Stop and close player"><svg viewBox="0 0 24 24"><path d="M18.3 5.7 12 12l6.3 6.3-1.4 1.4L10.6 13.4 4.3 19.7l-1.4-1.4L9.2 12 2.9 5.7l1.4-1.4 6.3 6.3 6.3-6.3z"/></svg></button></div>
 </div>
 <audio id="audio" preload="none"></audio>
 
@@ -508,7 +519,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px}
 // 3. Add an `audio` path (e.g. "audio/they-dont-understand.mp3") to play a preview in the deck.
 const ARTIST = "Ddot Nollid";
 const q = encodeURIComponent(ARTIST);
-const YT = "https://www.youtube.com/channel/UCjUHyRj5Eze6VPge7ex6nvQ";
+const YT_CHANNEL = "https://www.youtube.com/channel/UCjUHyRj5Eze6VPge7ex6nvQ";
 const PLATFORMS = [
   {id:"spotify", name:"Spotify",       c:"#1ed760", artist:"https://open.spotify.com/artist/4IEe9SCNNFpft05fJ7VWQG", search:s=>`https://open.spotify.com/search/${s}`},
   {id:"apple",   name:"Apple Music",   c:"#fa2d48", artist:"", search:s=>`https://music.apple.com/us/search?term=${s}`},
@@ -517,7 +528,7 @@ const PLATFORMS = [
   {id:"deezer",  name:"Deezer",        c:"#a238ff", artist:"", search:s=>`https://www.deezer.com/search/${s}`},
   {id:"tidal",   name:"Tidal",         c:"#dfe4ee", artist:"", search:s=>`https://tidal.com/search?q=${s}`},
   {id:"pandora", name:"Pandora",       c:"#5b8cff", artist:"", search:s=>`https://www.pandora.com/search/${s}/all`},
-  {id:"youtube", name:"YouTube",       c:"#ff0033", artist:YT, search:s=>`https://www.youtube.com/results?search_query=${s}`},
+  {id:"youtube", name:"YouTube",       c:"#ff0033", artist:YT_CHANNEL, search:s=>`https://www.youtube.com/results?search_query=${s}`},
 ];
 const DZ="https://cdn-images.dzcdn.net/images/cover/", CT="Conspiracy Theory I-III: The Apocalypse";
 const TRACKS = [
@@ -599,8 +610,8 @@ function updateListenLinks(){
     const id=el.hasAttribute("data-listen-current")?TRACKS[cur].id:el.dataset.listen;
     const t=TRACKS.find(x=>x.id===id);
     el.href=p?trackUrl(t,p):"#";
-    if(el.dataset.text==="long")el.textContent=p?`Listen on ${p.name}`:"Listen";
-    if(el.dataset.text==="short")el.textContent=p?p.name:"Listen";
+    if(el.dataset.text==="long")el.textContent=p?`Open in ${p.name}`:"Open in your app";
+    if(el.dataset.text==="short")el.textContent=p?p.name:"Open in app";
   });
 }
 let sheetIdx=0;
@@ -710,38 +721,106 @@ function setPlaying(on){
   $("#playIcon").innerHTML=on?'<path d="M7 5h4v14H7zm6 0h4v14h-4z"/>':'<path d="M8 5v14l11-7z"/>';
 }
 function streamNote(t){
-  return `Watch “${t.title}” on <a href="${YT}" target="_blank" rel="noopener">YouTube</a>`;
+  return `Watch “${t.title}” on <a href="${YT_CHANNEL}" target="_blank" rel="noopener">YouTube</a>`;
 }
-function load(i,autoplay){
-  if(i<0)return;
+/* Playback on the site: full songs through YouTube Music (counts as a stream) in a floating
+   player, falling back to the 30-second preview, then to the platform list. */
+let mode="audio",yt=null,ytReady=null,ytTimer=null;
+function show(i){
   cur=(i+TRACKS.length)%TRACKS.length;const t=TRACKS[cur];
   $("#dArt").src=artOf(t);$("#dTitle").textContent=t.title;
   $("#nowArt").src=artOf(t);$("#nowTitle").textContent=t.title;$("#nowNote").textContent=t.note;
   document.querySelectorAll(".track").forEach(el=>el.setAttribute("aria-current",el.dataset.id===t.id?"true":"false"));
   $("#seek").value=0;$("#tCur").textContent="0:00";$("#tDur").textContent="0:00";
-  $("#dSub").textContent=t.audio?"Ddot Nollid · 30-second preview":"Ddot Nollid";
-  $("#nowFull").hidden=!t.youtube;
-  if(t.audio){audio.src=t.audio;if(autoplay)audio.play().catch(()=>setPlaying(false));}
-  else{audio.removeAttribute("src");audio.load();setPlaying(false);}
+  $("#dSub").textContent=t.youtube?"Ddot Nollid · Full song":t.audio?"Ddot Nollid · 30-second preview":"Ddot Nollid";
   updateListenLinks();
 }
+function load(i,autoplay){
+  if(i<0)return;
+  if(autoplay){play(i);return}
+  show(i);
+  if(mode==="audio"&&audio.paused){audio.removeAttribute("src");audio.load()}
+}
+function loadYT(){
+  if(ytReady)return ytReady;
+  ytReady=new Promise((res,rej)=>{
+    if(window.YT&&window.YT.Player)return res();
+    const prev=window.onYouTubeIframeAPIReady;
+    window.onYouTubeIframeAPIReady=()=>{if(prev)prev();res()};
+    const s=document.createElement("script");s.src="https://www.youtube.com/iframe_api";
+    s.onerror=()=>rej(new Error("YouTube player unavailable"));document.head.appendChild(s);
+    setTimeout(()=>rej(new Error("YouTube player timed out")),10000);
+  });
+  ytReady.catch(()=>{ytReady=null});
+  return ytReady;
+}
+function play(i){
+  show(i);const t=TRACKS[cur];
+  if(t.youtube){
+    audio.pause();mode="yt";
+    $("#mini").hidden=false;$("#miniTitle").textContent=t.title;
+    $("#miniOpen").href=`https://music.youtube.com/watch?v=${encodeURIComponent(t.youtube)}`;
+    loadYT().then(()=>{
+      if(mode!=="yt"||TRACKS[cur]!==t)return;
+      if(!yt)yt=new window.YT.Player("ytPlayer",{videoId:t.youtube,host:"https://www.youtube-nocookie.com",
+        playerVars:{autoplay:1,playsinline:1,rel:0,origin:location.origin},
+        events:{onReady:e=>e.target.playVideo(),onStateChange:ytState,onError:()=>ytFail(TRACKS[cur])}});
+      else yt.loadVideoById(t.youtube);
+    }).catch(()=>ytFail(t));
+    return;
+  }
+  stopYT();
+  if(t.audio){mode="audio";audio.src=t.audio;audio.play().catch(()=>setPlaying(false));return}
+  openSheet(cur);
+}
+function ytFail(t){
+  stopYT();
+  if(t&&t.audio){toast("Playing a 30-second preview");mode="audio";audio.src=t.audio;audio.play().catch(()=>setPlaying(false))}
+  else openSheet(cur);
+}
+function ytState(e){
+  const S=window.YT.PlayerState;
+  if(e.data===S.PLAYING){setPlaying(true);startYTTimer()}
+  else if(e.data===S.PAUSED)setPlaying(false);
+  else if(e.data===S.ENDED){setPlaying(false);playNext()}
+}
+function startYTTimer(){
+  clearInterval(ytTimer);
+  ytTimer=setInterval(()=>{
+    if(mode!=="yt"||!yt||!yt.getDuration)return;
+    const d=yt.getDuration(),c=yt.getCurrentTime();
+    if(d){$("#seek").value=c/d*1000;$("#tCur").textContent=fmt(c);$("#tDur").textContent=fmt(d)}
+  },500);
+}
+function pauseYT(){if(yt&&yt.pauseVideo)try{yt.pauseVideo()}catch(e){}}
+function stopYT(){pauseYT();clearInterval(ytTimer);$("#mini").hidden=true;if(mode==="yt")setPlaying(false);mode="audio"}
+function playNext(step=1){
+  for(let k=1;k<=TRACKS.length;k++){const j=(cur+step*k+TRACKS.length*k)%TRACKS.length;if(TRACKS[j].youtube||TRACKS[j].audio){play(j);return}}
+}
 $("#play").addEventListener("click",()=>{
-  const t=TRACKS[cur];
-  if(!t.audio){openSheet(cur);return}
-  audio.paused?audio.play():audio.pause();
+  if(mode==="yt"&&yt&&yt.getPlayerState){yt.getPlayerState()===1?yt.pauseVideo():yt.playVideo();return}
+  if(audio.getAttribute("src")){audio.paused?audio.play():audio.pause();return}
+  play(cur);
 });
-$("#prev").addEventListener("click",()=>load(cur-1,!audio.paused));
-$("#next").addEventListener("click",()=>load(cur+1,!audio.paused));
+$("#prev").addEventListener("click",()=>playNext(-1));
+$("#next").addEventListener("click",()=>playNext(1));
+$("#miniClose").addEventListener("click",stopYT);
 audio.addEventListener("play",()=>setPlaying(true));
-audio.addEventListener("pause",()=>setPlaying(false));
+audio.addEventListener("pause",()=>{if(mode==="audio")setPlaying(false)});
 audio.addEventListener("ended",()=>{
   const t=TRACKS[cur],p=getPref();
-  toast(p?`Hear all of “${t.title}” on ${p.name}`:`Hear all of “${t.title}”: tap Listen`);
-  for(let k=1;k<TRACKS.length;k++){const j=(cur+k)%TRACKS.length;if(TRACKS[j].audio){load(j,true);return}}
+  toast(p?`Hear all of “${t.title}” on ${p.name}`:`Hear all of “${t.title}”: tap Open in app`);
+  playNext(1);
 });
 audio.addEventListener("loadedmetadata",()=>$("#tDur").textContent=fmt(audio.duration));
-audio.addEventListener("timeupdate",()=>{if(audio.duration){$("#seek").value=audio.currentTime/audio.duration*1000;$("#tCur").textContent=fmt(audio.currentTime)}});
-$("#seek").addEventListener("input",e=>{if(audio.duration)audio.currentTime=e.target.value/1000*audio.duration});
+audio.addEventListener("timeupdate",()=>{if(mode==="audio"&&audio.duration){$("#seek").value=audio.currentTime/audio.duration*1000;$("#tCur").textContent=fmt(audio.currentTime)}});
+$("#seek").addEventListener("input",e=>{
+  const f=e.target.value/1000;
+  if(mode==="yt"&&yt&&yt.getDuration)yt.seekTo(f*yt.getDuration(),true);
+  else if(audio.duration)audio.currentTime=f*audio.duration;
+});
+$("#nowPlay").addEventListener("click",()=>play(cur));
+$("#fPlay").addEventListener("click",()=>{const i=TRACKS.findIndex(t=>t.id===$("#fPlay").dataset.track);play(i<0?0:i)});
 load(0,false);
 renderPicker();renderFollow();
 document.querySelectorAll(".drop [data-listen],[data-listen-current]").forEach(bindListen);
@@ -765,7 +844,7 @@ async function loadLinks(){
     t.links=Object.assign({},lt.links||{},t.links||{});
     if(lt.songlink&&!t.hyperfollow)t.hyperfollow=lt.songlink;
     if(lt.preview&&!t.audio)t.audio=lt.preview;
-    if(lt.youtube){t.youtube=lt.youtube;if(!t.links.ytmusic)t.links.ytmusic=`https://music.youtube.com/watch?v=${lt.youtube}`}
+    if(lt.youtube){t.youtube=lt.youtube;if(!t.links.ytmusic)t.links.ytmusic=`https://music.youtube.com/watch?v=${lt.youtube}`;if(!t.links.youtube)t.links.youtube=`https://www.youtube.com/watch?v=${lt.youtube}`}
   });
   added.forEach((t,i)=>{t.date=t.date||(data.tracks.find(lt=>lt.title===t.title)||{}).date});
   if(data.tracks&&data.tracks.length){
@@ -818,7 +897,7 @@ function renderFeature(i,animate){
     const parts=[r.tracks.length>1?`${r.tracks.length} songs`:r.kind];
     if(r.feat.length)parts.push(`featuring ${r.feat.join(" and ")}`);
     $("#fSub").textContent=parts.join(", ")+", out now everywhere you stream.";
-    $("#fListen").dataset.listen=r.first.id;updateListenLinks();
+    $("#fPlay").dataset.track=r.first.id;
     card.classList.remove("swap");
   };
   if(animate){card.classList.add("swap");setTimeout(apply,350)}else apply();
@@ -850,7 +929,7 @@ function renderVideos(list){
   const shown=all[vTab], grid=$("#vGrid");
   grid.className=vTab==="short"?"srow":vTab==="music"?"vgrid mgrid":"vgrid";
   if(!shown.length){
-    grid.innerHTML=`<p class="v-empty">${vTab==="short"?"Shorts":"Videos"} from the Ddot Nollid YouTube channel show up here automatically. Until then, watch them on <a href="${YT}" target="_blank" rel="noopener">YouTube</a>.</p>`;
+    grid.innerHTML=`<p class="v-empty">${vTab==="short"?"Shorts":"Videos"} from the Ddot Nollid YouTube channel show up here automatically. Until then, watch them on <a href="${YT_CHANNEL}" target="_blank" rel="noopener">YouTube</a>.</p>`;
     $("#vMore").hidden=true;return;
   }
   const lim=vTab!=="short"&&!vAll?(vTab==="music"?10:6):shown.length;
@@ -859,7 +938,7 @@ function renderVideos(list){
   $("#vMore").textContent=vTab==="music"?"Show all songs":"Show all videos";
 }
 function openVideo(id,kind,title){
-  audio.pause();
+  audio.pause();pauseYT();
   const f=$("#vFrame");f.className="vframe"+(kind==="short"?" short":"");
   let q="";
   if(kind==="music"){ // queue the rest of the songs so the music keeps going
@@ -876,9 +955,12 @@ function openVideo(id,kind,title){
 function closeVideo(){$("#vbox").hidden=true;$("#vFrame").innerHTML=""}
 $("#vTabs").addEventListener("click",e=>{const b=e.target.closest("[data-vt]");if(!b)return;vTab=b.dataset.vt;vAll=false;renderVideos()});
 $("#vMore").addEventListener("click",()=>{vAll=true;renderVideos()});
-$("#vGrid").addEventListener("click",e=>{const c=e.target.closest(".vcard");if(c)openVideo(c.dataset.v,c.dataset.k,c.querySelector("b").textContent)});
+$("#vGrid").addEventListener("click",e=>{
+  const c=e.target.closest(".vcard");if(!c)return;
+  if(c.dataset.k==="music"){const i=TRACKS.findIndex(t=>t.youtube===c.dataset.v);if(i>=0){play(i);return}}
+  openVideo(c.dataset.v,c.dataset.k,c.querySelector("b").textContent);
+});
 $("#vClose").addEventListener("click",closeVideo);
-$("#nowFull").addEventListener("click",()=>{const t=TRACKS[cur];if(t.youtube)openVideo(t.youtube,"music",t.title)});
 $("#vbox").addEventListener("click",e=>{if(e.target.id==="vbox")closeVideo()});
 renderVideos([]);
 loadLinks();
