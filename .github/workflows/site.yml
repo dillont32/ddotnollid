@@ -11,7 +11,7 @@ on:
         default: false
   push:
     branches: [main]
-    paths-ignore: ["links.json"]
+    paths-ignore: ["links.json", "covers/**"]
 
 permissions:
   contents: write
@@ -36,16 +36,17 @@ jobs:
           SPOTIFY_CLIENT_SECRET: ${{ secrets.SPOTIFY_CLIENT_SECRET }}
           ODESLI_API_KEY: ${{ secrets.ODESLI_API_KEY }}
         run: python find_links.py ${{ inputs.refresh_all && '--refresh-all' || '' }}
-      - name: Save links.json
+      - name: Save links and covers
         run: |
-          if git diff --quiet -- links.json && git ls-files --error-unmatch links.json >/dev/null 2>&1; then
-            echo "No link changes."
+          if [ -z "$(git status --porcelain -- links.json covers 2>/dev/null)" ]; then
+            echo "No changes."
             exit 0
           fi
           git config user.name "ddot-link-finder"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add links.json
-          git commit -m "Update streaming links"
+          if [ -d covers ]; then git add covers; fi
+          git commit -m "Update streaming links and covers"
           git push
 
   deploy:
