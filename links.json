@@ -1,6 +1,6 @@
 {
   "artist": "Ddot Nollid",
-  "updated": "2026-10-25T06:23:16Z",
+  "updated": "2026-10-25T21:31:35Z",
   "artist_links": {
     "apple": "https://music.apple.com/us/artist/ddot-nollid/1888639392",
     "deezer": "https://www.deezer.com/artist/382087981",
@@ -15,6 +15,7 @@
       "date": "2026-10-16",
       "art": "covers/conspiracy-theory-i-iii-the-apocalypse.jpg",
       "songlink": null,
+      "preview": null,
       "links": {
         "deezer": "https://www.deezer.com/track/4339990302"
       }
@@ -26,6 +27,7 @@
       "date": "2026-10-16",
       "art": "covers/conspiracy-theory-i-iii-the-apocalypse.jpg",
       "songlink": null,
+      "preview": null,
       "links": {
         "deezer": "https://www.deezer.com/track/4339990292"
       }
@@ -37,6 +39,7 @@
       "date": "2026-10-16",
       "art": "covers/conspiracy-theory-i-iii-the-apocalypse.jpg",
       "songlink": null,
+      "preview": null,
       "links": {
         "deezer": "https://www.deezer.com/track/4339990282"
       }
@@ -48,6 +51,7 @@
       "date": "2026-10-05",
       "art": "covers/one-in-a-billion.jpg",
       "songlink": null,
+      "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/8b/5b/69/8b5b69e7-9953-cb80-30e2-d4b286d15d13/mzaf_7647350425950930303.plus.aac.p.m4a",
       "links": {
         "apple": "https://music.apple.com/us/album/one-in-a-billion-feat-tony-hernandez/6818037435?i=6818037436",
         "deezer": "https://www.deezer.com/track/4321405312"
@@ -60,6 +64,7 @@
       "date": "2026-10-02",
       "art": "covers/the-word-was-neighbor-ruff-cut.jpg",
       "songlink": null,
+      "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/f3/0e/c5/f30ec5bc-7080-e53a-0464-470d76c16a01/mzaf_7294739854223677119.plus.aac.p.m4a",
       "links": {
         "apple": "https://music.apple.com/us/album/the-word-was-neighbor-ruff-cut/6816419635?i=6816419636",
         "deezer": "https://www.deezer.com/track/4312274692"
@@ -72,6 +77,7 @@
       "date": "2026-09-30",
       "art": "covers/the-word-was-neighbor-cabaret-cut.jpg",
       "songlink": null,
+      "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/4f/17/df/4f17dfaa-1a22-ae92-9239-2a5e2ff80cca/mzaf_14854839812850393547.plus.aac.p.m4a",
       "links": {
         "apple": "https://music.apple.com/us/album/the-word-was-neighbor-cabaret-cut/6816422598?i=6816422599",
         "deezer": "https://www.deezer.com/track/4312283072"
@@ -84,6 +90,7 @@
       "date": "2026-09-30",
       "art": "covers/no-cerveza-no-trabajo.jpg",
       "songlink": null,
+      "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/ff/17/6d/ff176df8-8828-153d-7ef9-04a840569e28/mzaf_10278903181913011804.plus.aac.p.m4a",
       "links": {
         "apple": "https://music.apple.com/us/album/no-cerveza-no-trabajo/6816865140?i=6816865142",
         "deezer": "https://www.deezer.com/track/4314281922"
@@ -96,6 +103,7 @@
       "date": "2026-09-07",
       "art": "covers/motor-city-kitties-no-more.jpg",
       "songlink": null,
+      "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/51/98/dd/5198ddbc-4e4b-6ce6-900b-98205fc302a2/mzaf_10842719548606189039.plus.aac.p.m4a",
       "links": {
         "apple": "https://music.apple.com/us/album/motor-city-kitties-no-more/6809306814?i=6809306815",
         "deezer": "https://www.deezer.com/track/4270136742"
@@ -108,6 +116,7 @@
       "date": "2026-09-06",
       "art": "covers/kylexa.jpg",
       "songlink": null,
+      "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/f4/15/44/f415444d-ac07-da6b-ffb0-cb9e7083ceaa/mzaf_298563442352663594.plus.aac.p.m4a",
       "links": {
         "apple": "https://music.apple.com/us/album/kylexa/6808830727?i=6808830728",
         "deezer": "https://www.deezer.com/track/4267126172"
@@ -120,6 +129,7 @@
       "date": "2026-09-06",
       "art": "covers/fighter.jpg",
       "songlink": null,
+      "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/12/f9/84/12f98401-aca1-8000-9ad5-c7b613ac2569/mzaf_6002782778028390704.plus.aac.p.m4a",
       "links": {
         "apple": "https://music.apple.com/us/album/fighter/6806917352?i=6806917353",
         "deezer": "https://www.deezer.com/track/4255549451"
@@ -132,6 +142,7 @@
       "date": "2026-09-05",
       "art": "covers/it-be-like-that-sometimes.jpg",
       "songlink": null,
+      "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/12/5a/64/125a64fd-58b5-353a-7b7b-5d8b437be4a9/mzaf_186668448110778233.plus.aac.p.m4a",
       "links": {
         "apple": "https://music.apple.com/us/album/it-be-like-that-sometimes/6806702237?i=6806702238",
         "deezer": "https://www.deezer.com/track/4254304581"
@@ -144,6 +155,7 @@
       "date": "2026-08-30",
       "art": "covers/i-gambled-on-an-ace.jpg",
       "songlink": null,
+      "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/c4/11/c1/c411c1a7-d90d-3f42-47d2-48dff4b2139f/mzaf_1323742021969336256.plus.aac.p.m4a",
       "links": {
         "apple": "https://music.apple.com/us/album/i-gambled-on-an-ace/6804370022?i=6804370023",
         "deezer": "https://www.deezer.com/track/4240543462"
@@ -156,6 +168,7 @@
       "date": "2026-08-29",
       "art": "covers/contra-legem.jpg",
       "songlink": null,
+      "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/d6/95/47/d69547f8-cd41-9bf4-85f9-9f7a59b94a6a/mzaf_16964236306824863894.plus.aac.p.m4a",
       "links": {
         "apple": "https://music.apple.com/us/album/contra-legem/6804361335?i=6804361336",
         "deezer": "https://www.deezer.com/track/4240493112"
@@ -168,6 +181,7 @@
       "date": "2026-08-20",
       "art": "covers/undaunted.jpg",
       "songlink": null,
+      "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/09/b3/89/09b389dc-577b-c469-2503-4317e11d659e/mzaf_16943929264587049898.plus.aac.p.m4a",
       "links": {
         "apple": "https://music.apple.com/us/album/undaunted-feat-tony-hernandez/6801972123?i=6801972457",
         "deezer": "https://www.deezer.com/track/4226594692"
@@ -180,6 +194,7 @@
       "date": "2026-08-20",
       "art": "covers/undaunted.jpg",
       "songlink": null,
+      "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/bf/fd/9c/bffd9c93-c82d-22b6-3d3f-388af7659b29/mzaf_12540963528187998322.plus.aac.p.m4a",
       "links": {
         "apple": "https://music.apple.com/us/album/thick-or-thin-feat-tony-hernandez/6801972123?i=6801972464",
         "deezer": "https://www.deezer.com/track/4226594762"
@@ -192,6 +207,7 @@
       "date": "2026-08-20",
       "art": "covers/undaunted.jpg",
       "songlink": null,
+      "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/a0/00/02/a0000266-b379-efcc-82cd-008c1f4b02cf/mzaf_3338819859135987494.plus.aac.p.m4a",
       "links": {
         "apple": "https://music.apple.com/us/album/they-dont-understand-feat-tony-hernandez/6801972123?i=6801972463",
         "deezer": "https://www.deezer.com/track/4226594752"
@@ -204,6 +220,7 @@
       "date": "2026-08-20",
       "art": "covers/undaunted.jpg",
       "songlink": null,
+      "preview": null,
       "links": {
         "deezer": "https://www.deezer.com/track/4226594682"
       }
@@ -215,6 +232,7 @@
       "date": "2026-08-20",
       "art": "covers/undaunted.jpg",
       "songlink": null,
+      "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/97/fa/51/97fa5140-ac92-2a95-391e-7d32e61645e1/mzaf_12410162539462856907.plus.aac.p.m4a",
       "links": {
         "apple": "https://music.apple.com/us/album/take-me-home-feat-tony-hernandez/6801972123?i=6801972462",
         "deezer": "https://www.deezer.com/track/4226594742"
@@ -227,6 +245,7 @@
       "date": "2026-08-20",
       "art": "covers/undaunted.jpg",
       "songlink": null,
+      "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/9c/7c/c8/9c7cc81b-d9ce-4c23-1385-32d4a3e386d1/mzaf_7376418630118261356.plus.aac.p.m4a",
       "links": {
         "apple": "https://music.apple.com/us/album/seen-feat-tony-hernandez/6801972123?i=6801972459",
         "deezer": "https://www.deezer.com/track/4226594712"
@@ -239,6 +258,7 @@
       "date": "2026-08-20",
       "art": "covers/undaunted.jpg",
       "songlink": null,
+      "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/87/4f/f5/874ff5b6-bb3f-9652-15ff-ae3c28beca2e/mzaf_10410179867442612961.plus.aac.p.m4a",
       "links": {
         "apple": "https://music.apple.com/us/album/pure-defiance-feat-tony-hernandez/6801972123?i=6801972465",
         "deezer": "https://www.deezer.com/track/4226594772"
@@ -251,6 +271,7 @@
       "date": "2026-08-20",
       "art": "covers/undaunted.jpg",
       "songlink": null,
+      "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/05/dc/22/05dc2203-37d2-d3a1-789a-fe794384c72d/mzaf_1622485233563673946.plus.aac.p.m4a",
       "links": {
         "apple": "https://music.apple.com/us/album/lord-can-you-feel-me-feat-tony-hernandez/6801972123?i=6801972125",
         "deezer": "https://www.deezer.com/track/4226594672"
@@ -263,6 +284,7 @@
       "date": "2026-08-20",
       "art": "covers/undaunted.jpg",
       "songlink": null,
+      "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/52/8b/b9/528bb935-e374-7515-5e9c-15725c187fce/mzaf_7833331509544260793.plus.aac.p.m4a",
       "links": {
         "apple": "https://music.apple.com/us/album/if-tomorrow-never-comes-feat-tony-hernandez/6801972123?i=6801972461",
         "deezer": "https://www.deezer.com/track/4226594732"
@@ -275,6 +297,7 @@
       "date": "2026-08-20",
       "art": "covers/undaunted.jpg",
       "songlink": null,
+      "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/e8/13/b0/e813b0d4-3a41-46f2-6afc-75ae183f537b/mzaf_18122153526895049748.plus.aac.p.m4a",
       "links": {
         "apple": "https://music.apple.com/us/album/i-gave-my-real-feat-tony-hernandez/6801972123?i=6801972458",
         "deezer": "https://www.deezer.com/track/4226594702"
@@ -287,6 +310,7 @@
       "date": "2026-08-20",
       "art": "covers/undaunted.jpg",
       "songlink": null,
+      "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/e0/94/15/e09415f2-34c0-6b6d-5ecc-5b0f6f63bbad/mzaf_6859776297703161279.plus.aac.p.m4a",
       "links": {
         "apple": "https://music.apple.com/us/album/i-gave-my-all-feat-tony-hernandez/6801972123?i=6801972124",
         "deezer": "https://www.deezer.com/track/4226594662"
@@ -299,6 +323,7 @@
       "date": "2026-08-20",
       "art": "covers/undaunted.jpg",
       "songlink": null,
+      "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/9f/5f/c2/9f5fc272-f682-f06f-d867-22d40dfde389/mzaf_3103883988996296378.plus.aac.p.m4a",
       "links": {
         "apple": "https://music.apple.com/us/album/going-home-feat-tony-hernandez/6801972123?i=6801972466",
         "deezer": "https://www.deezer.com/track/4226594782"
@@ -311,6 +336,7 @@
       "date": "2026-08-20",
       "art": "covers/undaunted.jpg",
       "songlink": null,
+      "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/33/25/4f/33254fa4-2082-24e2-b38d-11028c55fb59/mzaf_12938450518536125669.plus.aac.p.m4a",
       "links": {
         "apple": "https://music.apple.com/us/album/barefoot-on-broken-glass-feat-tony-hernandez/6801972123?i=6801972460",
         "deezer": "https://www.deezer.com/track/4226594722"
@@ -323,6 +349,7 @@
       "date": "2026-08-18",
       "art": "covers/god-is-good-all-the-time.jpg",
       "songlink": null,
+      "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/b1/d0/5f/b1d05fea-11c1-7e4c-7f06-0626cc43eeb9/mzaf_16061985463211064415.plus.aac.p.m4a",
       "links": {
         "apple": "https://music.apple.com/us/album/god-is-good-all-the-time/6802995700?i=6802995710",
         "deezer": "https://www.deezer.com/track/4232335902"
@@ -335,6 +362,7 @@
       "date": "2026-08-07",
       "art": "covers/palm-tree-dreams.jpg",
       "songlink": null,
+      "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/40/37/6f/40376f75-bf8e-9cc8-deb5-984e8ee9fffc/mzaf_623026196809869648.plus.aac.p.m4a",
       "links": {
         "apple": "https://music.apple.com/us/album/palm-tree-dreams/6799022880?i=6799022881",
         "deezer": "https://www.deezer.com/track/4208868932"
@@ -347,6 +375,7 @@
       "date": "2026-07-26",
       "art": "covers/the-tawas-tortoise.jpg",
       "songlink": null,
+      "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/19/ed/26/19ed2662-c01a-324e-3985-dd3171c4fb65/mzaf_7771000037607980047.plus.aac.p.m4a",
       "links": {
         "apple": "https://music.apple.com/us/album/the-tawas-tortoise/6794988230?i=6794988231",
         "deezer": "https://www.deezer.com/track/4178805702"
@@ -359,6 +388,7 @@
       "date": "2026-06-30",
       "art": "covers/i-gave-my-all-debut-edit.jpg",
       "songlink": null,
+      "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/dc/95/06/dc95068c-f6e1-5c62-286f-a351b195c8fa/mzaf_8358697051329954821.plus.aac.p.m4a",
       "links": {
         "apple": "https://music.apple.com/us/album/i-gave-my-all-debut-edit-feat-tony-hernandez/6786213560?i=6786213561",
         "deezer": "https://www.deezer.com/track/4123596951"
@@ -371,6 +401,7 @@
       "date": "2026-06-10",
       "art": "covers/motivations.jpg",
       "songlink": null,
+      "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/42/3c/82/423c8267-2733-e92c-17a9-b47ebb3a4e5a/mzaf_5789477143172068117.plus.aac.p.m4a",
       "links": {
         "apple": "https://music.apple.com/us/album/what-would-you-do/6774056337?i=6774056342",
         "deezer": "https://www.deezer.com/track/4049142991"
@@ -383,6 +414,7 @@
       "date": "2026-06-10",
       "art": "covers/motivations.jpg",
       "songlink": null,
+      "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/a7/63/26/a763267d-b9e4-bdef-403d-7d0eba4145ed/mzaf_3150257361041620052.plus.aac.p.m4a",
       "links": {
         "apple": "https://music.apple.com/us/album/say-it-so-i-can-hear-you/6774056337?i=6774056345",
         "deezer": "https://www.deezer.com/track/4049143021"
@@ -395,6 +427,7 @@
       "date": "2026-06-10",
       "art": "covers/motivations.jpg",
       "songlink": null,
+      "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/98/9d/67/989d67f7-0f48-9446-d10c-801b9be2a0cf/mzaf_1734944712327191588.plus.aac.p.m4a",
       "links": {
         "apple": "https://music.apple.com/us/album/no-more-hiding/6774056337?i=6774056338",
         "deezer": "https://www.deezer.com/track/4049142951"
@@ -407,6 +440,7 @@
       "date": "2026-06-10",
       "art": "covers/motivations.jpg",
       "songlink": null,
+      "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/94/bc/22/94bc2212-bc9d-2276-5ea4-9be3b2bf4ea0/mzaf_11503697606247840521.plus.aac.p.m4a",
       "links": {
         "apple": "https://music.apple.com/us/album/let-em-remix/6774056337?i=6774056649",
         "deezer": "https://www.deezer.com/track/4049143061"
@@ -419,6 +453,7 @@
       "date": "2026-06-10",
       "art": "covers/motivations.jpg",
       "songlink": null,
+      "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/8b/d9/b8/8bd9b8ca-333c-d5a5-e45d-366c3f0e0798/mzaf_5983461974147389693.plus.aac.p.m4a",
       "links": {
         "apple": "https://music.apple.com/us/album/let-em/6774056337?i=6774056343",
         "deezer": "https://www.deezer.com/track/4049143001"
@@ -431,6 +466,7 @@
       "date": "2026-06-10",
       "art": "covers/motivations.jpg",
       "songlink": null,
+      "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/d0/0e/94/d00e9463-3bd8-ec1e-b72d-d83c6dd0a754/mzaf_9960672101449380372.plus.aac.p.m4a",
       "links": {
         "apple": "https://music.apple.com/us/album/learning-to-see/6774056337?i=6774056346",
         "deezer": "https://www.deezer.com/track/4049143031"
@@ -443,6 +479,7 @@
       "date": "2026-06-10",
       "art": "covers/motivations.jpg",
       "songlink": null,
+      "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/83/dd/a4/83dda487-7ff2-6aeb-d3c1-edb0f02fd199/mzaf_13647666678380502990.plus.aac.p.m4a",
       "links": {
         "apple": "https://music.apple.com/us/album/know-how-to-fall/6774056337?i=6774056340",
         "deezer": "https://www.deezer.com/track/4049142971"
@@ -455,6 +492,7 @@
       "date": "2026-06-10",
       "art": "covers/motivations.jpg",
       "songlink": null,
+      "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/12/47/16/124716f2-1456-7ceb-75b5-39f47ffc37d9/mzaf_12082005815231585499.plus.aac.p.m4a",
       "links": {
         "apple": "https://music.apple.com/us/album/is-it-you-or-is-it-me/6774056337?i=6774056347",
         "deezer": "https://www.deezer.com/track/4049143041"
@@ -467,6 +505,7 @@
       "date": "2026-06-10",
       "art": "covers/motivations.jpg",
       "songlink": null,
+      "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/c0/f8/e6/c0f8e6e0-2a7e-af97-49e4-41f09fd532cf/mzaf_6952448872144860440.plus.aac.p.m4a",
       "links": {
         "apple": "https://music.apple.com/us/album/if-i-cant-hear-you-ill-never-be-heard/6774056337?i=6774056344",
         "deezer": "https://www.deezer.com/track/4049143011"
@@ -479,6 +518,7 @@
       "date": "2026-06-10",
       "art": "covers/motivations.jpg",
       "songlink": null,
+      "preview": null,
       "links": {
         "deezer": "https://www.deezer.com/track/4049143051"
       }
@@ -490,6 +530,7 @@
       "date": "2026-06-10",
       "art": "covers/motivations.jpg",
       "songlink": null,
+      "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/97/d9/ed/97d9eda7-09c9-bc56-3c20-44f734b86d4c/mzaf_3152002830668842264.plus.aac.p.m4a",
       "links": {
         "apple": "https://music.apple.com/us/album/change-it-up/6774056337?i=6774056341",
         "deezer": "https://www.deezer.com/track/4049142981"
@@ -502,6 +543,7 @@
       "date": "2026-06-10",
       "art": "covers/motivations.jpg",
       "songlink": null,
+      "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/8c/0c/21/8c0c21b3-5170-3b98-d3a8-24026dca0360/mzaf_15896404628937229532.plus.aac.p.m4a",
       "links": {
         "apple": "https://music.apple.com/us/album/break-free-from-the-cage/6774056337?i=6774056339",
         "deezer": "https://www.deezer.com/track/4049142961"
@@ -514,6 +556,7 @@
       "date": "2026-06-04",
       "art": "covers/charmane.jpg",
       "songlink": null,
+      "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/6b/b0/83/6bb0838d-7239-1f94-d60a-42b69cc05417/mzaf_4061121448442368196.plus.aac.p.m4a",
       "links": {
         "apple": "https://music.apple.com/us/album/charmane/6776327745?i=6776327746",
         "deezer": "https://www.deezer.com/track/4061958951"
@@ -526,6 +569,7 @@
       "date": "2026-03-28",
       "art": "covers/waking-up.jpg",
       "songlink": null,
+      "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/8a/c9/f4/8ac9f42f-1654-b142-f6cb-48eb4c22b64b/mzaf_8728148607555281978.plus.aac.p.m4a",
       "links": {
         "apple": "https://music.apple.com/us/album/wasgonnaville-rock-version/1888919061?i=1888919066",
         "deezer": "https://www.deezer.com/track/3926649191"
@@ -538,6 +582,7 @@
       "date": "2026-03-28",
       "art": "covers/waking-up.jpg",
       "songlink": null,
+      "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/75/57/2a/75572a35-5951-bf40-1963-82ae1783a541/mzaf_4228597706207376139.plus.aac.p.m4a",
       "links": {
         "apple": "https://music.apple.com/us/album/wasgonnaville-country-version/1888919061?i=1888919063",
         "deezer": "https://www.deezer.com/track/3926649181"
@@ -550,6 +595,7 @@
       "date": "2026-03-28",
       "art": "covers/waking-up.jpg",
       "songlink": null,
+      "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/05/c2/ff/05c2ff5b-6670-943d-375d-14e3383320f1/mzaf_17763695580996891404.plus.aac.p.m4a",
       "links": {
         "apple": "https://music.apple.com/us/album/thank-you-lord/1888919061?i=1888919068",
         "deezer": "https://www.deezer.com/track/3926649201"
@@ -562,6 +608,7 @@
       "date": "2026-03-28",
       "art": "covers/waking-up.jpg",
       "songlink": null,
+      "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/42/85/00/4285006b-f6c8-da2d-730b-95a21ce8beb2/mzaf_8443058994097860121.plus.aac.p.m4a",
       "links": {
         "apple": "https://music.apple.com/us/album/its-all-about-you-mary/1888919061?i=1888919162",
         "deezer": "https://www.deezer.com/track/3926649221"
@@ -574,6 +621,7 @@
       "date": "2026-03-28",
       "art": "covers/waking-up.jpg",
       "songlink": null,
+      "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/e5/52/aa/e552aa40-1f3f-8315-c29c-2aa889c37dda/mzaf_2855589444347128790.plus.aac.p.m4a",
       "links": {
         "apple": "https://music.apple.com/us/album/as-long-as-its-today/1888919061?i=1888919160",
         "deezer": "https://www.deezer.com/track/3926649211"
@@ -586,10 +634,67 @@
       "date": "2026-03-27",
       "art": "covers/as-long-as-its-today-funkified-version.jpg",
       "songlink": null,
+      "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/80/98/ca/8098ca6a-9d67-8368-ffe9-fed5a6eea404/mzaf_3145361008896379709.plus.aac.p.m4a",
       "links": {
         "apple": "https://music.apple.com/us/album/as-long-as-its-today-funkified-version/1888789105?i=1888789106",
         "deezer": "https://www.deezer.com/track/3926651011"
       }
+    }
+  ],
+  "videos": [
+    {
+      "id": "iaact7udp-k",
+      "title": "No Cerveza No Trabajo #ddot_nollid #reggaeton #originalsong #originalmusic",
+      "published": "2026-10-06",
+      "kind": "short"
+    },
+    {
+      "id": "zTyE61Pw3PQ",
+      "title": "Motor City Kitties...No More    #detroitlions  #detroit  #originalmusic #football #originalsong",
+      "published": "2026-09-13",
+      "kind": "short"
+    },
+    {
+      "id": "wkYv0tW9HPA",
+      "title": "The Fight is On #newmusic #trending",
+      "published": "2026-09-01",
+      "kind": "short"
+    },
+    {
+      "id": "H3GRYlDpAY8",
+      "title": "It Be Like That...Sometimes #originalsong #originalmusic #hiphopmusic #Ddot_Nollid #music #musica",
+      "published": "2026-08-31",
+      "kind": "short"
+    },
+    {
+      "id": "PYNnxwiHjik",
+      "title": "Tony Hernandez Introduction",
+      "published": "2026-07-11",
+      "kind": "short"
+    },
+    {
+      "id": "N0-HwZedvN4",
+      "title": "This CapCut Feature is Insane",
+      "published": "2026-06-27",
+      "kind": "video"
+    },
+    {
+      "id": "V8QXhnd0V3E",
+      "title": "Motivations  Motivational Hip Hop Release Announcement",
+      "published": "2026-06-11",
+      "kind": "video"
+    },
+    {
+      "id": "2nxpn4vfdAM",
+      "title": "Break free from the cage",
+      "published": "2026-05-12",
+      "kind": "short"
+    },
+    {
+      "id": "XV5CccUsEcs",
+      "title": "Thankful Heart Rising #praise #emotional",
+      "published": "2026-05-11",
+      "kind": "short"
     }
   ]
 }
