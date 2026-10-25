@@ -273,6 +273,30 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px}
 .f-pause{flex:none;width:46px;border-radius:12px;background:var(--deck);border:1px solid var(--wire);display:grid;place-items:center}
 .f-pause svg{width:16px;height:16px;fill:currentColor}
 @media (max-width:560px){.f-dot b{font-size:13px}.f-nav{gap:6px}.f-dot{padding:8px 9px 10px}}
+.vgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:18px}
+.srow{display:flex;gap:14px;overflow-x:auto;padding-bottom:10px;scroll-snap-type:x proximity}
+.vcard{background:none;border:0;padding:0;text-align:left;display:grid;gap:8px;align-content:start;min-width:0}
+.srow .vcard{flex:none;width:180px;scroll-snap-align:start}
+.vthumb{position:relative;display:block;aspect-ratio:16/9;border-radius:12px;overflow:hidden;background:var(--deck);border:1px solid var(--wire)}
+.srow .vthumb{aspect-ratio:9/16}
+.vthumb img{width:100%;height:100%;object-fit:cover;transition:scale .4s ease}
+.vcard:hover .vthumb img{scale:1.04}
+.vplay{position:absolute;inset:0;margin:auto;width:54px;height:54px;border-radius:50%;background:rgba(4,6,12,.72);display:grid;place-items:center;border:1px solid rgba(223,228,238,.35)}
+.vplay svg{width:20px;height:20px;fill:var(--chrome);margin-left:3px}
+.vcard:hover .vplay,.vcard:focus-visible .vplay{background:var(--volt);border-color:var(--volt)}
+.vcard b{font-size:15px;line-height:1.35;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.vcard small{color:var(--steel);font-size:13px}
+.v-empty{color:var(--steel);margin:0;padding:28px;border:1px dashed var(--wire);border-radius:14px;max-width:62ch}
+.v-empty a{color:var(--volt-hot)}
+.v-foot{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+.vbox{position:fixed;inset:0;z-index:70;background:rgba(2,4,8,.92);display:grid;place-items:center;padding:max(16px,env(safe-area-inset-top,0px)) max(16px,env(safe-area-inset-right,0px)) max(16px,env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px))}
+.vwrap{display:grid;gap:10px;justify-items:center;max-width:100%}
+.vbar{display:flex;align-items:center;gap:12px;justify-content:space-between;width:100%}
+.vbar span{font-weight:700;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.vframe{width:min(960px,92vw);aspect-ratio:16/9;max-height:76vh}
+.vframe.short{width:auto;height:min(78vh,720px);aspect-ratio:9/16;max-width:92vw}
+.vframe iframe{width:100%;height:100%;border:0;border-radius:12px;background:#000}
+#vOpen{color:var(--volt-hot);font-size:14px}
 .toast{position:fixed;left:50%;bottom:calc(var(--dock-h) + 16px + env(safe-area-inset-bottom,0px));translate:-50% 0;z-index:60;background:var(--chrome);color:var(--void);
   font-weight:700;padding:10px 18px;border-radius:999px;font-size:14px;box-shadow:0 10px 30px rgba(0,0,0,.5);max-width:calc(100% - 32px)}
 </style>
@@ -281,7 +305,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px}
   <div class="wrap">
     <a class="brand" href="#top" aria-label="Ddot Nollid home"><img src="./cyborg.webp" alt=""><span class="chrome-type">Ddot Nollid</span></a>
     <nav class="nav" aria-label="Sections">
-      <a href="#listen">Listen</a><a href="#releases">Releases</a><a href="#follow">Follow</a><a href="#merch">Merch</a><a href="#story">Story</a>
+      <a href="#listen">Listen</a><a href="#releases">Releases</a><a href="#watch">Watch</a><a href="#follow">Follow</a><a href="#merch">Merch</a><a href="#story">Story</a>
     </nav>
     <a class="yt-link" href="#follow" aria-label="Follow Ddot Nollid"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7.5-4.6-10-9.3C.3 8.4 2.3 4 6.3 4c2.2 0 3.7 1.3 4.7 2.7C12 5.3 13.5 4 15.7 4c4 0 6 4.4 4.3 7.7C19.5 16.4 12 21 12 21Z"/></svg><span class="yt-label">Follow</span></a>
     <button class="cart-btn" id="openCart" aria-label="Open cart">
@@ -348,6 +372,17 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px}
     </div>
   </section>
 
+  <section class="section" id="watch" style="padding-top:0">
+    <div class="wrap">
+      <div class="section-head">
+        <h2 class="chrome-type">Watch</h2>
+        <div class="filters" id="vTabs" role="group" aria-label="Video type"></div>
+      </div>
+      <div id="vGrid" class="vgrid"></div>
+      <div class="v-foot"><button class="btn" id="vMore" hidden>Show all videos</button><a class="btn btn-volt" href="https://www.youtube.com/channel/UCjUHyRj5Eze6VPge7ex6nvQ?sub_confirmation=1" target="_blank" rel="noopener">Subscribe on YouTube</a></div>
+    </div>
+  </section>
+
   <section class="section" id="follow" style="padding-top:0">
     <div class="wrap">
       <div class="section-head">
@@ -398,7 +433,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px}
   <div class="wrap">
     <div class="d-track">
       <img id="dArt" src="./undaunted.webp" alt="">
-      <div><span class="d-title" id="dTitle">They Don’t Understand</span><span class="d-artist">Ddot Nollid</span></div>
+      <div><span class="d-title" id="dTitle">They Don’t Understand</span><span class="d-artist" id="dSub">Ddot Nollid</span></div>
     </div>
     <div class="d-ctrls">
       <div class="d-btns">
@@ -432,6 +467,13 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px}
   <div class="sheet-list" id="sList"></div>
   <div class="sheet-foot"><button class="btn" id="copyLink">Copy song link</button></div>
 </aside>
+<div class="vbox" id="vbox" hidden role="dialog" aria-modal="true" aria-labelledby="vTitle">
+  <div class="vwrap">
+    <div class="vbar"><span id="vTitle">Video</span><button class="ib" id="vClose" aria-label="Close video"><svg viewBox="0 0 24 24"><path d="M18.3 5.7 12 12l6.3 6.3-1.4 1.4L10.6 13.4 4.3 19.7l-1.4-1.4L9.2 12 2.9 5.7l1.4-1.4 6.3 6.3 6.3-6.3z"/></svg></button></div>
+    <div class="vframe" id="vFrame"></div>
+    <a id="vOpen" href="#" target="_blank" rel="noopener">Watch on YouTube</a>
+  </div>
+</div>
 <div class="toast" id="toast" hidden></div>
 
 <script>
@@ -558,7 +600,7 @@ $("#copyLink").addEventListener("click",()=>{
 
 /* ---------- tracks + covers ---------- */
 const artOf=t=>t.art?img(t.art):(t.artUrl||img("cyborg"));
-document.addEventListener("error",e=>{const el=e.target;if(el.tagName==="IMG"&&!el.dataset.fb){el.dataset.fb="1";el.src=img("cyborg")}},true);
+document.addEventListener("error",e=>{const el=e.target;if(el.tagName==="IMG"&&!el.src.endsWith("cyborg.webp"))el.src=img("cyborg")},true);
 const list=$("#tracks"), covers=$("#covers");
 function renderLists(){
 list.innerHTML="";covers.innerHTML="";
@@ -608,6 +650,7 @@ function load(i,autoplay){
   $("#nowArt").src=artOf(t);$("#nowTitle").textContent=t.title;$("#nowNote").textContent=t.note;
   document.querySelectorAll(".track").forEach(el=>el.setAttribute("aria-current",el.dataset.id===t.id?"true":"false"));
   $("#seek").value=0;$("#tCur").textContent="0:00";$("#tDur").textContent="0:00";
+  $("#dSub").textContent=t.audio?"Ddot Nollid · 30-second preview":"Ddot Nollid";
   if(t.audio){audio.src=t.audio;if(autoplay)audio.play().catch(()=>setPlaying(false));}
   else{audio.removeAttribute("src");audio.load();setPlaying(false);}
   updateListenLinks();
@@ -621,7 +664,11 @@ $("#prev").addEventListener("click",()=>load(cur-1,!audio.paused));
 $("#next").addEventListener("click",()=>load(cur+1,!audio.paused));
 audio.addEventListener("play",()=>setPlaying(true));
 audio.addEventListener("pause",()=>setPlaying(false));
-audio.addEventListener("ended",()=>load(cur+1,true));
+audio.addEventListener("ended",()=>{
+  const t=TRACKS[cur],p=getPref();
+  toast(p?`Hear all of “${t.title}” on ${p.name}`:`Hear all of “${t.title}”: tap Listen`);
+  for(let k=1;k<TRACKS.length;k++){const j=(cur+k)%TRACKS.length;if(TRACKS[j].audio){load(j,true);return}}
+});
 audio.addEventListener("loadedmetadata",()=>$("#tDur").textContent=fmt(audio.duration));
 audio.addEventListener("timeupdate",()=>{if(audio.duration){$("#seek").value=audio.currentTime/audio.duration*1000;$("#tCur").textContent=fmt(audio.currentTime)}});
 $("#seek").addEventListener("input",e=>{if(audio.duration)audio.currentTime=e.target.value/1000*audio.duration});
@@ -647,6 +694,7 @@ async function loadLinks(){
     else{const kind={album:"Album",ep:"EP"}[lt.type]||"Single";t={id:"r-"+key(lt.title).replace(/ /g,"-")+"-"+(lt.date||""),title:lt.title,release:lt.release,note:lt.release&&!sameSong(lt.release,lt.title)?`From ${lt.release}`:kind,art:null,artUrl:lt.art,kind,audio:null};added.push(t)}
     t.links=Object.assign({},lt.links||{},t.links||{});
     if(lt.songlink&&!t.hyperfollow)t.hyperfollow=lt.songlink;
+    if(lt.preview&&!t.audio)t.audio=lt.preview;
   });
   added.forEach((t,i)=>{t.date=t.date||(data.tracks.find(lt=>lt.title===t.title)||{}).date});
   if(data.tracks&&data.tracks.length){
@@ -662,6 +710,8 @@ async function loadLinks(){
   $("#footLinks").innerHTML=PLATFORMS.map(p=>`<a href="${artistUrl(p)}" target="_blank" rel="noopener">${p.name}</a>`).join("  ·  ");
   updateListenLinks();
   fItems=buildFeatured();renderFeature(0,false);
+  renderVideos(data.videos||[]);
+  if(audio.paused)load(cur,false);
 }
 
 /* ---------- featured releases: newest 3, rotating every 2 minutes ---------- */
@@ -714,6 +764,40 @@ $("#fNav").addEventListener("click",e=>{
 document.addEventListener("visibilitychange",()=>$("#fNav").classList.toggle("paused",fPaused||document.hidden));
 setInterval(()=>{if(fPaused||document.hidden||fItems.length<2)return;if(++fElapsed>=F_DUR)renderFeature(fIdx+1,true)},1000);
 fItems=buildFeatured();renderFeature(0,false);
+
+/* ---------- Watch: YouTube videos and Shorts ---------- */
+const esc=s=>String(s||"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+let vids=[],vTab="video",vAll=false;
+function renderVideos(list){
+  if(list)vids=list;
+  const counts={video:vids.filter(v=>v.kind==="video").length,short:vids.filter(v=>v.kind==="short").length};
+  if(list&&!counts.video&&counts.short)vTab="short";
+  $("#vTabs").innerHTML=[["video","Videos"],["short","Shorts"]].map(([k,n])=>`<button class="chip" data-vt="${k}" aria-pressed="${k===vTab}">${n}${counts[k]?` (${counts[k]})`:""}</button>`).join("");
+  const shown=vids.filter(v=>v.kind===vTab), grid=$("#vGrid");
+  grid.className=vTab==="short"?"srow":"vgrid";
+  if(!shown.length){
+    grid.innerHTML=`<p class="v-empty">${vTab==="short"?"Shorts":"Videos"} from the Ddot Nollid YouTube channel show up here automatically. Until then, watch them on <a href="${YT}" target="_blank" rel="noopener">YouTube</a>.</p>`;
+    $("#vMore").hidden=true;return;
+  }
+  const lim=vTab==="video"&&!vAll?6:shown.length;
+  grid.innerHTML=shown.slice(0,lim).map(v=>`<button class="vcard" data-v="${esc(v.id)}" data-k="${v.kind}" aria-label="Play ${esc(v.title)}"><span class="vthumb"><img src="https://i.ytimg.com/vi/${esc(v.id)}/hqdefault.jpg" alt="" loading="lazy"><span class="vplay">${playSvg}</span></span><b>${esc(v.title)}</b><small>${v.published?fmtDate(v.published,{month:"short",day:"numeric",year:"numeric"}):""}</small></button>`).join("");
+  $("#vMore").hidden=!(vTab==="video"&&!vAll&&shown.length>6);
+}
+function openVideo(id,kind,title){
+  audio.pause();
+  const f=$("#vFrame");f.className="vframe"+(kind==="short"?" short":"");
+  f.innerHTML=`<iframe src="https://www.youtube-nocookie.com/embed/${encodeURIComponent(id)}?autoplay=1&rel=0&playsinline=1" title="${esc(title)}" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe>`;
+  $("#vTitle").textContent=title;
+  $("#vOpen").href=kind==="short"?`https://www.youtube.com/shorts/${id}`:`https://www.youtube.com/watch?v=${id}`;
+  $("#vbox").hidden=false;$("#vClose").focus();
+}
+function closeVideo(){$("#vbox").hidden=true;$("#vFrame").innerHTML=""}
+$("#vTabs").addEventListener("click",e=>{const b=e.target.closest("[data-vt]");if(!b)return;vTab=b.dataset.vt;vAll=false;renderVideos()});
+$("#vMore").addEventListener("click",()=>{vAll=true;renderVideos()});
+$("#vGrid").addEventListener("click",e=>{const c=e.target.closest(".vcard");if(c)openVideo(c.dataset.v,c.dataset.k,c.querySelector("b").textContent)});
+$("#vClose").addEventListener("click",closeVideo);
+$("#vbox").addEventListener("click",e=>{if(e.target.id==="vbox")closeVideo()});
+renderVideos([]);
 loadLinks();
 
 /* ---------- merch mockups ---------- */
@@ -820,7 +904,7 @@ function openCart(on){$("#drawer").hidden=!on;$("#scrim").hidden=!on;if(on)$("#c
 $("#openCart").addEventListener("click",()=>openCart(true));
 $("#closeCart").addEventListener("click",()=>openCart(false));
 $("#scrim").addEventListener("click",()=>{if(!$("#sheet").hidden)closeSheet();else openCart(false)});
-document.addEventListener("keydown",e=>{if(e.key!=="Escape")return;if(!$("#sheet").hidden)closeSheet();else if(!$("#drawer").hidden)openCart(false)});
+document.addEventListener("keydown",e=>{if(e.key!=="Escape")return;if(!$("#vbox").hidden){closeVideo();return}if(!$("#sheet").hidden)closeSheet();else if(!$("#drawer").hidden)openCart(false)});
 $("#checkout").addEventListener("click",()=>{$("#checkoutNote").hidden=false});
 renderCart();
 </script>

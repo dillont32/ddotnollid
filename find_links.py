@@ -11,6 +11,7 @@ Sources (no accounts needed unless noted):
   - Apple / iTunes Search  -> catalog + Apple Music artist page
   - Spotify Web API        -> optional; needs SPOTIFY_CLIENT_ID / SPOTIFY_CLIENT_SECRET
                               and the app owner must have Spotify Premium (Feb 2026 rule)
+  - YouTube feeds          -> latest videos and Shorts; YOUTUBE_API_KEY (optional) gets all
   - Songlink / Odesli API  -> optional; needs ODESLI_API_KEY (the free tier was retired
                               on 2026-07-31). Adds YouTube Music, Amazon, Tidal, Pandora links.
 
@@ -31,6 +32,7 @@ import unicodedata
 import urllib.error
 import urllib.parse
 import urllib.request
+import xml.etree.ElementTree as ET
 from datetime import datetime, timezone
 
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -135,6 +137,7 @@ def from_deezer(cfg):
                     "date": album.get("release_date"),
                     "art": album.get("cover_xl") or album.get("cover_big"),
                     "seed": t.get("link"),
+                    "preview": t.get("preview") if t.get("preview") and "hdnea" not in t.get("preview") else None,
                     "platform": "deezer",
                 })
         url = page.get("next")
@@ -160,6 +163,7 @@ def from_apple(cfg):
             "art": (r.get("artworkUrl100") or "").replace("100x100bb", "1000x1000bb"),
             "seed": re.sub(r"[?&]uo=\d+", "", r.get("trackViewUrl") or "") or None,
             "platform": "apple",
+            "preview": r.get("previewUrl"),
         })
     log(f"Apple Music: {len(tracks)} songs")
     return artist_url, tracks
@@ -228,6 +232,92 @@ def download(url, path):
     return True
 
 
+YT_NS = {"a": "http://www.w3.org/2005/Atom", "yt": "http://www.youtube.com/xml/schemas/2015"}
+
+
+def youtube_feed(playlist_id, kind):
+    """Read YouTube's public feed for a playlist (about 15 newest entries, no key needed)."""
+    url = "https://www.youtube.com/feeds/videos.xml?playlist_id=" + playlist_id
+    try:
+        req = urllib.request.Request(url, headers={"User-Agent": UA})
+        with urllib.request.urlopen(req, timeout=30) as resp:
+            root = ET.fromstring(resp.read())
+    except Exception as e:
+        log(f"  YouTube feed unavailable ({e}); keeping the videos found earlier")
+        return None
+    items = []
+    for entry in root.findall("a:entry", YT_NS):
+        vid = entry.findtext("yt:videoId", namespaces=YT_NS)
+        link_el = entry.find("a:link", YT_NS)
+        link = link_el.get("href", "") if link_el is not None else ""
+        if not vid:
+            continue
+        items.append({
+            "id": vid,
+            "title": entry.findtext("a:title", namespaces=YT_NS) or "",
+            "published": (entry.findtext("a:published", namespaces=YT_NS) or "")[:10],
+            "kind": "short" if (kind == "short" or "/shorts/" in link) else "video",
+        })
+    return items
+
+
+def youtube_api(playlist_id, kind, key):
+    """Full list through the YouTube Data API (needs a free YOUTUBE_API_KEY)."""
+    items, token = [], ""
+    while True:
+        params = {"part": "snippet,contentDetails", "maxResults": 50, "playlistId": playlist_id, "key": key}
+        if token:
+            params["pageToken"] = token
+        page = http_json("https://www.googleapis.com/youtube/v3/playlistItems?" + urllib.parse.urlencode(params))
+        if page is None:
+            return None if not items else items
+        for it in page.get("items", []):
+            sn, cd = it.get("snippet") or {}, it.get("contentDetails") or {}
+            if sn.get("title") in ("Private video", "Deleted video"):
+                continue
+            items.append({
+                "id": cd.get("videoId"),
+                "title": sn.get("title") or "",
+                "published": (cd.get("videoPublishedAt") or sn.get("publishedAt") or "")[:10],
+                "kind": kind,
+            })
+        token = page.get("nextPageToken")
+        if not token:
+            return items
+
+
+def from_youtube(cfg, previous):
+    """Videos and Shorts for the Watch section. Keeps earlier finds when using the feeds."""
+    channel = cfg.get("youtube_channel_id")
+    if not channel:  # fall back to the channel in artist_links
+        m = re.search(r"/channel/(UC[\w-]+)", (cfg.get("artist_links") or {}).get("youtube", ""))
+        channel = m.group(1) if m else None
+    if not channel or not channel.startswith("UC"):
+        return previous
+    base = channel[2:]
+    key = os.environ.get("YOUTUBE_API_KEY")
+    known = {v["id"]: v for v in previous}
+    got_any = False
+    for prefix, kind in (("UULF", "video"), ("UUSH", "short")):
+        items = youtube_api(prefix + base, kind, key) if key else youtube_feed(prefix + base, kind)
+        if items is None:
+            continue
+        got_any = True
+        if key:  # the API gives the complete list, so drop anything no longer on the channel
+            known = {k: v for k, v in known.items() if v.get("kind") != kind}
+        for v in items:
+            known[v["id"]] = v
+    if not got_any and not key:
+        # Fall back to the combined uploads feed
+        items = youtube_feed("UU" + base, "video") or []
+        for v in items:
+            known[v["id"]] = v
+    videos = sorted(known.values(), key=lambda v: (v.get("published") or "", v["id"]), reverse=True)
+    log(f"YouTube: {sum(v['kind'] == 'video' for v in videos)} videos, "
+        f"{sum(v['kind'] == 'short' for v in videos)} Shorts" + ("" if key else " (feeds; add YOUTUBE_API_KEY for the full catalog)"))
+    return videos
+
+
 def songlink(url, cfg):
     params = {"url": url, "userCountry": cfg.get("country", "US")}
     key = os.environ.get("ODESLI_API_KEY")
@@ -273,6 +363,8 @@ def main():
         else:
             found[key]["seeds"].append(t["seed"])
             found[key]["direct"].setdefault(t["platform"], t["seed"])
+            if t.get("preview") and (t["platform"] == "apple" or not found[key].get("preview")):
+                found[key]["preview"] = t["preview"]  # Apple previews preferred: they don't expire
             for field in ("release", "type", "date", "art"):
                 found[key][field] = found[key].get(field) or t.get(field)
 
@@ -311,6 +403,7 @@ def main():
             "date": t.get("date"),
             "art": t.get("art"),
             "songlink": page,
+            "preview": t.get("preview") or old.get("preview"),
             "links": dict(sorted(links.items())),
         })
     tracks.sort(key=lambda t: (t.get("date") or "", t["title"]), reverse=True)
@@ -338,6 +431,8 @@ def main():
         t["art"] = rel_path
     log(f"Covers saved this run: {saved_covers}")
 
+    videos = from_youtube(cfg, previous.get("videos") or [])
+
     artist_links = {"spotify": f"https://open.spotify.com/artist/{cfg['spotify_artist_id']}"} \
         if cfg.get("spotify_artist_id") else {}
     if apple_artist:
@@ -351,12 +446,15 @@ def main():
         "updated": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
         "artist_links": dict(sorted(artist_links.items())),
         "tracks": tracks,
+        "videos": videos,
     }
 
     # Report
     lines = [f"## {cfg['artist_name']} streaming links", "",
              f"{len(tracks)} songs found. New this run: {', '.join(new_titles) or 'none'}.", "",
-             source_line, f"New cover images saved: {saved_covers}.", "",
+             source_line, f"New cover images saved: {saved_covers}.",
+             f"Songs with a preview: {sum(1 for t in tracks if t.get('preview'))} of {len(tracks)}.",
+             f"YouTube: {sum(v['kind'] == 'video' for v in videos)} videos, {sum(v['kind'] == 'short' for v in videos)} Shorts.", "",
              "| Song | " + " | ".join(CORE_PLATFORMS) + " |",
              "|---|" + "---|" * len(CORE_PLATFORMS)]
     for t in tracks:
