@@ -137,7 +137,23 @@ h2{font-size:clamp(44px,7vw,88px)}
 .chip[aria-pressed="true"]{background:var(--chrome);color:var(--void);border-color:var(--chrome)}
 .products{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:18px}
 .product{background:var(--deck);border:1px solid var(--wire);border-radius:16px;overflow:hidden;display:flex;flex-direction:column}
-.stage{aspect-ratio:1;display:grid;place-items:center;background:radial-gradient(circle at 50% 40%,#1b2741 0%,var(--deck) 70%);position:relative}
+.stage{aspect-ratio:1;display:grid;place-items:center;background:radial-gradient(circle at 50% 40%,#1b2741 0%,var(--deck) 70%);position:relative;cursor:zoom-in}
+.zoom-btn{position:absolute;top:10px;right:10px;width:36px;height:36px;border-radius:50%;display:grid;place-items:center;background:rgba(4,6,12,.72);border:1px solid var(--wire);color:var(--chrome)}
+.zoom-btn:hover{border-color:var(--volt-hot)}
+.zoom-btn svg{width:17px;height:17px;fill:currentColor}
+.zbox{position:fixed;inset:0;z-index:72;background:rgba(2,4,8,.94);display:grid;place-items:center;padding:max(16px,env(safe-area-inset-top,0px)) max(16px,env(safe-area-inset-right,0px)) max(16px,env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px))}
+.zwrap{width:min(860px,100%);display:grid;gap:10px}
+.zbar{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.zbar h3{font-size:clamp(20px,4vw,32px);flex:1;min-width:0;overflow-wrap:anywhere}
+@media (max-width:560px){.zbar h3{flex-basis:calc(100% - 56px)}.zbar .side-tg{order:3}}
+.zbar .side-tg{position:static}
+.zview{position:relative;overflow:hidden;width:min(100%,76vh);aspect-ratio:1;justify-self:center;border-radius:16px;background:radial-gradient(circle at 50% 40%,#1b2741 0%,var(--deck) 70%);border:1px solid var(--wire);cursor:zoom-in;touch-action:pan-y pinch-zoom}
+.zview.zoomed{cursor:zoom-out;touch-action:none}
+.zin{position:absolute;inset:0;display:grid;place-items:center;transform-origin:0 0;transition:transform .18s ease-out}
+.zin svg{width:90%;height:auto}
+.zin img{width:100%;height:100%;object-fit:contain}
+.zhint{margin:0;text-align:center;color:var(--steel);font-size:13px}
+.zwrap .mod-note{justify-self:center;max-width:62ch}
 .stage svg{width:84%;height:auto;filter:drop-shadow(0 18px 24px rgba(0,0,0,.55))}
 .p-body{padding:16px;display:flex;flex-direction:column;gap:10px;flex:1}
 .p-top{display:flex;justify-content:space-between;gap:12px;align-items:baseline}
@@ -467,7 +483,7 @@ a.add{display:inline-flex;align-items:center;justify-content:center;gap:6px;text
 
 <footer>
   <div class="wrap">
-    <span>© 2026 Ddot Nollid. A Ddot Nollid Production. Contact: <a href="mailto:hello@ddotnollid.com">hello@ddotnollid.com</a>. Site updated Oct 26, 2026 (v6).</span>
+    <span>© 2026 Ddot Nollid. A Ddot Nollid Production. Contact: <a href="mailto:hello@ddotnollid.com">hello@ddotnollid.com</a>. Site updated Oct 26, 2026 (v7).</span>
     <span id="footLinks"></span>
   </div>
 </footer>
@@ -511,6 +527,14 @@ a.add{display:inline-flex;align-items:center;justify-content:center;gap:6px;text
     <div class="vbar"><span id="vTitle">Video</span><button class="ib" id="vClose" aria-label="Close video"><svg viewBox="0 0 24 24"><path d="M18.3 5.7 12 12l6.3 6.3-1.4 1.4L10.6 13.4 4.3 19.7l-1.4-1.4L9.2 12 2.9 5.7l1.4-1.4 6.3 6.3 6.3-6.3z"/></svg></button></div>
     <div class="vframe" id="vFrame"></div>
     <a id="vOpen" href="#" target="_blank" rel="noopener">Watch on YouTube</a>
+  </div>
+</div>
+<div class="zbox" id="zbox" hidden role="dialog" aria-modal="true" aria-labelledby="zTitle">
+  <div class="zwrap">
+    <div class="zbar"><h3 id="zTitle" class="chrome-type">Merch</h3><div class="side-tg" id="zTabs" role="group" aria-label="View"></div><button class="ib" id="zClose" aria-label="Close"><svg viewBox="0 0 24 24"><path d="M18.3 5.7 12 12l6.3 6.3-1.4 1.4L10.6 13.4 4.3 19.7l-1.4-1.4L9.2 12 2.9 5.7l1.4-1.4 6.3 6.3 6.3-6.3z"/></svg></button></div>
+    <div class="zview" id="zView"><div class="zin" id="zIn"></div></div>
+    <p class="zhint">Tap the picture to magnify, then move around to look closer. Tap again to zoom out.</p>
+    <p class="mod-note" id="zNote" hidden></p>
   </div>
 </div>
 <div class="toast" id="toast" hidden></div>
@@ -983,7 +1007,7 @@ const MERCH_EDITED={
   "they-dont-understand":"Chevrolet badges blurred"
 };
 const mimg=k=>img(MERCH_EDITED[k]?`merch-${k}`:k);
-const modNote=k=>MERCH_EDITED[k]?`<b>Artwork modified for merch.</b> To comply with trademark licensing rules, this merch version differs from the original album cover (${MERCH_EDITED[k]}). The album artwork itself is unchanged.`:"";
+const modNote=k=>MERCH_EDITED[k]?`<b>Artwork modified for merch.</b> To comply with trademark licensing rules, this merch version differs from the original album cover (${MERCH_EDITED[k]}).`:"";
 function garment(p,art,side){
   const u=mimg(art), id="c"+p.id+side, logo=img("cyborg");
   const st='stroke="rgba(255,255,255,.08)"', seam='fill="none" stroke="rgba(127,140,165,.35)" stroke-width="3"';
@@ -1078,7 +1102,7 @@ function renderProducts(){
     const dsel=p.design?`<select id="dz-${p.id}" aria-label="Cover for ${p.name}">${DESIGNS.map(([k,n])=>`<option value="${k}"${k===art?" selected":""}>${n}</option>`).join("")}</select>`:"";
     const side=p.sides?(view[p.id]||"front"):null;
     const tg=p.sides?`<div class="side-tg" role="group" aria-label="View side"><button data-side="front" aria-pressed="${side==="front"}">Front</button><button data-side="back" aria-pressed="${side==="back"}">Back</button></div>`:"";
-    el.innerHTML=`<div class="stage"><div class="stage-art">${mock(p,art,side)}</div>${tg}</div>
+    el.innerHTML=`<div class="stage"><div class="stage-art">${mock(p,art,side)}</div>${tg}<button class="zoom-btn" aria-label="Magnify ${p.name}"><svg viewBox="0 0 24 24"><path d="M10 3a7 7 0 0 1 5.6 11.2l4.6 4.6-1.4 1.4-4.6-4.6A7 7 0 1 1 10 3Zm0 2a5 5 0 1 0 0 10 5 5 0 0 0 0-10Zm-1 2h2v2h2v2h-2v2H9v-2H7V9h2Z"/></svg></button></div>
       <div class="p-body"><div class="p-top"><h3 class="p-name">${p.name}</h3><span class="p-price">${money(p.price)}</span></div>
       <p class="p-desc">${p.desc}${p.sizes?" Sizes S–3XL, chosen at checkout.":""}</p>
       <p class="mod-note" ${p.design&&MERCH_EDITED[art]?"":"hidden"}>${modNote(art)}</p>
@@ -1095,10 +1119,44 @@ function renderProducts(){
     };
     el.querySelectorAll(".side-tg button").forEach(b=>b.addEventListener("click",()=>{if(view[p.id]===b.dataset.side||(!view[p.id]&&b.dataset.side==="front"))return;view[p.id]=b.dataset.side;draw(true)}));
     if(ds)ds.addEventListener("change",()=>{choice[p.id]=ds.value;const turn=p.sides&&view[p.id]!=="back";if(p.sides)view[p.id]="back";draw(turn)});
+    el.querySelector(".stage").addEventListener("click",e=>{
+      if(e.target.closest(".side-tg"))return;
+      openZoom(p,ds?ds.value:p.art,p.sides?(view[p.id]||"front"):"product");
+    });
     grid.appendChild(el);
   });
 }
 renderDesignStrip();renderProducts();
+
+/* ---------- merch magnifier: large view with Front / Back / Artwork, tap to zoom ---------- */
+const Z={p:null,art:null,tab:"front",zoom:false,last:null};
+function openZoom(p,art,tab){Z.p=p;Z.art=art;Z.tab=tab;Z.last=document.activeElement;renderZoom();$("#zbox").hidden=false;$("#zClose").focus()}
+function closeZoom(){$("#zbox").hidden=true;setZoom(false);if(Z.last&&Z.last.focus)Z.last.focus()}
+function renderZoom(){
+  const p=Z.p, tabs=p.sides?[["front","Front"],["back","Back"]]:[["product","Product"]];
+  if(p.design)tabs.push(["art","Artwork"]);
+  $("#zTitle").textContent=p.design?`${p.name} · ${designName(Z.art)}`:p.name;
+  $("#zTabs").innerHTML=tabs.map(([k,n])=>`<button data-zt="${k}" aria-pressed="${k===Z.tab}">${n}</button>`).join("");
+  $("#zIn").innerHTML=Z.tab==="art"?`<img src="${mimg(Z.art)}" alt="${designName(Z.art)} artwork as printed">`
+    :mock(p,Z.art,p.sides?Z.tab:null).replace(/id="c/g,'id="z').replace(/url\(#c/g,"url(#z");
+  const n=$("#zNote");n.hidden=!(p.design&&MERCH_EDITED[Z.art]);n.innerHTML=modNote(Z.art);
+  setZoom(false);
+}
+function setZoom(on,x,y){
+  Z.zoom=on;const v=$("#zView"),i=$("#zIn");v.classList.toggle("zoomed",on);
+  if(!on){i.style.transform="";return}
+  panZoom(x,y);
+}
+function panZoom(x,y){
+  const v=$("#zView").getBoundingClientRect(),s=2.6;
+  const fx=Math.min(1,Math.max(0,(x-v.left)/v.width)),fy=Math.min(1,Math.max(0,(y-v.top)/v.height));
+  $("#zIn").style.transform=`translate(${-fx*v.width*(s-1)}px,${-fy*v.height*(s-1)}px) scale(${s})`;
+}
+$("#zView").addEventListener("click",e=>{if(Z.zoom)setZoom(false);else setZoom(true,e.clientX,e.clientY)});
+$("#zView").addEventListener("pointermove",e=>{if(Z.zoom)panZoom(e.clientX,e.clientY)});
+$("#zTabs").addEventListener("click",e=>{const b=e.target.closest("[data-zt]");if(!b)return;Z.tab=b.dataset.zt;renderZoom()});
+$("#zClose").addEventListener("click",closeZoom);
+$("#zbox").addEventListener("click",e=>{if(e.target.id==="zbox")closeZoom()});
 
 /* ---------- store links ---------- */
 async function loadShop(){
@@ -1108,7 +1166,7 @@ async function loadShop(){
   renderProducts();
 }
 $("#scrim").addEventListener("click",()=>{if(!$("#sheet").hidden)closeSheet()});
-document.addEventListener("keydown",e=>{if(e.key!=="Escape")return;if(!$("#vbox").hidden){closeVideo();return}if(!$("#sheet").hidden)closeSheet()});
+document.addEventListener("keydown",e=>{if(e.key!=="Escape")return;if(!$("#zbox").hidden){closeZoom();return}if(!$("#vbox").hidden){closeVideo();return}if(!$("#sheet").hidden)closeSheet()});
 loadShop();
 </script>
 
