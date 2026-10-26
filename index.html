@@ -253,6 +253,9 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px}
 .dz[aria-pressed="true"] img{border-color:var(--volt-hot);box-shadow:0 0 18px rgba(74,134,255,.5)}
 .dz[aria-pressed="true"] span{color:var(--chrome)}
 .dz span{font-size:12px;line-height:1.3;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.dz em{font-style:normal;font-size:11px;color:var(--gold)}
+.mod-note{margin:0;font-size:13px;line-height:1.45;color:var(--chrome);background:rgba(226,182,94,.1);border:1px solid rgba(226,182,94,.45);border-radius:10px;padding:8px 10px}
+.mod-note b{color:var(--gold)}
 .p-opts{margin-top:auto;display:grid;gap:8px}
 .p-opts .p-row{margin-top:0}
 .p-row .add:only-child{flex:1}
@@ -441,7 +444,7 @@ a.add{display:inline-flex;align-items:center;justify-content:center;gap:6px;text
       <p class="dz-label">Pick a cover to see it on everything, or choose a cover per item. Buy takes you to the Ddot Nollid store to pick your size and check out.</p>
       <div class="designs" id="designs" role="group" aria-label="Pick a cover"></div>
       <div class="products" id="products"></div>
-      <p class="store-note" id="storeNote">Every order is printed when you buy it and ships from our print partner, Printify.</p>
+      <p class="store-note" id="storeNote">Every order is printed when you buy it and shipped to you by our print partner.</p>
     </div>
   </section>
 
@@ -464,7 +467,7 @@ a.add{display:inline-flex;align-items:center;justify-content:center;gap:6px;text
 
 <footer>
   <div class="wrap">
-    <span>© 2026 Ddot Nollid. A Ddot Nollid Production. Contact: <a href="mailto:hello@ddotnollid.com">hello@ddotnollid.com</a>. Site updated Oct 26, 2026 (v4).</span>
+    <span>© 2026 Ddot Nollid. A Ddot Nollid Production. Contact: <a href="mailto:hello@ddotnollid.com">hello@ddotnollid.com</a>. Site updated Oct 26, 2026 (v6).</span>
     <span id="footLinks"></span>
   </div>
 </footer>
@@ -972,8 +975,17 @@ loadLinks();
 /* ---------- merch mockups ---------- */
 /* Garments: the Ddot Nollid cyborg logo as a chest emblem on the front (wearer's left chest,
    like a polo insignia), the chosen album cover across the whole back. */
+/* Merch-only artwork: these covers carry third-party brand marks, so merch uses an edited copy.
+   The album artwork shown everywhere else on the site is the untouched original. */
+const MERCH_EDITED={
+  "no-cerveza":"Corona and Chevrolet branding removed",
+  "motor-city":"NFL / Detroit Lions logos replaced with the Ddot Nollid Dd emblem",
+  "they-dont-understand":"Chevrolet badges blurred"
+};
+const mimg=k=>img(MERCH_EDITED[k]?`merch-${k}`:k);
+const modNote=k=>MERCH_EDITED[k]?`<b>Artwork modified for merch.</b> To comply with trademark licensing rules, this merch version differs from the original album cover (${MERCH_EDITED[k]}). The album artwork itself is unchanged.`:"";
 function garment(p,art,side){
-  const u=img(art), id="c"+p.id+side, logo=img("cyborg");
+  const u=mimg(art), id="c"+p.id+side, logo=img("cyborg");
   const st='stroke="rgba(255,255,255,.08)"', seam='fill="none" stroke="rgba(127,140,165,.35)" stroke-width="3"';
   const L=(x,y,w)=>`<defs><clipPath id="${id}L"><rect x="${x}" y="${y}" width="${w}" height="${w}" rx="${w*.14}"/></clipPath></defs><rect x="${x-1.5}" y="${y-1.5}" width="${w+3}" height="${w+3}" rx="${w*.16}" fill="rgba(200,210,230,.55)"/><image href="${logo}" x="${x}" y="${y}" width="${w}" height="${w}" clip-path="url(#${id}L)" preserveAspectRatio="xMidYMid slice"/>`;
   const C=(x,y,s)=>`<defs><clipPath id="${id}"><rect x="${x}" y="${y}" width="${s}" height="${s}" rx="3"/></clipPath></defs><image href="${u}" x="${x}" y="${y}" width="${s}" height="${s}" clip-path="url(#${id})" preserveAspectRatio="xMidYMid slice"/>`;
@@ -1000,7 +1012,7 @@ function garment(p,art,side){
 }
 function mock(p,art,side){
   if(p.sides)return garment(p,art,side||"front");
-  const u=img(art), id="c"+p.id;
+  const u=mimg(art), id="c"+p.id;
   if(p.mock==="tee") return `<svg viewBox="0 0 300 310" role="img" aria-label="${p.name}">
     <defs><clipPath id="${id}"><rect x="102" y="88" width="96" height="96" rx="4"/></clipPath></defs>
     <path d="M96 18 58 32 8 76l34 46 28-18v190h160V104l28 18 34-46-50-44-38-14c-8 22-28 34-54 34s-46-12-54-34Z" fill="${p.color}" stroke="rgba(255,255,255,.08)"/>
@@ -1045,15 +1057,16 @@ types.forEach(t=>{const b=document.createElement("button");b.className="chip";b.
 const choice={},view={};let stripDesign=null;
 const designName=k=>(DESIGNS.find(d=>d[0]===k)||[k,k])[1];
 function renderDesignStrip(){
-  $("#designs").innerHTML=DESIGNS.map(([k,n])=>`<button class="dz" data-dz="${k}" aria-pressed="${k===stripDesign}"><img src="${img(k)}" alt="" loading="lazy"><span>${n}</span></button>`).join("");
+  $("#designs").innerHTML=DESIGNS.map(([k,n])=>`<button class="dz" data-dz="${k}" aria-pressed="${k===stripDesign}"><img src="${mimg(k)}" alt="" loading="lazy"><span>${n}</span>${MERCH_EDITED[k]?"<em>Edited for merch</em>":""}</button>`).join("");
 }
 $("#designs").addEventListener("click",e=>{
   const b=e.target.closest("[data-dz]");if(!b)return;
   stripDesign=b.dataset.dz;PRODUCTS.forEach(p=>{if(p.design)choice[p.id]=stripDesign;if(p.sides)view[p.id]="back"});
-  renderDesignStrip();renderProducts();toast(`Showing ${designName(stripDesign)} on every product`);
+  renderDesignStrip();renderProducts();
+  toast(MERCH_EDITED[stripDesign]?`${designName(stripDesign)}: merch version edited for licensing`:`Showing ${designName(stripDesign)} on every product`);
 });
-/* Store: merch.json maps each product + cover to its Printify Pop-Up Store page.
-   {"store":"https://NAME.printify.me","items":{"tee-black":{"undaunted":"https://..."}}} */
+/* Store: merch.json maps each product + cover to its page in the Fourthwall shop.
+   {"store":"https://shop.ddotnollid.com","items":{"tee-black":{"undaunted":"https://..."}}} */
 let SHOP={store:"",items:{}};
 const buyLink=(p,art)=>((SHOP.items||{})[p.id]||{})[art]||"";
 const buyBtn=(p,art)=>{const l=buyLink(p,art);return l?`<a class="add" href="${escH(l)}" target="_blank" rel="noopener">Buy</a>`:`<button class="add" disabled>Coming soon</button>`};
@@ -1068,6 +1081,7 @@ function renderProducts(){
     el.innerHTML=`<div class="stage"><div class="stage-art">${mock(p,art,side)}</div>${tg}</div>
       <div class="p-body"><div class="p-top"><h3 class="p-name">${p.name}</h3><span class="p-price">${money(p.price)}</span></div>
       <p class="p-desc">${p.desc}${p.sizes?" Sizes S–3XL, chosen at checkout.":""}</p>
+      <p class="mod-note" ${p.design&&MERCH_EDITED[art]?"":"hidden"}>${modNote(art)}</p>
       <div class="p-opts">${dsel?`<div class="p-row">${dsel}</div>`:""}<div class="p-row buy-row">${buyBtn(p,art)}</div></div></div>`;
     const ds=el.querySelector(`#dz-${p.id}`);
     const draw=flip=>{
@@ -1076,6 +1090,8 @@ function renderProducts(){
       if(flip)box.firstElementChild.classList.add("flip");
       el.querySelectorAll(".side-tg button").forEach(b=>b.setAttribute("aria-pressed",b.dataset.side===s));
       el.querySelector(".buy-row").innerHTML=buyBtn(p,ds?ds.value:p.art);
+      const mn=el.querySelector(".mod-note"),k=ds?ds.value:p.art;
+      mn.hidden=!(p.design&&MERCH_EDITED[k]);mn.innerHTML=modNote(k);
     };
     el.querySelectorAll(".side-tg button").forEach(b=>b.addEventListener("click",()=>{if(view[p.id]===b.dataset.side||(!view[p.id]&&b.dataset.side==="front"))return;view[p.id]=b.dataset.side;draw(true)}));
     if(ds)ds.addEventListener("change",()=>{choice[p.id]=ds.value;const turn=p.sides&&view[p.id]!=="back";if(p.sides)view[p.id]="back";draw(turn)});
@@ -1088,7 +1104,7 @@ renderDesignStrip();renderProducts();
 async function loadShop(){
   try{const r=await fetch("merch.json",{cache:"no-store"});if(!r.ok)return;SHOP=Object.assign({store:"",items:{}},await r.json())}catch(e){return}
   if(SHOP.store){const a=$("#storeLink");a.href=SHOP.store;a.target="_blank";a.rel="noopener";
-    $("#storeNote").innerHTML=`Every order is printed when you buy it and ships from our print partner, Printify. <a href="${escH(SHOP.store)}" target="_blank" rel="noopener">Browse the full store</a>.`}
+    $("#storeNote").innerHTML=`Every order is printed when you buy it and shipped to you by our print partner. <a href="${escH(SHOP.store)}" target="_blank" rel="noopener">Browse the full store</a>.`}
   renderProducts();
 }
 $("#scrim").addEventListener("click",()=>{if(!$("#sheet").hidden)closeSheet()});
