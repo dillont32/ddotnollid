@@ -3,12 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<link rel="canonical" href="https://dillont32.github.io/ddotnollid/">
+<link rel="canonical" href="https://ddotnollid.com/">
 <meta property="og:type" content="music.musician">
 <meta property="og:title" content="Ddot Nollid">
 <meta property="og:description" content="Listen on your favorite streaming service and shop merch from the album art.">
-<meta property="og:url" content="https://dillont32.github.io/ddotnollid/">
-<meta property="og:image" content="https://dillont32.github.io/ddotnollid/cyborg.jpg">
+<meta property="og:url" content="https://ddotnollid.com/">
+<meta property="og:image" content="https://ddotnollid.com/cyborg.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="description" content="Ddot Nollid: listen on your favorite streaming service and shop merch from the album art.">
 <title>Ddot Nollid</title>
@@ -325,6 +325,10 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px}
 .side-tg button[aria-pressed="true"]{background:var(--chrome);color:var(--void)}
 .stage svg.flip{animation:flip .32s ease}
 @keyframes flip{from{transform:perspective(700px) rotateY(75deg);opacity:.35}}
+a.add{display:inline-flex;align-items:center;justify-content:center;gap:6px;text-decoration:none;flex:1}
+.add:disabled{background:var(--deck-2);color:var(--steel);cursor:default;border:1px solid var(--wire)}
+.store-note{color:var(--steel);font-size:14px;margin:22px 0 0}
+.store-note a{color:var(--volt-hot)}
 .toast{position:fixed;left:50%;bottom:calc(var(--dock-h) + 16px + env(safe-area-inset-bottom,0px));translate:-50% 0;z-index:60;background:var(--chrome);color:var(--void);
   font-weight:700;padding:10px 18px;border-radius:999px;font-size:14px;box-shadow:0 10px 30px rgba(0,0,0,.5);max-width:calc(100% - 32px)}
 </style>
@@ -336,10 +340,10 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px}
       <a href="#listen">Listen</a><a href="#releases">Releases</a><a href="#watch">Watch</a><a href="#follow">Follow</a><a href="#merch">Merch</a><a href="#story">Story</a>
     </nav>
     <a class="yt-link" href="#follow" aria-label="Follow Ddot Nollid"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7.5-4.6-10-9.3C.3 8.4 2.3 4 6.3 4c2.2 0 3.7 1.3 4.7 2.7C12 5.3 13.5 4 15.7 4c4 0 6 4.4 4.3 7.7C19.5 16.4 12 21 12 21Z"/></svg><span class="yt-label">Follow</span></a>
-    <button class="cart-btn" id="openCart" aria-label="Open cart">
+    <a class="cart-btn" id="storeLink" href="#merch" style="text-decoration:none">
       <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 18a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm10 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4ZM3 3h2l2.6 11.2A2 2 0 0 0 9.5 16H18v-2H9.6l-.3-1.3h8.9a2 2 0 0 0 1.9-1.4L22 6H6.2L5.7 3.9A1.5 1.5 0 0 0 4.2 3H3Z"/></svg>
-      Cart <span class="cart-count" id="cartCount">0</span>
-    </button>
+      Store
+    </a>
   </div>
 </header>
 
@@ -434,9 +438,10 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px}
         <h2 class="chrome-type">Merch</h2>
         <div class="filters" role="group" aria-label="Filter merch" id="filters"></div>
       </div>
-      <p class="dz-label">Every cover is available on every product. Pick one to see it on everything, or choose a cover per item.</p>
+      <p class="dz-label">Pick a cover to see it on everything, or choose a cover per item. Buy takes you to the Ddot Nollid store to pick your size and check out.</p>
       <div class="designs" id="designs" role="group" aria-label="Pick a cover"></div>
       <div class="products" id="products"></div>
+      <p class="store-note" id="storeNote">Every order is printed when you buy it and ships from our print partner, Printify.</p>
     </div>
   </section>
 
@@ -459,7 +464,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px}
 
 <footer>
   <div class="wrap">
-    <span>© 2026 Ddot Nollid. A Ddot Nollid Production. Site updated Oct 25, 2026 (v3).</span>
+    <span>© 2026 Ddot Nollid. A Ddot Nollid Production. Contact: <a href="mailto:hello@ddotnollid.com">hello@ddotnollid.com</a>. Site updated Oct 26, 2026 (v4).</span>
     <span id="footLinks"></span>
   </div>
 </footer>
@@ -491,15 +496,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px}
 <audio id="audio" preload="none"></audio>
 
 <div class="scrim" id="scrim" hidden></div>
-<aside class="drawer" id="drawer" hidden aria-label="Cart" role="dialog" aria-modal="true">
-  <div class="dr-head"><h3 class="chrome-type">Your cart</h3><button class="ib" id="closeCart" aria-label="Close cart"><svg viewBox="0 0 24 24"><path d="M18.3 5.7 12 12l6.3 6.3-1.4 1.4L10.6 13.4 4.3 19.7l-1.4-1.4L9.2 12 2.9 5.7l1.4-1.4 6.3 6.3 6.3-6.3z"/></svg></button></div>
-  <div class="lines" id="lines"></div>
-  <div class="sum">
-    <div class="row"><span>Subtotal</span><span id="subtotal">$0.00</span></div>
-    <button class="btn btn-volt" id="checkout">Check out</button>
-    <p class="notice" id="checkoutNote" hidden>The online store opens soon. Your cart is saved on this device until then.</p>
-  </div>
-</aside>
+
 <aside class="sheet" id="sheet" hidden role="dialog" aria-modal="true" aria-labelledby="sTitle">
   <div class="sheet-head"><img id="sArt" src="./undaunted.webp" alt=""><div style="min-width:0"><span class="d-artist">Ddot Nollid</span><h3 id="sTitle" class="s-title chrome-type">They Don’t Understand</h3></div><button class="ib" id="closeSheet" aria-label="Close"><svg viewBox="0 0 24 24"><path d="M18.3 5.7 12 12l6.3 6.3-1.4 1.4L10.6 13.4 4.3 19.7l-1.4-1.4L9.2 12 2.9 5.7l1.4-1.4 6.3 6.3 6.3-6.3z"/></svg></button></div>
   <p class="s-hint">Choose where to listen. Your pick is remembered for next time.</p>
@@ -574,7 +571,7 @@ const PRODUCTS = [
   {id:"tee-white", type:"Tees", name:"Cover Tee, White", price:34, art:"motivations", design:true, sides:true, mock:"tee", color:"#e8e6e1", desc:"Ddot Nollid logo on the chest. Your pick of album cover across the back. Bone-white cotton.", sizes:SIZES},
   {id:"hoodie", type:"Hoodies", name:"Cover Hoodie", price:64, art:"contra-legem", design:true, sides:true, mock:"hoodie", color:"#141a26", desc:"Logo on the chest, your pick of album cover across the back. Midweight fleece pullover.", sizes:SIZES},
   {id:"jacket", type:"Jackets", name:"Coach Jacket", price:78, art:"gambled-ace", design:true, sides:true, mock:"jacket", color:"#10131b", desc:"Snap-front coach jacket. Logo on the chest, your pick of album cover across the back.", sizes:SIZES},
-  {id:"print", type:"Prints", name:"Album Art Print, 18 × 18 in", price:28, art:"palm-tree", design:true, mock:"print", desc:"Archival matte print of any cover, ready to frame.", sizes:null},
+  {id:"print", type:"Prints", name:"Album Art Print, 12 × 12 in", price:28, art:"palm-tree", design:true, mock:"print", desc:"Archival matte print of any cover, ready to frame.", sizes:null},
   {id:"mug", type:"Mugs", name:"Cover Mug, 11 oz", price:18, art:"be-like-that", design:true, mock:"mug", desc:"Glossy ceramic mug, cover art wrapped on the front. Dishwasher safe.", sizes:null},
   {id:"sticker", type:"Accessories", name:"Cover Sticker, 4 in", price:5, art:"cyborg", design:true, mock:"sticker", desc:"Weatherproof die-cut vinyl for laptops, cases and bumpers.", sizes:null},
   {id:"deck-ace", type:"Accessories", name:"I Gambled on an Ace Playing Cards", price:18, art:"gambled-ace", mock:"deck", desc:"A full 54-card deck with the cyborg card back straight from the cover.", sizes:null},
@@ -629,7 +626,7 @@ function openSheet(i){
   $("#sList").innerHTML=order.map(x=>`<a style="--c:${x.c}" data-pf="${x.id}" href="${trackUrl(t,x)}" target="_blank" rel="noopener"><span class="pf-name"><i></i>${x.name}</span>${x===p?'<span class="mine">Your pick</span>':''}</a>`).join("");
   $("#sheet").hidden=false;$("#scrim").hidden=false;$("#closeSheet").focus();
 }
-function closeSheet(){$("#sheet").hidden=true;if($("#drawer").hidden)$("#scrim").hidden=true}
+function closeSheet(){$("#sheet").hidden=true;$("#scrim").hidden=true}
 $("#sList").addEventListener("click",e=>{const a=e.target.closest("[data-pf]");if(a&&!prefId)setPref(a.dataset.pf)});
 $("#closeSheet").addEventListener("click",closeSheet);
 $("#copyLink").addEventListener("click",()=>{
@@ -1055,68 +1052,48 @@ $("#designs").addEventListener("click",e=>{
   stripDesign=b.dataset.dz;PRODUCTS.forEach(p=>{if(p.design)choice[p.id]=stripDesign;if(p.sides)view[p.id]="back"});
   renderDesignStrip();renderProducts();toast(`Showing ${designName(stripDesign)} on every product`);
 });
+/* Store: merch.json maps each product + cover to its Printify Pop-Up Store page.
+   {"store":"https://NAME.printify.me","items":{"tee-black":{"undaunted":"https://..."}}} */
+let SHOP={store:"",items:{}};
+const buyLink=(p,art)=>((SHOP.items||{})[p.id]||{})[art]||"";
+const buyBtn=(p,art)=>{const l=buyLink(p,art);return l?`<a class="add" href="${escH(l)}" target="_blank" rel="noopener">Buy</a>`:`<button class="add" disabled>Coming soon</button>`};
 function renderProducts(){
   const grid=$("#products");grid.innerHTML="";
   PRODUCTS.filter(p=>filter==="All"||p.type===filter).forEach(p=>{
     const art=p.design?(choice[p.id]||p.art):p.art;
     const el=document.createElement("article");el.className="product";
     const dsel=p.design?`<select id="dz-${p.id}" aria-label="Cover for ${p.name}">${DESIGNS.map(([k,n])=>`<option value="${k}"${k===art?" selected":""}>${n}</option>`).join("")}</select>`:"";
-    const ssel=p.sizes?`<select id="opt-${p.id}" aria-label="Size for ${p.name}"><option value="">Size</option>${p.sizes.map(s=>`<option>${s}</option>`).join("")}</select>`:"";
     const side=p.sides?(view[p.id]||"front"):null;
     const tg=p.sides?`<div class="side-tg" role="group" aria-label="View side"><button data-side="front" aria-pressed="${side==="front"}">Front</button><button data-side="back" aria-pressed="${side==="back"}">Back</button></div>`:"";
     el.innerHTML=`<div class="stage"><div class="stage-art">${mock(p,art,side)}</div>${tg}</div>
       <div class="p-body"><div class="p-top"><h3 class="p-name">${p.name}</h3><span class="p-price">${money(p.price)}</span></div>
-      <p class="p-desc">${p.desc}</p>
-      <div class="p-opts">${dsel?`<div class="p-row">${dsel}</div>`:""}<div class="p-row">${ssel}<button class="add">Add to cart</button></div></div></div>`;
-    const ds=el.querySelector(`#dz-${p.id}`), ss=el.querySelector(`#opt-${p.id}`);
+      <p class="p-desc">${p.desc}${p.sizes?" Sizes S–3XL, chosen at checkout.":""}</p>
+      <div class="p-opts">${dsel?`<div class="p-row">${dsel}</div>`:""}<div class="p-row buy-row">${buyBtn(p,art)}</div></div></div>`;
+    const ds=el.querySelector(`#dz-${p.id}`);
     const draw=flip=>{
       const s=p.sides?(view[p.id]||"front"):null, box=el.querySelector(".stage-art");
       box.innerHTML=mock(p,ds?ds.value:p.art,s);
       if(flip)box.firstElementChild.classList.add("flip");
       el.querySelectorAll(".side-tg button").forEach(b=>b.setAttribute("aria-pressed",b.dataset.side===s));
+      el.querySelector(".buy-row").innerHTML=buyBtn(p,ds?ds.value:p.art);
     };
     el.querySelectorAll(".side-tg button").forEach(b=>b.addEventListener("click",()=>{if(view[p.id]===b.dataset.side||(!view[p.id]&&b.dataset.side==="front"))return;view[p.id]=b.dataset.side;draw(true)}));
     if(ds)ds.addEventListener("change",()=>{choice[p.id]=ds.value;const turn=p.sides&&view[p.id]!=="back";if(p.sides)view[p.id]="back";draw(turn)});
-    el.querySelector(".add").addEventListener("click",e=>{
-      if(ss&&!ss.value){ss.focus();toast("Choose a size first");return}
-      const art=ds?ds.value:p.art;
-      const variant=[ds?(p.sides?`${designName(art)} on back`:designName(art)):"",ss?ss.value:""].filter(Boolean).join(" · ");
-      addToCart(p,variant,art);
-      const b=e.currentTarget;b.textContent="Added";b.classList.add("done");setTimeout(()=>{b.textContent="Add to cart";b.classList.remove("done")},1400);
-    });
     grid.appendChild(el);
   });
 }
 renderDesignStrip();renderProducts();
 
-/* ---------- cart ---------- */
-let cart=store.get("dn-cart",[]);
-function addToCart(p,variant,art){
-  const key=p.id+"|"+variant;const line=cart.find(l=>l.key===key);
-  line?line.qty++:cart.push({key,id:p.id,name:p.name,variant,art,price:p.price,qty:1});
-  saveCart();toast(`${p.name} added to cart`);
+/* ---------- store links ---------- */
+async function loadShop(){
+  try{const r=await fetch("merch.json",{cache:"no-store"});if(!r.ok)return;SHOP=Object.assign({store:"",items:{}},await r.json())}catch(e){return}
+  if(SHOP.store){const a=$("#storeLink");a.href=SHOP.store;a.target="_blank";a.rel="noopener";
+    $("#storeNote").innerHTML=`Every order is printed when you buy it and ships from our print partner, Printify. <a href="${escH(SHOP.store)}" target="_blank" rel="noopener">Browse the full store</a>.`}
+  renderProducts();
 }
-function saveCart(){store.set("dn-cart",cart);renderCart()}
-function renderCart(){
-  const n=cart.reduce((a,l)=>a+l.qty,0);$("#cartCount").textContent=n;
-  const lines=$("#lines");
-  if(!cart.length){lines.innerHTML=`<p class="empty">Your cart is empty. Every cover in the catalog is available as merch.</p>`}
-  else lines.innerHTML=cart.map((l,i)=>`<div class="line"><img src="${img(l.art)}" alt="">
-    <div style="min-width:0"><div class="ln">${l.name}</div>${l.variant?`<div class="lv">${l.variant}</div>`:""}
-    <div class="qty"><button data-i="${i}" data-d="-1" aria-label="Decrease quantity">−</button><span>${l.qty}</span><button data-i="${i}" data-d="1" aria-label="Increase quantity">+</button></div></div>
-    <span class="lp">${money(l.price*l.qty)}</span></div>`).join("");
-  $("#subtotal").textContent=money(cart.reduce((a,l)=>a+l.price*l.qty,0));
-  $("#checkout").disabled=!cart.length;$("#checkout").style.opacity=cart.length?1:.5;
-}
-$("#lines").addEventListener("click",e=>{const b=e.target.closest("button[data-i]");if(!b)return;
-  const l=cart[+b.dataset.i];l.qty+=+b.dataset.d;if(l.qty<1)cart.splice(+b.dataset.i,1);saveCart()});
-function openCart(on){$("#drawer").hidden=!on;$("#scrim").hidden=!on;if(on)$("#closeCart").focus();else{$("#checkoutNote").hidden=true;$("#openCart").focus()}}
-$("#openCart").addEventListener("click",()=>openCart(true));
-$("#closeCart").addEventListener("click",()=>openCart(false));
-$("#scrim").addEventListener("click",()=>{if(!$("#sheet").hidden)closeSheet();else openCart(false)});
-document.addEventListener("keydown",e=>{if(e.key!=="Escape")return;if(!$("#vbox").hidden){closeVideo();return}if(!$("#sheet").hidden)closeSheet();else if(!$("#drawer").hidden)openCart(false)});
-$("#checkout").addEventListener("click",()=>{$("#checkoutNote").hidden=false});
-renderCart();
+$("#scrim").addEventListener("click",()=>{if(!$("#sheet").hidden)closeSheet()});
+document.addEventListener("keydown",e=>{if(e.key!=="Escape")return;if(!$("#vbox").hidden){closeVideo();return}if(!$("#sheet").hidden)closeSheet()});
+loadShop();
 </script>
 
 </html>
