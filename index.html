@@ -483,7 +483,7 @@ a.add{display:inline-flex;align-items:center;justify-content:center;gap:6px;text
 
 <footer>
   <div class="wrap">
-    <span>© 2026 Ddot Nollid. A Ddot Nollid Production. Contact: <a href="mailto:hello@ddotnollid.com">hello@ddotnollid.com</a>. Site updated Oct 26, 2026 (v7).</span>
+    <span>© 2026 Ddot Nollid. A Ddot Nollid Production. Contact: <a href="mailto:hello@ddotnollid.com">hello@ddotnollid.com</a>. Site updated Oct 27, 2026 (v8).</span>
     <span id="footLinks"></span>
   </div>
 </footer>
@@ -1009,9 +1009,10 @@ const MERCH_EDITED={
 const mimg=k=>img(MERCH_EDITED[k]?`merch-${k}`:k);
 const modNote=k=>MERCH_EDITED[k]?`<b>Artwork modified for merch.</b> To comply with trademark licensing rules, this merch version differs from the original album cover (${MERCH_EDITED[k]}).`:"";
 function garment(p,art,side){
-  const u=mimg(art), id="c"+p.id+side, logo=img("cyborg");
+  const u=mimg(art), id="c"+p.id+side, logo=img("cyborg-round");
   const st='stroke="rgba(255,255,255,.08)"', seam='fill="none" stroke="rgba(127,140,165,.35)" stroke-width="3"';
-  const L=(x,y,w)=>`<defs><clipPath id="${id}L"><rect x="${x}" y="${y}" width="${w}" height="${w}" rx="${w*.14}"/></clipPath></defs><rect x="${x-1.5}" y="${y-1.5}" width="${w+3}" height="${w+3}" rx="${w*.16}" fill="rgba(200,210,230,.55)"/><image href="${logo}" x="${x}" y="${y}" width="${w}" height="${w}" clip-path="url(#${id}L)" preserveAspectRatio="xMidYMid slice"/>`;
+  // round patch: square image with transparent corners and a silver rim (matches the print file)
+  const L=(x,y,w)=>`<image href="${logo}" x="${x-2}" y="${y-2}" width="${w+4}" height="${w+4}" preserveAspectRatio="xMidYMid meet"/>`;
   const C=(x,y,s)=>`<defs><clipPath id="${id}"><rect x="${x}" y="${y}" width="${s}" height="${s}" rx="3"/></clipPath></defs><image href="${u}" x="${x}" y="${y}" width="${s}" height="${s}" clip-path="url(#${id})" preserveAspectRatio="xMidYMid slice"/>`;
   const wrap=b=>`<svg viewBox="0 0 300 310" role="img" aria-label="${p.name}, ${side} view">${b}</svg>`;
   if(p.mock==="tee"){
