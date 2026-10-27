@@ -1,23 +1,37 @@
 {
-  "store": "",
+  "store": "https://ddot-nollid-shop.fourthwall.com",
   "items": {
     "tee-black": {
-      "undaunted": "",
-      "motivations": "",
-      "contra-legem": "",
-      "gambled-ace": ""
+      "they-dont-understand": "https://ddot-nollid-shop.fourthwall.com/products/they-dont-understand-tee",
+      "no-cerveza": "https://ddot-nollid-shop.fourthwall.com/products/no-cerveza-no-trabajo-tee",
+      "contra-legem": "https://ddot-nollid-shop.fourthwall.com/products/contra-legem-graphic-tee",
+      "be-like-that": "https://ddot-nollid-shop.fourthwall.com/products/it-be-like-that-tee"
     },
-    "hoodie": {
-      "undaunted": "",
-      "motivations": "",
-      "contra-legem": "",
-      "gambled-ace": ""
+    "crewneck": {
+      "they-dont-understand": "https://ddot-nollid-shop.fourthwall.com/products/they-dont-understand-premium-sweatshirt",
+      "no-cerveza": "https://ddot-nollid-shop.fourthwall.com/products/no-cerveza-no-trabajo-logo-sweatshirt",
+      "contra-legem": "https://ddot-nollid-shop.fourthwall.com/products/contra-legem-minimal-graphic-sweatshirt",
+      "be-like-that": "https://ddot-nollid-shop.fourthwall.com/products/it-be-like-that-logo-sweatshirt"
     },
-    "print": {
-      "undaunted": "",
-      "motivations": "",
-      "contra-legem": "",
-      "gambled-ace": ""
+    "bottle": {
+      "cyborg": "https://ddot-nollid-shop.fourthwall.com/products/ddot-nollid-emblem-thor-bottle-22oz"
+    },
+    "cards": {
+      "cyborg": "https://ddot-nollid-shop.fourthwall.com/products/ddot-nollid-poker-playing-cards"
+    },
+    "mug": {
+      "be-like-that": "https://ddot-nollid-shop.fourthwall.com/products/ddot-nollid-album-art-glossy-mug"
+    },
+    "beanie": {
+      "cyborg": "https://ddot-nollid-shop.fourthwall.com/products/ddot-nollid-atlantis-ribbed-beanie"
     }
+  },
+  "prices": {
+    "tee-black": 18.45,
+    "crewneck": 32.68,
+    "bottle": 25.45,
+    "cards": 16.69,
+    "mug": 8.95,
+    "beanie": 21.59
   }
 }

@@ -483,7 +483,7 @@ a.add{display:inline-flex;align-items:center;justify-content:center;gap:6px;text
 
 <footer>
   <div class="wrap">
-    <span>© 2026 Ddot Nollid. A Ddot Nollid Production. Contact: <a href="mailto:hello@ddotnollid.com">hello@ddotnollid.com</a>. Site updated Oct 27, 2026 (v8).</span>
+    <span>© 2026 Ddot Nollid. A Ddot Nollid Production. Contact: <a href="mailto:hello@ddotnollid.com">hello@ddotnollid.com</a>. Site updated Oct 27, 2026 (v9).</span>
     <span id="footLinks"></span>
   </div>
 </footer>
@@ -577,32 +577,21 @@ const TRACKS = [
   {id:"palm-tree",     title:"Palm Tree Dreams", note:"Words by T. Craig Goodwin, for Corky Celeski", art:"palm-tree", year:"2026", audio:null},
   {id:"tawas",         title:"Tawas Tortoise", note:"Au Sable River, second home", art:"tawas", year:"2026", audio:null},
 ];
-// Every design here can go on every product with design:true. Add a cover: drop its .webp in and add a line.
+// Covers sold in the Fourthwall shop. To add one: create it in Fourthwall, add its .webp here, and its links to merch.json.
 const DESIGNS = [
-  ["undaunted","Undaunted"],
   ["they-dont-understand","They Don’t Understand"],
-  ["motivations","Motivations"],
-  ["contra-legem","Contra Legem"],
-  ["gambled-ace","I Gambled on an Ace"],
-  ["be-like-that","It Be Like That… Sometimes"],
-  ["neighbor","The Word Was Neighbor"],
   ["no-cerveza","No Cerveza, No Trabajo"],
-  ["motor-city","Motor City Kitties… No More"],
-  ["palm-tree","Palm Tree Dreams"],
-  ["tawas","The Tawas Tortoise"],
-  ["cyborg","Ddot Nollid Cyborg"],
+  ["contra-legem","Contra Legem"],
+  ["be-like-that","It Be Like That… Sometimes"],
 ];
 const SIZES=["S","M","L","XL","2XL","3XL"];
 const PRODUCTS = [
-  {id:"tee-black", type:"Tees", name:"Cover Tee, Black", price:34, art:"undaunted", design:true, sides:true, mock:"tee", color:"#0d0f14", desc:"Ddot Nollid logo on the chest. Your pick of album cover across the back. Heavyweight black cotton.", sizes:SIZES},
-  {id:"tee-white", type:"Tees", name:"Cover Tee, White", price:34, art:"motivations", design:true, sides:true, mock:"tee", color:"#e8e6e1", desc:"Ddot Nollid logo on the chest. Your pick of album cover across the back. Bone-white cotton.", sizes:SIZES},
-  {id:"hoodie", type:"Hoodies", name:"Cover Hoodie", price:64, art:"contra-legem", design:true, sides:true, mock:"hoodie", color:"#141a26", desc:"Logo on the chest, your pick of album cover across the back. Midweight fleece pullover.", sizes:SIZES},
-  {id:"jacket", type:"Jackets", name:"Coach Jacket", price:78, art:"gambled-ace", design:true, sides:true, mock:"jacket", color:"#10131b", desc:"Snap-front coach jacket. Logo on the chest, your pick of album cover across the back.", sizes:SIZES},
-  {id:"print", type:"Prints", name:"Album Art Print, 12 × 12 in", price:28, art:"palm-tree", design:true, mock:"print", desc:"Archival matte print of any cover, ready to frame.", sizes:null},
-  {id:"mug", type:"Mugs", name:"Cover Mug, 11 oz", price:18, art:"be-like-that", design:true, mock:"mug", desc:"Glossy ceramic mug, cover art wrapped on the front. Dishwasher safe.", sizes:null},
-  {id:"sticker", type:"Accessories", name:"Cover Sticker, 4 in", price:5, art:"cyborg", design:true, mock:"sticker", desc:"Weatherproof die-cut vinyl for laptops, cases and bumpers.", sizes:null},
-  {id:"deck-ace", type:"Accessories", name:"I Gambled on an Ace Playing Cards", price:18, art:"gambled-ace", mock:"deck", desc:"A full 54-card deck with the cyborg card back straight from the cover.", sizes:null},
-  {id:"stickers", type:"Accessories", name:"Die-Cut Sticker Pack", price:9, art:"cyborg", mock:"stickers", desc:"Three weatherproof vinyl stickers: Cyborg, Ace and Contra Legem.", sizes:null},
+  {id:"tee-black", type:"Tees", name:"Cover Tee, Black", price:18.45, art:"they-dont-understand", design:true, sides:true, mock:"tee", color:"#0d0f14", desc:"Ddot Nollid emblem on the chest, your pick of album cover across the back. Gildan Softstyle unisex tee.", sizes:SIZES},
+  {id:"crewneck", type:"Sweatshirts", name:"Cover Sweatshirt, Black", price:32.68, art:"contra-legem", design:true, sides:true, mock:"crewneck", color:"#121520", desc:"Ddot Nollid emblem on the chest, your pick of album cover across the back. Cotton Heritage premium crewneck.", sizes:SIZES},
+  {id:"bottle", type:"Accessories", name:"Ddot Nollid Emblem Thor Bottle, 22 oz", price:25.45, art:"cyborg", mock:"bottle", desc:"Insulated stainless bottle with a carry-loop lid and the Ddot Nollid emblem.", sizes:null},
+  {id:"cards", type:"Accessories", name:"Ddot Nollid Poker Playing Cards", price:16.69, art:"cyborg", mock:"deck", desc:"A full poker deck with the Ddot Nollid cyborg on the card backs.", sizes:null},
+  {id:"mug", type:"Accessories", name:"Ddot Nollid Album Art Glossy Mug", price:8.95, art:"be-like-that", mock:"mug", desc:"Glossy white ceramic mug with It Be Like That… Sometimes album art. Dishwasher and microwave safe.", sizes:null},
+  {id:"beanie", type:"Accessories", name:"Ddot Nollid Atlantis Ribbed Beanie", price:21.59, art:"cyborg", mock:"beanie", desc:"Organic cotton ribbed beanie, black, with the Ddot Nollid emblem on the cuff.", sizes:null},
 ];
 
 /* ---------- helpers ---------- */
@@ -1028,6 +1017,13 @@ function garment(p,art,side){
       <path d="M140 52v34M160 52v34" stroke="rgba(200,210,230,.5)" stroke-width="2"/>
       <rect x="92" y="216" width="116" height="52" rx="10" fill="none" stroke="rgba(127,140,165,.25)" stroke-width="2"/>${L(170,92,50)}`);
   }
+  if(p.mock==="crewneck"){
+    const back=side==="back";
+    const body=`<path d="M96 18 58 30 18 240l34 6 18-136v184h160V110l18 136 34-6-40-210-38-12${back?"c-8 6-28 10-54 10s-46-4-54-10Z":"c-8 22-28 34-54 34s-46-12-54-34Z"}" fill="${p.color}" ${st}/>
+      <path d="M21 226l34 6M245 232l34-6M70 280h160" stroke="rgba(127,140,165,.3)" stroke-width="2"/>`;
+    if(back)return wrap(`${body}<path d="M96 18c8 6 28 10 54 10s46-4 54-10" fill="none" stroke="rgba(127,140,165,.4)" stroke-width="5"/>${C(84,54,132)}`);
+    return wrap(`${body}<path d="M96 18c8 22 28 34 54 34s46-12 54-34" fill="none" stroke="rgba(127,140,165,.4)" stroke-width="6"/>${L(160,72,52)}`);
+  }
   // coach jacket
   const body=`<path d="M100 30 54 50 8 170l6 128h32l12-140v146h184V158l12 140h32l6-128-46-120-46-20c-12 16-30 24-50 24s-38-8-50-24Z" fill="${p.color}" ${st}/><path d="M58 290h184" stroke="rgba(127,140,165,.25)" stroke-width="2"/>`;
   if(side==="back")return wrap(`${body}<path d="M100 30c12 10 30 14 50 14s38-4 50-14" ${seam}/>${C(78,62,144)}`);
@@ -1054,6 +1050,19 @@ function mock(p,art,side){
     <rect x="40" y="30" width="220" height="240" fill="#e9ebef"/><rect x="40" y="30" width="220" height="240" fill="none" stroke="#2a2f3a" stroke-width="10"/>
     <image href="${u}" x="62" y="52" width="176" height="176" preserveAspectRatio="xMidYMid slice"/>
     <text x="150" y="252" text-anchor="middle" font-family="Figtree,sans-serif" font-size="10" fill="#5a6273" letter-spacing="2">DDOT NOLLID</text></svg>`;
+  const emb=img("cyborg-round");
+  if(p.mock==="bottle") return `<svg viewBox="0 0 300 300" role="img" aria-label="${p.name}">
+    <path d="M136 22a14 14 0 0 1 28 0v14h-8v-12a6 6 0 0 0-12 0v12h-8Z" fill="#2a2f3a"/>
+    <rect x="124" y="34" width="52" height="34" rx="7" fill="#20242e"/>
+    <rect x="104" y="66" width="92" height="220" rx="22" fill="#11141c" stroke="rgba(255,255,255,.08)"/>
+    <rect x="112" y="78" width="10" height="196" rx="5" fill="rgba(223,228,238,.08)"/>
+    <image href="${emb}" x="115" y="138" width="70" height="70"/></svg>`;
+  if(p.mock==="beanie") return `<svg viewBox="0 0 300 300" role="img" aria-label="${p.name}">
+    <path d="M66 196C66 86 234 86 234 196Z" fill="#121520" stroke="rgba(255,255,255,.08)"/>
+    ${[96,116,136,156,176,196].map(x=>`<path d="M${x} ${x<150?118-(150-x)*.25:118-(x-150)*.25}V196" stroke="rgba(127,140,165,.12)" stroke-width="2"/>`).join("")}
+    <rect x="58" y="184" width="184" height="68" rx="12" fill="#181b26" stroke="rgba(255,255,255,.08)"/>
+    ${Array.from({length:22},(_,i)=>`<path d="M${66+i*8} 188v60" stroke="rgba(127,140,165,.16)" stroke-width="2"/>`).join("")}
+    <image href="${emb}" x="124" y="192" width="52" height="52"/></svg>`;
   if(p.mock==="deck") return `<svg viewBox="0 0 300 300" role="img" aria-label="${p.name}">
     <defs><clipPath id="${id}a"><rect x="0" y="0" width="120" height="170" rx="10"/></clipPath></defs>
     <g transform="translate(70 60) rotate(-12)"><g clip-path="url(#${id}a)"><image href="${img("cyborg")}" x="-25" y="0" width="170" height="170" preserveAspectRatio="xMidYMid slice"/></g><rect width="120" height="170" rx="10" fill="none" stroke="#c9d0dd" stroke-width="4"/></g>
@@ -1094,6 +1103,7 @@ $("#designs").addEventListener("click",e=>{
    {"store":"https://shop.ddotnollid.com","items":{"tee-black":{"undaunted":"https://..."}}} */
 let SHOP={store:"",items:{}};
 const buyLink=(p,art)=>((SHOP.items||{})[p.id]||{})[art]||"";
+const priceOf=p=>(SHOP.prices&&SHOP.prices[p.id]!=null)?+SHOP.prices[p.id]:p.price;
 const buyBtn=(p,art)=>{const l=buyLink(p,art);return l?`<a class="add" href="${escH(l)}" target="_blank" rel="noopener">Buy</a>`:`<button class="add" disabled>Coming soon</button>`};
 function renderProducts(){
   const grid=$("#products");grid.innerHTML="";
@@ -1104,7 +1114,7 @@ function renderProducts(){
     const side=p.sides?(view[p.id]||"front"):null;
     const tg=p.sides?`<div class="side-tg" role="group" aria-label="View side"><button data-side="front" aria-pressed="${side==="front"}">Front</button><button data-side="back" aria-pressed="${side==="back"}">Back</button></div>`:"";
     el.innerHTML=`<div class="stage"><div class="stage-art">${mock(p,art,side)}</div>${tg}<button class="zoom-btn" aria-label="Magnify ${p.name}"><svg viewBox="0 0 24 24"><path d="M10 3a7 7 0 0 1 5.6 11.2l4.6 4.6-1.4 1.4-4.6-4.6A7 7 0 1 1 10 3Zm0 2a5 5 0 1 0 0 10 5 5 0 0 0 0-10Zm-1 2h2v2h2v2h-2v2H9v-2H7V9h2Z"/></svg></button></div>
-      <div class="p-body"><div class="p-top"><h3 class="p-name">${p.name}</h3><span class="p-price">${money(p.price)}</span></div>
+      <div class="p-body"><div class="p-top"><h3 class="p-name">${p.name}</h3><span class="p-price">${money(priceOf(p))}</span></div>
       <p class="p-desc">${p.desc}${p.sizes?" Sizes S–3XL, chosen at checkout.":""}</p>
       <p class="mod-note" ${p.design&&MERCH_EDITED[art]?"":"hidden"}>${modNote(art)}</p>
       <div class="p-opts">${dsel?`<div class="p-row">${dsel}</div>`:""}<div class="p-row buy-row">${buyBtn(p,art)}</div></div></div>`;
