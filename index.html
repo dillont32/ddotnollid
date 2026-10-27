@@ -483,7 +483,7 @@ a.add{display:inline-flex;align-items:center;justify-content:center;gap:6px;text
 
 <footer>
   <div class="wrap">
-    <span>© 2026 Ddot Nollid. A Ddot Nollid Production. Contact: <a href="mailto:hello@ddotnollid.com">hello@ddotnollid.com</a>. Site updated Oct 27, 2026 (v9).</span>
+    <span>© 2026 Ddot Nollid. A Ddot Nollid Production. Contact: <a href="mailto:hello@ddotnollid.com">hello@ddotnollid.com</a>. Site updated Oct 27, 2026 (v10).</span>
     <span id="footLinks"></span>
   </div>
 </footer>
@@ -590,7 +590,7 @@ const PRODUCTS = [
   {id:"crewneck", type:"Sweatshirts", name:"Cover Sweatshirt, Black", price:32.68, art:"contra-legem", design:true, sides:true, mock:"crewneck", color:"#121520", desc:"Ddot Nollid emblem on the chest, your pick of album cover across the back. Cotton Heritage premium crewneck.", sizes:SIZES},
   {id:"bottle", type:"Accessories", name:"Ddot Nollid Emblem Thor Bottle, 22 oz", price:25.45, art:"cyborg", mock:"bottle", desc:"Insulated stainless bottle with a carry-loop lid and the Ddot Nollid emblem.", sizes:null},
   {id:"cards", type:"Accessories", name:"Ddot Nollid Poker Playing Cards", price:16.69, art:"cyborg", mock:"deck", desc:"A full poker deck with the Ddot Nollid cyborg on the card backs.", sizes:null},
-  {id:"mug", type:"Accessories", name:"Ddot Nollid Album Art Glossy Mug", price:8.95, art:"be-like-that", mock:"mug", desc:"Glossy white ceramic mug with It Be Like That… Sometimes album art. Dishwasher and microwave safe.", sizes:null},
+  {id:"mug", type:"Accessories", name:"Ddot Nollid Album Art Glossy Mug", price:12, art:"be-like-that", mock:"mug", desc:"Glossy white ceramic mug with It Be Like That… Sometimes album art. Dishwasher and microwave safe.", sizes:null},
   {id:"beanie", type:"Accessories", name:"Ddot Nollid Atlantis Ribbed Beanie", price:21.59, art:"cyborg", mock:"beanie", desc:"Organic cotton ribbed beanie, black, with the Ddot Nollid emblem on the cuff.", sizes:null},
 ];
 
@@ -1103,7 +1103,10 @@ $("#designs").addEventListener("click",e=>{
    {"store":"https://shop.ddotnollid.com","items":{"tee-black":{"undaunted":"https://..."}}} */
 let SHOP={store:"",items:{}};
 const buyLink=(p,art)=>((SHOP.items||{})[p.id]||{})[art]||"";
-const priceOf=p=>(SHOP.prices&&SHOP.prices[p.id]!=null)?+SHOP.prices[p.id]:p.price;
+const priceOf=p=>(SHOP.prices&&SHOP.prices[p.id]!=null)?SHOP.prices[p.id]:p.price;
+// A price is one number, or {"11 oz":12,"15 oz":14} when sizes cost different amounts.
+const priceLabel=p=>{const v=priceOf(p);if(v&&typeof v==="object"){const n=Object.values(v).map(Number).filter(x=>!isNaN(x));if(!n.length)return money(p.price);const lo=Math.min(...n),hi=Math.max(...n);return lo===hi?money(lo):money(lo)+" – "+money(hi)}return money(+v)};
+const sizeNote=p=>{const v=priceOf(p);if(v&&typeof v==="object"){const k=Object.keys(v);return " Comes in "+k.join(", ").replace(/, ([^,]*)$/," or $1")+", chosen at checkout."}return p.sizes?" Sizes S–3XL, chosen at checkout.":""};
 const buyBtn=(p,art)=>{const l=buyLink(p,art);return l?`<a class="add" href="${escH(l)}" target="_blank" rel="noopener">Buy</a>`:`<button class="add" disabled>Coming soon</button>`};
 function renderProducts(){
   const grid=$("#products");grid.innerHTML="";
@@ -1114,8 +1117,8 @@ function renderProducts(){
     const side=p.sides?(view[p.id]||"front"):null;
     const tg=p.sides?`<div class="side-tg" role="group" aria-label="View side"><button data-side="front" aria-pressed="${side==="front"}">Front</button><button data-side="back" aria-pressed="${side==="back"}">Back</button></div>`:"";
     el.innerHTML=`<div class="stage"><div class="stage-art">${mock(p,art,side)}</div>${tg}<button class="zoom-btn" aria-label="Magnify ${p.name}"><svg viewBox="0 0 24 24"><path d="M10 3a7 7 0 0 1 5.6 11.2l4.6 4.6-1.4 1.4-4.6-4.6A7 7 0 1 1 10 3Zm0 2a5 5 0 1 0 0 10 5 5 0 0 0 0-10Zm-1 2h2v2h2v2h-2v2H9v-2H7V9h2Z"/></svg></button></div>
-      <div class="p-body"><div class="p-top"><h3 class="p-name">${p.name}</h3><span class="p-price">${money(priceOf(p))}</span></div>
-      <p class="p-desc">${p.desc}${p.sizes?" Sizes S–3XL, chosen at checkout.":""}</p>
+      <div class="p-body"><div class="p-top"><h3 class="p-name">${p.name}</h3><span class="p-price">${priceLabel(p)}</span></div>
+      <p class="p-desc">${p.desc}${sizeNote(p)}</p>
       <p class="mod-note" ${p.design&&MERCH_EDITED[art]?"":"hidden"}>${modNote(art)}</p>
       <div class="p-opts">${dsel?`<div class="p-row">${dsel}</div>`:""}<div class="p-row buy-row">${buyBtn(p,art)}</div></div></div>`;
     const ds=el.querySelector(`#dz-${p.id}`);
