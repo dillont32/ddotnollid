@@ -1,10 +1,13 @@
 {
   "artist": "Ddot Nollid",
-  "updated": "2026-10-28T02:03:47Z",
+  "updated": "2026-10-28T02:46:07Z",
   "artist_links": {
+    "amazon": "https://music.amazon.com/artists/B0GV6VX887",
     "apple": "https://music.apple.com/us/artist/ddot-nollid/1888639392",
     "deezer": "https://www.deezer.com/artist/382087981",
+    "pandora": "https://www.pandora.com/artist/ddot-nollid/ARqcwKqrdZVgfrg",
     "spotify": "https://open.spotify.com/artist/4IEe9SCNNFpft05fJ7VWQG",
+    "tidal": "https://tidal.com/artist/76805998",
     "youtube": "https://www.youtube.com/channel/UCjUHyRj5Eze6VPge7ex6nvQ",
     "ytmusic": "https://music.youtube.com/@DdotNollid"
   },
