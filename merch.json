@@ -27,15 +27,15 @@
     }
   },
   "prices": {
-    "tee-black": 18.45,
-    "crewneck": 32.68,
-    "bottle": 25.45,
-    "cards": 16.69,
+    "tee-black": 32,
+    "crewneck": 42,
+    "bottle": 32,
+    "cards": 20,
     "mug": {
       "11 oz": 12,
       "15 oz": 14,
       "20 oz": 16
     },
-    "beanie": 21.59
+    "beanie": 28
   }
 }
