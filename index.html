@@ -321,6 +321,19 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px}
 .mgrid .vthumb{aspect-ratio:1}
 .songs{min-width:0;display:grid;gap:14px;align-content:start}
 .song-tools{display:grid;gap:10px;min-width:0}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+.join{padding-top:0}
+.join-card{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:28px;align-items:center;padding:clamp(22px,4vw,40px);border:1px solid var(--wire);border-radius:20px;background:radial-gradient(120% 140% at 0% 0%,rgba(80,150,255,.16),transparent 60%),var(--deck)}
+.join-card h2{margin:0 0 8px}
+.join-card p{margin:0;color:var(--steel)}
+.join-form{display:flex;flex-wrap:wrap;gap:10px}
+.join-form input{flex:1 1 220px;min-width:0;background:var(--void);border:1px solid var(--wire);border-radius:12px;color:var(--chrome);font:inherit;font-size:16px;padding:13px 14px;outline:none}
+.join-form input:focus{border-color:var(--volt)}
+.join-form input::placeholder{color:var(--steel)}
+.join-form .add{flex:0 0 auto;padding:13px 22px;font-size:15px;border-radius:12px}
+.join-fine{flex-basis:100%;font-size:13px;color:var(--steel);margin:2px 0 0}
+.join-done{font-weight:700;color:var(--volt-hot)}
+@media (max-width:760px){.join-card{grid-template-columns:minmax(0,1fr)}}
 .search{display:flex;align-items:center;gap:10px;background:var(--deck);border:1px solid var(--wire);border-radius:12px;padding:0 14px}
 .search:focus-within{border-color:var(--volt)}
 .search svg{width:18px;height:18px;fill:var(--steel);flex:none}
@@ -481,11 +494,30 @@ a.add{display:inline-flex;align-items:center;justify-content:center;gap:6px;text
       </div>
     </div>
   </section>
+
+  <section class="section join" id="join" hidden>
+    <div class="wrap">
+      <div class="join-card">
+        <div>
+          <h2 class="chrome-type">Hear it first</h2>
+          <p>Get an email the day a new song drops, plus first look at new merch. A few emails a year, never spam.</p>
+        </div>
+        <form class="join-form" id="joinForm" method="post" target="_blank" novalidate>
+          <label class="sr-only" for="joinName">First name</label>
+          <input id="joinName" name="first_name" type="text" autocomplete="given-name" placeholder="First name (optional)">
+          <label class="sr-only" for="joinEmail">Email</label>
+          <input id="joinEmail" name="email_address" type="email" autocomplete="email" placeholder="Your email" required>
+          <button class="add" type="submit">Sign me up</button>
+          <p class="join-fine" id="joinMsg" aria-live="polite">Unsubscribe any time with one click.</p>
+        </form>
+      </div>
+    </div>
+  </section>
 </main>
 
 <footer>
   <div class="wrap">
-    <span>© 2026 Ddot Nollid. A Ddot Nollid Production. Contact: <a href="mailto:hello@ddotnollid.com">hello@ddotnollid.com</a>. Site updated Oct 27, 2026 (v13).</span>
+    <span>© 2026 Ddot Nollid. A Ddot Nollid Production. Contact: <a href="mailto:hello@ddotnollid.com">hello@ddotnollid.com</a>. Site updated Oct 27, 2026 (v14).</span>
     <span id="footLinks"></span>
   </div>
 </footer>
@@ -1187,6 +1219,26 @@ async function loadShop(){
   if(SHOP.store){const a=$("#storeLink");a.href=SHOP.store;a.target="_blank";a.rel="noopener";
     $("#storeNote").innerHTML=`Every order is printed when you buy it and shipped to you by our print partner. <a href="${escH(SHOP.store)}" target="_blank" rel="noopener">Browse the full store</a>.`}
   renderProducts();
+  setupJoin();
+}
+/* Mailing list: a Kit (kit.com) form. merch.json → "newsletter": {"kit_form_id": "1234567"} turns it on. */
+function setupJoin(){
+  const id=String(((SHOP.newsletter||{}).kit_form_id)||"").trim();
+  if(!/^\d+$/.test(id))return;
+  const f=$("#joinForm"),msg=$("#joinMsg"),url=`https://app.kit.com/forms/${id}/subscriptions`;
+  f.action=url;$("#join").hidden=false;
+  f.addEventListener("submit",async e=>{
+    e.preventDefault();
+    const em=$("#joinEmail");
+    if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(em.value.trim())){msg.textContent="Please enter a valid email address.";msg.className="join-fine";em.focus();return}
+    const btn=f.querySelector("button");btn.disabled=true;btn.textContent="Signing up…";
+    try{
+      await fetch(url,{method:"POST",mode:"no-cors",body:new FormData(f)});
+      f.querySelectorAll("input,button").forEach(x=>x.hidden=true);
+      msg.className="join-fine join-done";msg.textContent="You’re almost in! Check your inbox and tap the confirm link.";
+    }catch(err){f.submit()}
+    finally{btn.disabled=false;btn.textContent="Sign me up"}
+  });
 }
 $("#scrim").addEventListener("click",()=>{if(!$("#sheet").hidden)closeSheet()});
 document.addEventListener("keydown",e=>{if(e.key!=="Escape")return;if(!$("#zbox").hidden){closeZoom();return}if(!$("#vbox").hidden){closeVideo();return}if(!$("#sheet").hidden)closeSheet()});
