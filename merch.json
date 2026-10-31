@@ -2,6 +2,11 @@
   "newsletter": {
     "kit_form_id": "10107516"
   },
+  "services": {
+    "custom_song_kit_form": "10125652",
+    "collaboration_kit_form": "10125735",
+    "album_kit_form": "10125744"
+  },
   "store": "https://ddot-nollid-shop.fourthwall.com",
   "items": {
     "tee-black": {
