@@ -5,13 +5,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <link rel="canonical" href="https://ddotnollid.com/">
 <meta property="og:type" content="music.musician">
-<meta property="og:title" content="Ddot Nollid">
-<meta property="og:description" content="Listen on your favorite streaming service and shop merch from the album art.">
+<meta property="og:title" content="Ddot Nollid | Official Artist Website">
+<meta property="og:description" content="The official home of Ddot Nollid: original music, custom songs and songwriting collaborations. Listen, watch, shop merch and hire Ddot Nollid.">
 <meta property="og:url" content="https://ddotnollid.com/">
 <meta property="og:image" content="https://ddotnollid.com/cyborg.jpg">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="description" content="Ddot Nollid: listen on your favorite streaming service and shop merch from the album art.">
-<title>Ddot Nollid</title>
+<meta name="description" content="The official artist website of Ddot Nollid: original music on every streaming service, custom songs, music production collaborations and merch.">
+<title>Ddot Nollid | Official Artist Website</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -62,6 +62,9 @@ h2{font-size:clamp(44px,7vw,88px)}
 .brand{display:flex;align-items:center;gap:10px;text-decoration:none;margin-right:auto}
 .brand img{width:36px;height:36px;border-radius:50%;object-fit:cover;box-shadow:0 0 0 1px var(--wire),0 0 14px rgba(74,134,255,.45)}
 .brand span{font-family:var(--display);font-weight:900;font-size:24px;letter-spacing:.04em}
+.brand .b-txt{display:flex;flex-direction:column;line-height:1}
+.brand .b-txt span{white-space:nowrap}
+.brand .b-txt small{font-size:10px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--volt-hot);margin-top:3px;white-space:nowrap}
 .nav{display:flex;gap:22px}
 .nav a{text-decoration:none;color:var(--steel);font-weight:500;font-size:15px}
 .nav a:hover{color:var(--chrome)}
@@ -84,7 +87,44 @@ h2{font-size:clamp(44px,7vw,88px)}
 .drop-card img{width:clamp(110px,18vw,168px);aspect-ratio:1;object-fit:cover;border-radius:10px;box-shadow:0 0 0 1px var(--wire)}
 .drop-meta{min-width:0}
 .badge{display:inline-block;font-size:13px;font-weight:700;color:var(--void);background:var(--gold);border-radius:4px;padding:2px 8px;margin-bottom:10px}
-.drop-card h1{font-size:clamp(48px,8vw,92px)}
+.drop-card h2{font-size:clamp(34px,5.4vw,60px)}
+/* brand intro: says plainly whose site this is */
+.intro{position:relative;z-index:2;margin-bottom:22px;max-width:760px}
+.hello{display:block}
+@media (min-width:1000px){
+  .drop{margin-top:-70px}
+  .hello{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:40px;align-items:end}
+  .intro{margin-bottom:0}
+  .hello .drop-card{grid-template-columns:auto minmax(0,1fr)}
+}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--volt-hot);background:rgba(4,6,12,.72);border:1px solid var(--wire);border-radius:999px;padding:5px 12px}
+.eyebrow i{width:7px;height:7px;border-radius:50%;background:var(--volt-hot);box-shadow:0 0 10px var(--volt-hot)}
+.intro h1{font-size:clamp(52px,7vw,88px);line-height:.9;margin:12px 0 8px}
+.intro .tag{font-family:"Big Shoulders Display",sans-serif;font-weight:800;text-transform:uppercase;letter-spacing:.04em;font-size:clamp(18px,2.4vw,24px);color:var(--chrome);margin:0}
+.intro .what{color:var(--steel);margin:6px 0 16px;font-size:16px}
+.feat-label{font-size:13px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--steel);margin:0 0 10px}
+/* services */
+.svc-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+@media (max-width:900px){.svc-grid{grid-template-columns:minmax(0,1fr)}}
+.svc{display:flex;flex-direction:column;gap:14px;padding:22px;border:1px solid var(--wire);border-radius:18px;background:var(--deck)}
+.svc-top{display:flex;flex-direction:column;gap:4px}
+.svc h3{font-size:30px;margin:0}
+.svc-price{font-weight:800;color:var(--volt-hot);white-space:nowrap}
+.svc-price small{display:block;font-weight:600;font-size:12px;color:var(--steel);text-align:right}
+.svc p{margin:0;color:var(--steel)}
+.svc-ex{display:grid;grid-template-columns:64px minmax(0,1fr);gap:12px;align-items:center;padding:12px;border-radius:12px;background:var(--void);border:1px solid var(--wire)}
+.svc-ex img{width:64px;height:64px;border-radius:8px;object-fit:cover}
+.svc-ex b{display:block;color:var(--chrome);font-size:14px}
+.svc-ex span{display:block;font-size:13px;color:var(--steel);line-height:1.4}
+.svc-ex button{margin-top:6px;background:none;border:0;padding:0;color:var(--volt-hot);font-weight:700;font-size:13px;cursor:pointer}
+.svc .btn{justify-content:center;margin-top:auto}
+.steps{list-style:none;counter-reset:st;margin:28px 0 0;padding:0;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px}
+@media (max-width:900px){.steps{grid-template-columns:minmax(0,1fr)}}
+.steps li{counter-increment:st;padding:16px;border-radius:14px;border:1px solid var(--wire);background:var(--deck)}
+.steps li::before{content:counter(st);display:grid;place-items:center;width:28px;height:28px;border-radius:50%;background:var(--volt);color:#fff;font-weight:800;font-size:14px;margin-bottom:10px}
+.steps b{display:block;color:var(--chrome);margin-bottom:4px}
+.steps span{font-size:14px;color:var(--steel)}
+.svc-fine{margin:20px 0 0;font-size:14px;color:var(--steel)}
 .drop-card .sub{color:var(--steel);margin:6px 0 16px}
 .btns{display:flex;flex-wrap:wrap;gap:10px}
 .btn{display:inline-flex;align-items:center;gap:8px;border-radius:999px;padding:11px 20px;font-weight:700;font-size:15px;text-decoration:none;border:1px solid var(--wire);background:var(--deck-2)}
@@ -278,7 +318,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px}
 .p-row .add:only-child{flex:1}
 .drop-card{transition:opacity .35s ease,transform .35s ease}
 .drop-card.swap{opacity:0;transform:translateY(6px)}
-.drop-card h1.long{font-size:clamp(34px,5vw,62px);line-height:.95}
+.drop-card h2.long{font-size:clamp(28px,4vw,46px);line-height:.95}
 .f-date{font-weight:700;color:var(--chrome);margin:10px 0 0;font-size:16px}
 .f-nav{display:flex;gap:10px;margin-top:12px;max-width:760px}
 .f-dot{flex:1;min-width:0;text-align:left;background:var(--deck);border:1px solid var(--wire);border-radius:12px;padding:10px 12px 12px;display:grid;gap:2px;position:relative;overflow:hidden}
@@ -368,9 +408,9 @@ a.add{display:inline-flex;align-items:center;justify-content:center;gap:6px;text
 
 <header class="top">
   <div class="wrap">
-    <a class="brand" href="#top" aria-label="Ddot Nollid home"><img src="./cyborg.webp" alt=""><span class="chrome-type">Ddot Nollid</span></a>
+    <a class="brand" href="#top" aria-label="Ddot Nollid, official artist website, home"><img src="./cyborg.webp" alt=""><div class="b-txt"><span class="chrome-type">Ddot Nollid</span><small>Official site</small></div></a>
     <nav class="nav" aria-label="Sections">
-      <a href="#listen">Listen</a><a href="#releases">Releases</a><a href="#watch">Watch</a><a href="#follow">Follow</a><a href="#merch">Merch</a><a href="#story">Story</a>
+      <a href="#listen">Listen</a><a href="#releases">Releases</a><a href="#watch">Watch</a><a href="#follow">Follow</a><a href="#services">Services</a><a href="#merch">Merch</a><a href="#story">Story</a>
     </nav>
     <a class="yt-link" href="#follow" aria-label="Follow Ddot Nollid"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7.5-4.6-10-9.3C.3 8.4 2.3 4 6.3 4c2.2 0 3.7 1.3 4.7 2.7C12 5.3 13.5 4 15.7 4c4 0 6 4.4 4.3 7.7C19.5 16.4 12 21 12 21Z"/></svg><span class="yt-label">Follow</span></a>
     <a class="cart-btn" id="storeLink" href="#merch" style="text-decoration:none">
@@ -387,11 +427,25 @@ a.add{display:inline-flex;align-items:center;justify-content:center;gap:6px;text
   </section>
 
   <div class="wrap drop">
+    <div class="hello">
+    <div class="intro">
+      <span class="eyebrow"><i></i>Official artist website</span>
+      <h1 class="chrome-type">Ddot Nollid</h1>
+      <p class="tag">Good people. Great stories. Worldwide.</p>
+      <p class="what">Original music, custom songs and music production collaborations with Ddot Nollid.</p>
+      <div class="btns">
+        <a class="btn btn-volt" href="#listen"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>Listen</a>
+        <a class="btn" href="#services">Custom songs</a>
+        <a class="btn" href="#merch">Merch</a>
+      </div>
+    </div>
+    <div class="feat">
+    <p class="feat-label">New music</p>
     <div class="drop-card" id="feature" aria-live="polite">
       <img id="fArt" src="./cyborg.webp" alt="">
       <div class="drop-meta">
         <span class="badge" id="fBadge">Latest release</span>
-        <h1 class="chrome-type long" id="fTitle">Conspiracy Theory I–III: The Apocalypse</h1>
+        <h2 class="chrome-type long" id="fTitle">Conspiracy Theory I–III: The Apocalypse</h2>
         <p class="f-date" id="fDate">Released October 16, 2026</p>
         <p class="sub" id="fSub">3 songs, out now everywhere you stream.</p>
         <div class="btns">
@@ -399,6 +453,8 @@ a.add{display:inline-flex;align-items:center;justify-content:center;gap:6px;text
           <a class="btn" href="#merch">Shop the merch</a>
         </div>
       </div>
+    </div>
+    </div>
     </div>
     <div class="f-nav" id="fNav" role="group" aria-label="Latest releases"></div>
     <div class="picker">
@@ -459,9 +515,46 @@ a.add{display:inline-flex;align-items:center;justify-content:center;gap:6px;text
     <div class="wrap">
       <div class="section-head">
         <h2 class="chrome-type">Follow</h2>
-        <p>Follow Ddot Nollid where you listen and new songs land in your feed the day they drop. On Spotify, a follow also puts new releases in your Release Radar.</p>
+        <p>Follow Ddot Nollid where you listen and new songs land in your feed the day they drop. On Spotify, a follow also puts new releases in your Release Radar. For daily videos and Shorts, follow on TikTok and Instagram.</p>
       </div>
       <div class="follow-grid" id="followGrid"></div>
+    </div>
+  </section>
+
+  <section class="section" id="services">
+    <div class="wrap">
+      <div class="section-head">
+        <h2 class="chrome-type">Services</h2>
+        <p>Besides original music, Ddot Nollid writes songs for and with other people. Every project starts with a short questionnaire, and the price is agreed in writing before any work begins.</p>
+      </div>
+      <div class="svc-grid">
+        <article class="svc">
+          <div class="svc-top"><h3 class="chrome-type">Custom song</h3><span class="svc-price">From $250</span></div>
+          <p>A one-of-a-kind song about your people: an anniversary, a wedding, a birthday, a memorial, a team or a hometown.</p>
+          <div class="svc-ex"><img src="./kylexa.webp" alt=""><div><b>Example: Kylexa</b><span>The first song anyone paid Ddot Nollid to write, for Kyle and Alexa's first anniversary.</span><button data-example="Kylexa">▶ Play Kylexa</button></div></div>
+          <a class="btn btn-volt" data-form="custom_song" href="mailto:hello@ddotnollid.com?subject=Custom%20song%20request">Start a custom song</a>
+        </article>
+        <article class="svc">
+          <div class="svc-top"><h3 class="chrome-type">Song collaboration</h3><span class="svc-price">From $250</span></div>
+          <p>Bring your lyrics, poems or an unfinished song. We finish it together, and you're credited as a co-writer.</p>
+          <div class="svc-ex"><img src="./palm-tree.webp" alt=""><div><b>Example: Palm Tree Dreams</b><span>T. Craig Goodwin wrote about 80% of this song before he passed. Ddot Nollid added the chorus and a connecting verse.</span><button data-example="Palm Tree Dreams">▶ Play Palm Tree Dreams</button></div></div>
+          <a class="btn btn-volt" data-form="collaboration" href="mailto:hello@ddotnollid.com?subject=Song%20collaboration%20request">Start a collaboration</a>
+        </article>
+        <article class="svc">
+          <div class="svc-top"><h3 class="chrome-type">Full album</h3><span class="svc-price">From $2,000</span></div>
+          <p>Turn a collection of poems, a life story or a cause into a complete album, written and produced together.</p>
+          <div class="svc-ex"><img src="./undaunted.webp" alt=""><div><b>Example: Undaunted</b><span>Ddot Nollid wrote the title song. The rest were co-written with Tony Hernandez from his poetry.</span><button data-example="Undaunted">▶ Play Undaunted</button></div></div>
+          <a class="btn btn-volt" data-form="album" href="mailto:hello@ddotnollid.com?subject=Album%20collaboration%20request">Start an album</a>
+        </article>
+      </div>
+      <ol class="steps" aria-label="How it works">
+        <li><b>Tell your story</b><span>Fill out the Custom Song or Collaboration questionnaire.</span></li>
+        <li><b>Sign and reserve</b><span>E-sign the agreement and pay a $100 non-refundable deposit, credited toward your total.</span></li>
+        <li><b>Agree on the plan</b><span>Final price, timeline and number of samples are set in writing before any work begins.</span></li>
+        <li><b>Hear and shape it</b><span>Review the samples. Two rounds of changes are included.</span></li>
+        <li><b>Take it home</b><span>Pay the balance and receive your finished song.</span></li>
+      </ol>
+      <p class="svc-fine">Pay by PayPal, Stripe, Venmo or Zelle. Ddot Nollid keeps the song's copyright; you can play and share your song for personal use, forever. Questions? <a href="mailto:hello@ddotnollid.com">hello@ddotnollid.com</a></p>
     </div>
   </section>
 
@@ -517,7 +610,7 @@ a.add{display:inline-flex;align-items:center;justify-content:center;gap:6px;text
 
 <footer>
   <div class="wrap">
-    <span>© 2026 Ddot Nollid. A Ddot Nollid Production. Contact: <a href="mailto:hello@ddotnollid.com">hello@ddotnollid.com</a>. Site updated Oct 27, 2026 (v14).</span>
+    <span>© 2026 Ddot Nollid. A Ddot Nollid Production. Contact: <a href="mailto:hello@ddotnollid.com">hello@ddotnollid.com</a>. Site updated Oct 27, 2026 (v17).</span>
     <span id="footLinks"></span>
   </div>
 </footer>
@@ -594,6 +687,11 @@ const PLATFORMS = [
   {id:"pandora", name:"Pandora",       c:"#5b8cff", artist:"", search:s=>`https://www.pandora.com/search/${s}/all`},
   {id:"youtube", name:"YouTube",       c:"#ff0033", artist:YT_CHANNEL, search:s=>`https://www.youtube.com/results?search_query=${s}`},
 ];
+// Social accounts: shown in Follow and the footer, never offered as a place to listen.
+const SOCIALS = [
+  {id:"tiktok",    name:"TikTok",    c:"#25f4ee", url:"https://www.tiktok.com/@ddot.nollid", handle:"@ddot.nollid"},
+  {id:"instagram", name:"Instagram", c:"#e1306c", url:"https://www.instagram.com/ddot_nollid/", handle:"@ddot_nollid"},
+];
 const DZ="https://cdn-images.dzcdn.net/images/cover/", CT="Conspiracy Theory I-III: The Apocalypse";
 const TRACKS = [
   {id:"conspiracy-1", title:"Conspiracy Theory I: Divide the Room", release:CT, date:"2026-10-16", kind:"Single", note:`From ${CT}`, art:null, artUrl:DZ+"37052006e8aa2a37c04016e273e71a38/1000x1000-000000-80-0-0.jpg", audio:null},
@@ -653,9 +751,10 @@ function renderPicker(){
 }
 $("#pfRow").addEventListener("click",e=>{const b=e.target.closest("[data-pf]");if(!b)return;setPref(b.dataset.pf);toast(`Listen buttons now open ${getPref().name}`)});
 function renderFollow(){
-  $("#followGrid").innerHTML=PLATFORMS.map(p=>`<a class="fcard" style="--c:${p.c}" href="${artistUrl(p)}" target="_blank" rel="noopener"><b><i></i>${p.name}</b><span>${p.id==="youtube"?"Subscribe":"Follow"}</span></a>`).join("");
+  $("#followGrid").innerHTML=PLATFORMS.map(p=>`<a class="fcard" style="--c:${p.c}" href="${artistUrl(p)}" target="_blank" rel="noopener"><b><i></i>${p.name}</b><span>${p.id==="youtube"?"Subscribe":"Follow"}</span></a>`).join("")
+    +SOCIALS.map(x=>`<a class="fcard" style="--c:${x.c}" href="${x.url}" target="_blank" rel="noopener"><b><i></i>${x.name}</b><span>${x.handle}</span></a>`).join("");
 }
-$("#footLinks").innerHTML = PLATFORMS.map(p=>`<a href="${artistUrl(p)}" target="_blank" rel="noopener">${p.name}</a>`).join("  ·  ");
+$("#footLinks").innerHTML = [...PLATFORMS.map(p=>`<a href="${artistUrl(p)}" target="_blank" rel="noopener">${p.name}</a>`),...SOCIALS.map(x=>`<a href="${x.url}" target="_blank" rel="noopener">${x.name}</a>`)].join("  ·  ");
 function listenClick(e,id){e.stopPropagation();if(!getPref()){e.preventDefault();openSheet(TRACKS.findIndex(t=>t.id===id))}}
 function bindListen(el){el.addEventListener("click",e=>listenClick(e,el.hasAttribute("data-listen-current")?TRACKS[cur].id:el.dataset.listen))}
 function updateListenLinks(){
@@ -911,7 +1010,7 @@ async function loadLinks(){
     document.querySelectorAll(".track").forEach(el=>el.setAttribute("aria-current",el.dataset.id===curId?"true":"false"));
   }
   renderFollow();
-  $("#footLinks").innerHTML=PLATFORMS.map(p=>`<a href="${artistUrl(p)}" target="_blank" rel="noopener">${p.name}</a>`).join("  ·  ");
+  $("#footLinks").innerHTML=[...PLATFORMS.map(p=>`<a href="${artistUrl(p)}" target="_blank" rel="noopener">${p.name}</a>`),...SOCIALS.map(x=>`<a href="${x.url}" target="_blank" rel="noopener">${x.name}</a>`)].join("  ·  ");
   updateListenLinks();
   fItems=buildFeatured();renderFeature(0,false);
   renderVideos(data.videos||[]);
@@ -1220,6 +1319,16 @@ async function loadShop(){
     $("#storeNote").innerHTML=`Every order is printed when you buy it and shipped to you by our print partner. <a href="${escH(SHOP.store)}" target="_blank" rel="noopener">Browse the full store</a>.`}
   renderProducts();
   setupJoin();
+  setupServices();
+}
+/* Services: example songs play in the site player; questionnaire links come from merch.json "services". */
+document.querySelectorAll("[data-example]").forEach(b=>b.addEventListener("click",()=>{
+  const n=b.dataset.example.toLowerCase(), i=TRACKS.findIndex(t=>t.title.toLowerCase().startsWith(n));
+  if(i>=0)play(i);else location.hash="#listen";
+}));
+function setupServices(){
+  const f=SHOP.services||{};
+  document.querySelectorAll("[data-form]").forEach(a=>{const u=String(f[a.dataset.form+"_form"]||"").trim();if(/^https:\/\//.test(u)){a.href=u;a.target="_blank";a.rel="noopener"}});
 }
 /* Mailing list: a Kit (kit.com) form. merch.json → "newsletter": {"kit_form_id": "1234567"} turns it on. */
 function setupJoin(){
