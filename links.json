@@ -1,6 +1,6 @@
 {
   "artist": "Ddot Nollid",
-  "updated": "2026-10-28T02:46:07Z",
+  "updated": "2026-11-01T20:33:54Z",
   "artist_links": {
     "amazon": "https://music.amazon.com/artists/B0GV6VX887",
     "apple": "https://music.apple.com/us/artist/ddot-nollid/1888639392",
@@ -12,6 +12,20 @@
     "ytmusic": "https://music.youtube.com/@DdotNollid"
   },
   "tracks": [
+    {
+      "title": "All My Might",
+      "release": "All My Might",
+      "type": "single",
+      "date": "2026-11-01",
+      "art": "covers/all-my-might.jpg",
+      "songlink": null,
+      "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/f3/e6/ad/f3e6ad70-4287-6788-adf6-602568df8979/mzaf_11209461862350976695.plus.aac.p.m4a",
+      "links": {
+        "apple": "https://music.apple.com/us/album/all-my-might/6829374582?i=6829374583",
+        "deezer": "https://www.deezer.com/track/4384311031"
+      },
+      "youtube": "SqUYV4-OruM"
+    },
     {
       "title": "Conspiracy Theory III: The Last Word",
       "release": "Conspiracy Theory I-III: The Apocalypse",
