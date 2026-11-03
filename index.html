@@ -178,6 +178,30 @@ h2{font-size:clamp(44px,7vw,88px)}
 .track:hover .t-play,.track[aria-current="true"] .t-play{background:var(--volt);border-color:var(--volt);color:#fff}
 
 /* releases */
+/* rails: one auto-scrolling row; hover, touch or focus pauses it, arrows and swipe move it */
+.rail-wrap{position:relative}
+.rail{display:flex;gap:14px;overflow-x:auto;overscroll-behavior-x:contain;scrollbar-width:none;padding:4px 2px 6px;cursor:grab;
+  -webkit-mask-image:linear-gradient(90deg,transparent 0,#000 28px,#000 calc(100% - 28px),transparent 100%);mask-image:linear-gradient(90deg,transparent 0,#000 28px,#000 calc(100% - 28px),transparent 100%)}
+.rail::-webkit-scrollbar{display:none}
+.rail.dragging{cursor:grabbing;user-select:none}
+.rail.dragging *{pointer-events:none}
+.rail>*{flex:none}
+.rail-bar{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:14px}
+.rail-btns{display:flex;gap:6px;margin-left:auto}
+.rail-btn{width:40px;height:40px;border-radius:50%;border:1px solid var(--wire);background:var(--deck-2);color:var(--chrome);display:grid;place-items:center;cursor:pointer}
+.rail-btn:hover{border-color:var(--volt-hot)}
+.rail-btn svg{width:16px;height:16px;fill:currentColor}
+.rail-search{flex:1 1 220px;max-width:340px}
+.rail-count{color:var(--steel);font-size:14px}
+.rcard{width:190px;background:none;border:0;padding:0;text-align:left;display:grid;gap:8px;align-content:start;cursor:pointer}
+.rcard .rimg{position:relative;display:block;aspect-ratio:1;border-radius:12px;overflow:hidden;border:1px solid var(--wire);background:var(--deck)}
+.rcard img{width:100%;height:100%;object-fit:cover;transition:scale .4s ease}
+.rcard:hover img{scale:1.05}
+.rcard .rnew{position:absolute;top:8px;left:8px;font-size:11px;font-weight:800;color:var(--void);background:var(--gold);border-radius:4px;padding:2px 6px}
+.rcard b{font-size:15px;line-height:1.3;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.rcard small{color:var(--steel);font-size:13px}
+.rail-empty{color:var(--steel);padding:20px 0}
+@media (max-width:560px){.rcard{width:150px}}
 .covers{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
 .cover{position:relative;border-radius:12px;overflow:hidden;background:var(--deck);border:1px solid var(--wire);text-align:left;padding:0}
 .cover img{width:100%;aspect-ratio:1;object-fit:cover;transition:scale .5s ease}
@@ -355,6 +379,12 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px}
 .srow{display:flex;gap:14px;overflow-x:auto;padding-bottom:10px;scroll-snap-type:x proximity}
 .vcard{background:none;border:0;padding:0;text-align:left;display:grid;gap:8px;align-content:start;min-width:0}
 .srow .vcard{flex:none;width:180px;scroll-snap-align:start}
+.rail .vcard{width:300px}
+.rail.music .vcard{width:180px}
+.rail.music .vthumb{aspect-ratio:1}
+.rail.short .vcard{width:160px}
+.rail.short .vthumb{aspect-ratio:9/16}
+@media (max-width:560px){.rail .vcard{width:240px}.rail.music .vcard{width:150px}.rail.short .vcard{width:140px}}
 .vthumb{position:relative;display:block;aspect-ratio:16/9;border-radius:12px;overflow:hidden;background:var(--deck);border:1px solid var(--wire)}
 .srow .vthumb{aspect-ratio:9/16}
 .vthumb img{width:100%;height:100%;object-fit:cover;transition:scale .4s ease}
@@ -512,9 +542,14 @@ a.add{display:inline-flex;align-items:center;justify-content:center;gap:6px;text
     <div class="wrap">
       <div class="section-head">
         <h2 class="chrome-type">Releases</h2>
-        <p>From the card table to the riverbank. Tap a cover to load it in the player.</p>
+        <p>From the card table to the riverbank. Tap a cover to play it.</p>
       </div>
-      <div class="covers" id="covers"></div>
+      <div class="rail-bar">
+        <label class="search rail-search"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 3a7 7 0 0 1 5.6 11.2l4.6 4.6-1.4 1.4-4.6-4.6A7 7 0 1 1 10 3Zm0 2a5 5 0 1 0 0 10 5 5 0 0 0 0-10Z"/></svg><input type="search" id="relSearch" placeholder="Search releases" autocomplete="off" aria-label="Search releases"></label>
+        <span class="rail-count" id="relCount" aria-live="polite"></span>
+        <div class="rail-btns" data-rail-for="covers"></div>
+      </div>
+      <div class="rail" id="covers" role="region" aria-label="Releases, scrolling" tabindex="0"></div>
     </div>
   </section>
 
@@ -524,8 +559,9 @@ a.add{display:inline-flex;align-items:center;justify-content:center;gap:6px;text
         <h2 class="chrome-type">Watch</h2>
         <div class="filters" id="vTabs" role="group" aria-label="Video type"></div>
       </div>
-      <div id="vGrid" class="vgrid"></div>
-      <div class="v-foot"><button class="btn" id="vMore" hidden>Show all videos</button><a class="btn btn-volt" href="https://www.youtube.com/channel/UCjUHyRj5Eze6VPge7ex6nvQ?sub_confirmation=1" target="_blank" rel="noopener">Subscribe on YouTube</a></div>
+      <div class="rail-bar"><span class="rail-count" id="vCount" aria-live="polite"></span><div class="rail-btns" data-rail-for="vGrid"></div></div>
+      <div id="vGrid" class="rail" role="region" aria-label="Videos, scrolling" tabindex="0"></div>
+      <div class="v-foot"><a class="btn btn-volt" href="https://www.youtube.com/channel/UCjUHyRj5Eze6VPge7ex6nvQ?sub_confirmation=1" target="_blank" rel="noopener">Subscribe on YouTube</a></div>
     </div>
   </section>
 
@@ -632,7 +668,7 @@ a.add{display:inline-flex;align-items:center;justify-content:center;gap:6px;text
 
 <footer>
   <div class="wrap">
-    <span>© 2026 Ddot Nollid. A Ddot Nollid Production. Contact: <a href="mailto:hello@ddotnollid.com">hello@ddotnollid.com</a>. Site updated Oct 27, 2026 (v20).</span>
+    <span>© 2026 Ddot Nollid. A Ddot Nollid Production. Contact: <a href="mailto:hello@ddotnollid.com">hello@ddotnollid.com</a>. Site updated Oct 27, 2026 (v21).</span>
     <span id="footLinks"></span>
   </div>
 </footer>
@@ -774,6 +810,9 @@ const store = {
 let toastT;
 function toast(msg){const t=$("#toast");t.textContent=msg;t.hidden=false;clearTimeout(toastT);toastT=setTimeout(()=>t.hidden=true,2400)}
 const playSvg='<svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>';
+const pauseIco='<svg viewBox="0 0 24 24"><path d="M7 5h4v14H7zm6 0h4v14h-4z"/></svg>';
+const fmtDate=(d,opt)=>new Date(d+"T12:00:00").toLocaleDateString("en-US",opt||{month:"long",day:"numeric",year:"numeric"});
+const esc=s=>String(s||"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 
 /* ---------- platforms ---------- */
 const artistUrl=p=>p.artist||p.search(q);
@@ -878,26 +917,86 @@ $("#songMore").addEventListener("click",()=>{
   if(!songsOpen){const top=$("#listen").getBoundingClientRect().top;if(top<0)$("#listen").scrollIntoView({behavior:matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth"})}
 });
 list.addEventListener("click",e=>{if(e.target.id==="songClear"){$("#trackSearch").value="";songQuery="";renderTrackList();$("#trackSearch").focus()}});
-function renderLists(){
-covers.innerHTML="";
-renderRelChips();renderTrackList();
-const rkey=s=>(s||"").normalize("NFKD").replace(/[̀-ͯ]/g,"").toLowerCase().replace(/[^a-z0-9]+/g," ").trim();
-const releases=new Map();
-TRACKS.forEach((t,i)=>{const name=t.cover||t.release||t.title;const k=rkey(name);if(!releases.has(k))releases.set(k,{name,t,i})});
-[...releases.values()].forEach(({name,t,i},n)=>{
-  const b=document.createElement("button");
-  b.className="cover"+(n===0?" feature":"");
-  b.setAttribute("aria-label",`Open ${name}`);
-  b.innerHTML=`<figure style="margin:0"><img src="${artOf(t)}" alt="${name} cover art" loading="lazy">
-    <figcaption><strong>${name}</strong><small>${t.kind||(t.cover?"Album":"Single")}</small></figcaption></figure>`;
-  b.addEventListener("click",()=>{
-    songRel=skey(name);songQuery="";$("#trackSearch").value="";
-    renderRelChips();renderTrackList();load(i,true);
-    document.getElementById("listen").scrollIntoView();
+/* ---------- rails: one row that drifts on its own ---------- */
+const reduceMotion=window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches;
+const RAIL_SPEED=28; // pixels per second
+const rails=new Map();
+function railSet(el,cards,empty,auto){
+  let r=rails.get(el);
+  if(!r){r={el,pos:0,hold:0,loop:0,auto:false,on:false,seen:true,last:0};rails.set(el,r);railWire(r)}
+  el.innerHTML=cards.join("")||empty;
+  r.loop=0;r.pos=0;el.scrollLeft=0;r.auto=auto&&!reduceMotion&&cards.length>1;
+  requestAnimationFrame(()=>{ // clone the row once so it loops without a jump
+    if(!r.auto||el.scrollWidth<=el.clientWidth+40){r.auto=false;railBtns(r);return}
+    const first=el.firstElementChild, w=el.scrollWidth+parseFloat(getComputedStyle(el).columnGap||0);
+    cards.forEach(c=>el.insertAdjacentHTML("beforeend",c));
+    [...el.children].slice(cards.length).forEach(n=>{n.setAttribute("aria-hidden","true");n.tabIndex=-1;n.dataset.clone="1"});
+    r.loop=el.children[cards.length].offsetLeft-first.offsetLeft;railBtns(r);
   });
-  covers.appendChild(b);
-});
 }
+function railBtns(r){
+  const box=document.querySelector(`[data-rail-for="${r.el.id}"]`);if(!box)return;
+  const L='<svg viewBox="0 0 24 24"><path d="M15.4 6.4 14 5l-7 7 7 7 1.4-1.4L9.8 12z"/></svg>',Rt='<svg viewBox="0 0 24 24"><path d="M8.6 17.6 10 19l7-7-7-7-1.4 1.4 5.6 5.6z"/></svg>';
+  box.innerHTML=`<button class="rail-btn" data-d="-1" aria-label="Scroll left">${L}</button>${r.auto?`<button class="rail-btn" data-d="0" aria-label="${r.on?"Resume":"Pause"} scrolling">${r.on?playSvg:pauseIco}</button>`:""}<button class="rail-btn" data-d="1" aria-label="Scroll right">${Rt}</button>`;
+  box.onclick=e=>{const b=e.target.closest("[data-d]");if(!b)return;const d=+b.dataset.d;
+    if(!d){r.on=!r.on;railBtns(r);return}
+    r.hold=performance.now()+4000;r.el.scrollBy({left:d*r.el.clientWidth*0.8,behavior:"smooth"})};
+}
+function railWire(r){
+  const el=r.el, hold=ms=>{r.hold=performance.now()+ms};
+  el.addEventListener("pointerenter",e=>{if(e.pointerType==="mouse")hold(1e9)});
+  el.addEventListener("pointerleave",e=>{if(e.pointerType==="mouse")hold(1200)});
+  el.addEventListener("touchstart",()=>hold(1e9),{passive:true});
+  el.addEventListener("touchend",()=>hold(3000),{passive:true});
+  el.addEventListener("focusin",()=>hold(1e9));el.addEventListener("focusout",()=>hold(1500));
+  el.addEventListener("wheel",()=>hold(2500),{passive:true});
+  el.addEventListener("scroll",()=>{if(performance.now()<r.hold)r.pos=el.scrollLeft;
+    if(r.loop&&el.scrollLeft>=r.loop){el.scrollLeft-=r.loop;r.pos=el.scrollLeft}},{passive:true});
+  // drag with a mouse
+  let sx=0,sl=0,down=false;
+  el.addEventListener("pointerdown",e=>{if(e.pointerType!=="mouse"||e.button)return;down=true;sx=e.clientX;sl=el.scrollLeft;el.dataset.moved="0"});
+  window.addEventListener("pointermove",e=>{if(!down)return;const dx=e.clientX-sx;if(Math.abs(dx)>5){el.dataset.moved="1";el.classList.add("dragging")}el.scrollLeft=sl-dx;r.pos=el.scrollLeft});
+  window.addEventListener("pointerup",()=>{if(!down)return;down=false;el.classList.remove("dragging");setTimeout(()=>{el.dataset.moved="0"},0)});
+  el.addEventListener("keydown",e=>{if(e.key==="ArrowRight"||e.key==="ArrowLeft"){hold(4000);el.scrollBy({left:(e.key==="ArrowRight"?1:-1)*220,behavior:"smooth"})}});
+  if("IntersectionObserver" in window)new IntersectionObserver(es=>es.forEach(x=>{r.seen=x.isIntersecting})).observe(el);
+}
+let railT=0;
+function railTick(t){
+  const dt=railT?Math.min(t-railT,64):16;railT=t;
+  rails.forEach(r=>{
+    if(!r.auto||r.on||!r.seen||document.hidden||t<r.hold)return;
+    r.pos+=RAIL_SPEED*dt/1000;
+    if(r.loop&&r.pos>=r.loop)r.pos-=r.loop;
+    r.el.scrollLeft=r.pos;
+  });
+  requestAnimationFrame(railTick);
+}
+requestAnimationFrame(railTick);
+
+let relQuery="";
+function releaseList(){
+  const rkey=s=>(s||"").normalize("NFKD").replace(/[\u0300-\u036f]/g,"").toLowerCase().replace(/[^a-z0-9]+/g," ").trim();
+  const m=new Map();
+  TRACKS.forEach((t,i)=>{const name=t.cover||t.release||t.title, k=rkey(name);
+    const r=m.get(k)||{name,t,i,date:t.date||"",kind:t.kind||(t.cover?"Album":"Single"),n:0};
+    r.n++;if((t.date||"")>r.date)r.date=t.date;m.set(k,r)});
+  return [...m.values()].sort((a,b)=>(b.date||"").localeCompare(a.date||""));
+}
+function renderLists(){
+  renderRelChips();renderTrackList();
+  const all=releaseList(), top=all.length?all[0].date:"";
+  const q=relQuery.trim().toLowerCase();
+  const shown=q?all.filter(r=>r.name.toLowerCase().includes(q)||r.t.title.toLowerCase().includes(q)):all;
+  $("#relCount").textContent=q?`${shown.length} of ${all.length} releases`:`${all.length} releases`;
+  const card=r=>`<button class="rcard" data-ri="${r.i}" data-rname="${esc(r.name)}" aria-label="Play ${esc(r.name)}"><span class="rimg"><img src="${artOf(r.t)}" alt="" loading="lazy">${r.date&&r.date===top?'<span class="rnew">NEW</span>':""}</span><b>${esc(r.name.replace(/ I-III/," I–III"))}</b><small>${r.kind}${r.n>1?` · ${r.n} songs`:""}${r.date?" · "+fmtDate(r.date,{month:"short",year:"numeric"}):""}</small></button>`;
+  railSet(covers,shown.map(card),shown.length?"":`<p class="rail-empty">No releases match “${esc(relQuery)}”.</p>`,!q);
+}
+covers.addEventListener("click",e=>{
+  const b=e.target.closest(".rcard");if(!b||covers.dataset.moved==="1")return;
+  songRel=skey(b.dataset.rname);songQuery="";$("#trackSearch").value="";
+  renderRelChips();renderTrackList();load(+b.dataset.ri,true);
+});
+$("#relSearch").addEventListener("input",e=>{relQuery=e.target.value;renderLists()});
 renderLists();
 document.querySelectorAll("[data-play]").forEach(b=>b.addEventListener("click",()=>load(TRACKS.findIndex(t=>t.id===b.dataset.play),true)));
 
@@ -944,7 +1043,9 @@ function loadYT(){
   ytReady.catch(()=>{ytReady=null});
   return ytReady;
 }
+let listened=false; // until a visitor plays something, the Listen card follows the newest release
 function play(i){
+  listened=true;
   show(i);const t=TRACKS[cur];
   if(t.youtube){
     audio.pause();mode="yt";
@@ -1042,7 +1143,7 @@ async function loadLinks(){
     const curId=TRACKS[cur].id;
     const keep=TRACKS.filter(t=>claimed.has(t)).concat(added).sort((a,b)=>(b.date||"").localeCompare(a.date||""));
     TRACKS.splice(0,TRACKS.length,...keep);renderLists();
-    cur=Math.max(0,TRACKS.findIndex(t=>t.id===curId));
+    cur=listened?Math.max(0,TRACKS.findIndex(t=>t.id===curId)):0;
     if(audio.paused)load(cur,false);
     document.querySelectorAll(".track").forEach(el=>el.setAttribute("aria-current",el.dataset.id===curId?"true":"false"));
   }
@@ -1057,7 +1158,6 @@ async function loadLinks(){
 /* ---------- featured releases: newest 3, rotating every 2 minutes ---------- */
 const F_DUR=120, fkey=s=>(s||"").toLowerCase().replace(/[^a-z0-9]+/g," ").trim();
 let fItems=[],fIdx=0,fElapsed=0,fPaused=false;
-const fmtDate=(d,opt)=>new Date(d+"T12:00:00").toLocaleDateString("en-US",opt||{month:"long",day:"numeric",year:"numeric"});
 function buildFeatured(){
   const groups=new Map();
   TRACKS.forEach(t=>{
@@ -1067,21 +1167,23 @@ function buildFeatured(){
     if(t.date>g.date)g.date=t.date;
     g.tracks.push(t);groups.set(k,g);
   });
-  return [...groups.values()].sort((a,b)=>b.date.localeCompare(a.date)).slice(0,3).map(g=>{
+  const sorted=[...groups.values()].sort((a,b)=>b.date.localeCompare(a.date)||a.name.localeCompare(b.name));
+  const newest=sorted.length?sorted[0].date:"";
+  const latest=sorted.filter(g=>g.date===newest); // every release from the newest release day
+  return sorted.slice(0,Math.max(3,latest.length)).map(g=>{
     g.tracks.sort((a,b)=>a.title.localeCompare(b.title));
     const lead=g.tracks.find(t=>t.art)||g.tracks[0];
     const feat=[...new Set(g.tracks.map(t=>(t.title.match(/\((?:feat\.?|ft\.?|with) ([^)]+)\)/i)||[])[1]).filter(Boolean))];
     return Object.assign(g,{first:g.tracks[0],artSrc:artOf(lead),feat});
   });
 }
-const pauseIco='<svg viewBox="0 0 24 24"><path d="M7 5h4v14H7zm6 0h4v14h-4z"/></svg>';
 function renderFeature(i,animate){
   if(!fItems.length)return;
   fIdx=(i+fItems.length)%fItems.length;fElapsed=0;
   const r=fItems[fIdx], card=$("#feature");
   const apply=()=>{
     $("#fArt").src=r.artSrc;$("#fArt").alt=`${r.name} cover art`;
-    $("#fBadge").textContent=fIdx===0?"Latest release":r.kind;
+    $("#fBadge").textContent=r.date===fItems[0].date?"Latest release":r.kind;
     const h=$("#fTitle");h.textContent=r.name.replace(/ I-III/," I–III");h.classList.toggle("long",r.name.length>18);
     $("#fDate").textContent=`Released ${fmtDate(r.date)}`;
     const parts=[r.tracks.length>1?`${r.tracks.length} songs`:r.kind];
@@ -1089,6 +1191,7 @@ function renderFeature(i,animate){
     $("#fSub").textContent=parts.join(", ")+", out now everywhere you stream.";
     $("#fPlay").dataset.track=r.first.id;
     card.classList.remove("swap");
+    if(!listened){const k=TRACKS.indexOf(r.first);if(k>=0)load(k,false)}
   };
   if(animate){card.classList.add("swap");setTimeout(apply,350)}else apply();
   $("#fNav").innerHTML=fItems.map((x,j)=>`<button class="f-dot" data-f="${j}" aria-current="${j===fIdx}" aria-label="Show ${x.name}, released ${fmtDate(x.date)}"><b>${x.name.replace(/ \(feat\.[^)]*\)/,"").replace(/ I-III/," I–III")}</b><span>${fmtDate(x.date,{month:"short",day:"numeric",year:"numeric"})}</span><i style="--dur:${F_DUR}s"></i></button>`).join("")
@@ -1106,7 +1209,6 @@ setInterval(()=>{if(fPaused||document.hidden||fItems.length<2)return;if(++fElaps
 fItems=buildFeatured();renderFeature(0,false);
 
 /* ---------- Watch: YouTube videos and Shorts ---------- */
-const esc=s=>String(s||"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 let vids=[],vTab="video",vAll=false;
 // Full songs = DistroKid's YouTube Music tracks; plays count as YouTube Music streams.
 function musicItems(){return TRACKS.filter(t=>t.youtube).map(t=>({id:t.youtube,title:t.title,kind:"music",published:t.date,thumb:artOf(t)}))}
@@ -1117,15 +1219,13 @@ function renderVideos(list){
   const tabs=[["music","Full songs"],["video","Videos"],["short","Shorts"]].filter(([k])=>all[k].length||k==="video");
   $("#vTabs").innerHTML=tabs.map(([k,n])=>`<button class="chip" data-vt="${k}" aria-pressed="${k===vTab}">${n}${all[k].length?` (${all[k].length})`:""}</button>`).join("");
   const shown=all[vTab], grid=$("#vGrid");
-  grid.className=vTab==="short"?"srow":vTab==="music"?"vgrid mgrid":"vgrid";
+  grid.className="rail "+vTab;
   if(!shown.length){
-    grid.innerHTML=`<p class="v-empty">${vTab==="short"?"Shorts":"Videos"} from the Ddot Nollid YouTube channel show up here automatically. Until then, watch them on <a href="${YT_CHANNEL}" target="_blank" rel="noopener">YouTube</a>.</p>`;
-    $("#vMore").hidden=true;return;
+    railSet(grid,[],`<p class="v-empty">${vTab==="short"?"Shorts":"Videos"} from the Ddot Nollid YouTube channel show up here automatically. Until then, watch them on <a href="${YT_CHANNEL}" target="_blank" rel="noopener">YouTube</a>.</p>`,false);
+    $("#vCount").textContent="";return;
   }
-  const lim=vTab!=="short"&&!vAll?(vTab==="music"?10:6):shown.length;
-  grid.innerHTML=shown.slice(0,lim).map(v=>`<button class="vcard" data-v="${esc(v.id)}" data-k="${v.kind}" aria-label="Play ${esc(v.title)}"><span class="vthumb"><img src="${v.thumb||`https://i.ytimg.com/vi/${esc(v.id)}/hqdefault.jpg`}" alt="" loading="lazy"><span class="vplay">${playSvg}</span></span><b>${esc(v.title)}</b><small>${v.published?fmtDate(v.published,{month:"short",day:"numeric",year:"numeric"}):""}</small></button>`).join("");
-  $("#vMore").hidden=!(vTab!=="short"&&shown.length>lim);
-  $("#vMore").textContent=vTab==="music"?"Show all songs":"Show all videos";
+  $("#vCount").textContent=`${shown.length} ${vTab==="music"?"songs":vTab==="short"?"Shorts":"videos"}`;
+  railSet(grid,shown.map(v=>`<button class="vcard" data-v="${esc(v.id)}" data-k="${v.kind}" aria-label="Play ${esc(v.title)}"><span class="vthumb"><img src="${v.thumb||`https://i.ytimg.com/vi/${esc(v.id)}/hqdefault.jpg`}" alt="" loading="lazy"><span class="vplay">${playSvg}</span></span><b>${esc(v.title)}</b><small>${v.published?fmtDate(v.published,{month:"short",day:"numeric",year:"numeric"}):""}</small></button>`),"",true);
 }
 function openVideo(id,kind,title){
   audio.pause();pauseYT();
@@ -1143,10 +1243,9 @@ function openVideo(id,kind,title){
   $("#vbox").hidden=false;$("#vClose").focus();
 }
 function closeVideo(){$("#vbox").hidden=true;$("#vFrame").innerHTML=""}
-$("#vTabs").addEventListener("click",e=>{const b=e.target.closest("[data-vt]");if(!b)return;vTab=b.dataset.vt;vAll=false;renderVideos()});
-$("#vMore").addEventListener("click",()=>{vAll=true;renderVideos()});
+$("#vTabs").addEventListener("click",e=>{const b=e.target.closest("[data-vt]");if(!b)return;vTab=b.dataset.vt;renderVideos()});
 $("#vGrid").addEventListener("click",e=>{
-  const c=e.target.closest(".vcard");if(!c)return;
+  const c=e.target.closest(".vcard");if(!c||$("#vGrid").dataset.moved==="1")return;
   if(c.dataset.k==="music"){const i=TRACKS.findIndex(t=>t.youtube===c.dataset.v);if(i>=0){play(i);return}}
   openVideo(c.dataset.v,c.dataset.k,c.querySelector("b").textContent);
 });
