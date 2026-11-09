@@ -1,6 +1,6 @@
 {
   "artist": "Ddot Nollid",
-  "updated": "2026-11-01T20:33:54Z",
+  "updated": "2026-11-09T23:47:39Z",
   "artist_links": {
     "amazon": "https://music.amazon.com/artists/B0GV6VX887",
     "apple": "https://music.apple.com/us/artist/ddot-nollid/1888639392",
@@ -12,6 +12,20 @@
     "ytmusic": "https://music.youtube.com/@DdotNollid"
   },
   "tracks": [
+    {
+      "title": "All My Might (Remix)",
+      "release": "All My Might (Remix)",
+      "type": "single",
+      "date": "2026-11-07",
+      "art": "covers/all-my-might-remix.jpg",
+      "songlink": null,
+      "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/bc/b5/06/bcb506be-b70a-25a9-7699-49519a890428/mzaf_14102478062877073165.plus.aac.p.m4a",
+      "links": {
+        "apple": "https://music.apple.com/us/album/all-my-might-remix/6829384153?i=6829384154",
+        "deezer": "https://www.deezer.com/track/4384364601"
+      },
+      "youtube": "TEToStTPCp4"
+    },
     {
       "title": "All My Might",
       "release": "All My Might",
