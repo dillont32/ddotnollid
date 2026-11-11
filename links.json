@@ -1,6 +1,6 @@
 {
   "artist": "Ddot Nollid",
-  "updated": "2026-11-09T23:47:39Z",
+  "updated": "2026-11-11T22:06:54Z",
   "artist_links": {
     "amazon": "https://music.amazon.com/artists/B0GV6VX887",
     "apple": "https://music.apple.com/us/artist/ddot-nollid/1888639392",
@@ -723,6 +723,12 @@
     }
   ],
   "videos": [
+    {
+      "id": "iGl_Jy4dwaM",
+      "title": "Change It Up (Official Lyric Video) | Ddot Nollid",
+      "published": "2026-11-10",
+      "kind": "video"
+    },
     {
       "id": "iaact7udp-k",
       "title": "No Cerveza No Trabajo #ddot_nollid #reggaeton #originalsong #originalmusic",
