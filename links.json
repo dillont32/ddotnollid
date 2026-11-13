@@ -1,6 +1,6 @@
 {
   "artist": "Ddot Nollid",
-  "updated": "2026-11-11T22:06:54Z",
+  "updated": "2026-11-13T03:56:58Z",
   "artist_links": {
     "amazon": "https://music.amazon.com/artists/B0GV6VX887",
     "apple": "https://music.apple.com/us/artist/ddot-nollid/1888639392",
@@ -723,6 +723,12 @@
     }
   ],
   "videos": [
+    {
+      "id": "GNRVBYOmSu0",
+      "title": "My Dog Got Me Off the Couch | Change It Up (Claymation)",
+      "published": "2026-11-12",
+      "kind": "short"
+    },
     {
       "id": "iGl_Jy4dwaM",
       "title": "Change It Up (Official Lyric Video) | Ddot Nollid",
